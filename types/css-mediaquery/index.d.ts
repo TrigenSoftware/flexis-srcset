@@ -1,7 +1,7 @@
 
-interface Params {
+interface IParams {
 	width?: number;
 	height?: number;
 }
 
-export function match(query: string, params: Params): boolean;
+export function match(query: string, params: IParams): boolean;

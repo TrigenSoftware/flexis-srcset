@@ -15,7 +15,7 @@
 			"esnext"
 		],
 		"typeRoots": [
-			"types"
+			"./types"
 		]
 	},
 	"include": [
