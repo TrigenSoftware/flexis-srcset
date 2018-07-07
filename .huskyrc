@@ -1,6 +1,5 @@
 {
 	"hooks": {
-		"pre-commit": "npm run generateDocs",
 		"pre-push": "npm test"
 	}
 }
