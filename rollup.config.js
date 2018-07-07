@@ -16,8 +16,7 @@ const plugins = [
 		runtimeHelpers: true
 	}),
 	resolve({
-		browser:        true,
-		preferBuiltins: false
+		preferBuiltins: true
 	}),
 	commonjs(),
 	globals()
