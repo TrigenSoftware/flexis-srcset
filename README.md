@@ -44,6 +44,3 @@ export {
 ```
 
 [Description of this methods you can find in Documentation.](https://trigensoftware.github.io/flexis-srcset/index.html)
-
----
-[![NPM](https://nodeico.herokuapp.com/@flexis/srcset.svg)](https://npmjs.com/package/@flexis/srcset)
