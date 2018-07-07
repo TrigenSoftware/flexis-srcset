@@ -6,10 +6,10 @@
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/TrigenSoftware/gulp-srcset.git"
+    "url": "git+https://github.com/TrigenSoftware/flexis-srcset.git"
   },
   "bugs": {
-    "url": "https://github.com/TrigenSoftware/gulp-srcset/issues"
+    "url": "https://github.com/TrigenSoftware/flexis-srcset/issues"
   },
   "main": "lib/index.js",
   "engines": {
