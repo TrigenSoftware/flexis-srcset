@@ -5,7 +5,10 @@
 			"modules": false,
 			"targets": { "node": 6 }
 		}],
-		["@babel/preset-stage-0", { "decoratorsLegacy": true }]
+		["@babel/preset-stage-0", {
+			"decoratorsLegacy": true,
+			"pipelineProposal": "minimal"
+		}]
 	],
 	"plugins": [
 		"@babel/plugin-transform-runtime"

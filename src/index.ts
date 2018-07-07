@@ -38,17 +38,21 @@ interface IPostfixFormatter {
 	(width: number, mul: number): string;
 }
 
+type Postfix = string|IPostfixFormatter;
+
 interface IConfig {
 	processing?: Partial<IProcessingConfig>;
 	optimization?: Partial<IOptimizationConfig>;
 	skipOptimization?: boolean;
 	scalingUp?: boolean;
-	postfix?: IPostfixFormatter;
+	postfix?: Postfix;
 }
 
+type SupportedExtension = keyof typeof extensions;
+
 interface IGenerateConfig extends IConfig {
-	format?: string[];
-	width?: number[];
+	format?: SupportedExtension|SupportedExtension[];
+	width?: number|number[];
 }
 
 export default class SrcsetGenerator {
@@ -57,7 +61,7 @@ export default class SrcsetGenerator {
 	private readonly optimization: IOptimizationConfig = defaultOptimization;
 	private readonly skipOptimization: boolean = false;
 	private readonly scalingUp: boolean = true;
-	private readonly postfix: IPostfixFormatter = defaultPostfix;
+	private readonly postfix: Postfix = defaultPostfix;
 
 	constructor(config: IConfig = {}) {
 
@@ -74,7 +78,7 @@ export default class SrcsetGenerator {
 			Object.assign(this.processing, processing);
 			Object.assign(this.optimization, optimization);
 
-			if (typeof postfix === 'function') {
+			if (typeof postfix === 'function' || typeof postfix === 'string') {
 				this.postfix = postfix;
 			}
 
@@ -111,7 +115,7 @@ export default class SrcsetGenerator {
 			...generateConfig
 		};
 
-		const sourceType = source.extname.replace(/^\./, '');
+		const sourceType = source.extname.replace(/^\./, '') as SupportedExtension;
 
 		if (!typeIsSupported(sourceType)) {
 			throw new Error(`"${sourceType}" is not supported.`);
@@ -170,6 +174,7 @@ export default class SrcsetGenerator {
 				}
 
 				image = await this.processImage(image, type, width, config);
+				Reflect.deleteProperty(image, 'metadata');
 
 				if (!skipOptimization) {
 					image = await this.optimizeImage(image, config);
@@ -284,6 +289,9 @@ export default class SrcsetGenerator {
 		} else
 		if (typeof customPostfix === 'function') {
 			target.stem += customPostfix(calculatedWidth, width);
+		} else
+		if (typeof postfix === 'string') {
+			target.stem += postfix;
 		} else
 		if (typeof postfix === 'function') {
 			target.stem += postfix(calculatedWidth, width);
