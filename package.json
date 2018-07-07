@@ -1,6 +1,6 @@
 {
   "name": "@flexis/srcset",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Highly customizable lib to generating responsive images.",
   "author": "dangreen",
   "license": "MIT",
@@ -12,6 +12,7 @@
     "url": "https://github.com/TrigenSoftware/flexis-srcset/issues"
   },
   "main": "lib/index.js",
+  "types": "lib/index.d.ts",
   "engines": {
     "node": ">=6.0.0"
   },
