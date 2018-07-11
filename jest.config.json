@@ -13,6 +13,7 @@
 	"collectCoverage": true,
 	"collectCoverageFrom": [
 		"src/**/*.{ts,tsx}",
+		"!**/*.d.ts",
 		"!**/node_modules/**"
 	],
 	"coverageReporters": [
@@ -24,7 +25,6 @@
 			"babelConfig": {
 				"presets": [
 					["env", {
-						"modules": false,
 						"targets": { "node": 6 }
 					}],
 					["stage-0"]
