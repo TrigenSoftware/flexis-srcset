@@ -12,15 +12,15 @@ const optimization = {
 
 jest.setTimeout(30000);
 
-async function arrayFromAsyncIterator<T>(iterator): Promise<T[]> {
+async function vinylsFromAsyncIterator(iterator): Promise<Vinyl[]> {
 
-	const array: T[] = [];
+	const vinyls: Vinyl[] = [];
 
-	for await (const item of iterator) {
-		array.push(item);
+	for await (const vinyl of iterator) {
+		vinyls.push(vinyl);
 	}
 
-	return array;
+	return vinyls;
 }
 
 describe('SrcsetGenerator', () => {
@@ -38,7 +38,7 @@ describe('SrcsetGenerator', () => {
 			skipOptimization: true,
 			optimization
 		});
-		const [notOptimizedImage] = await arrayFromAsyncIterator<Vinyl>(srcset.generate(image));
+		const [notOptimizedImage] = await vinylsFromAsyncIterator(srcset.generate(image));
 
 		expect((notOptimizedImage.contents as Buffer).length).toBe(image.contents.length);
 	});
@@ -48,7 +48,7 @@ describe('SrcsetGenerator', () => {
 		const srcset = new SrcsetGenerator({
 			optimization
 		});
-		const [optimizedImage] = await arrayFromAsyncIterator<Vinyl>(srcset.generate(image));
+		const [optimizedImage] = await vinylsFromAsyncIterator(srcset.generate(image));
 
 		expect((optimizedImage.contents as Buffer).length).toBeLessThan(image.contents.length);
 	});
@@ -59,7 +59,7 @@ describe('SrcsetGenerator', () => {
 			skipOptimization: true,
 			scalingUp: false
 		});
-		const images = await arrayFromAsyncIterator<Vinyl>(srcset.generate(image, {
+		const images = await vinylsFromAsyncIterator(srcset.generate(image, {
 			width: [1, 5000]
 		}));
 
@@ -71,7 +71,7 @@ describe('SrcsetGenerator', () => {
 		const srcset = new SrcsetGenerator({
 			skipOptimization: true
 		});
-		const images = await arrayFromAsyncIterator<Vinyl>(srcset.generate(image, {
+		const images = await vinylsFromAsyncIterator(srcset.generate(image, {
 			width: [1, 5000]
 		}));
 
@@ -83,7 +83,7 @@ describe('SrcsetGenerator', () => {
 		const srcset = new SrcsetGenerator({
 			skipOptimization: true
 		});
-		const [imageWithPostfix] = await arrayFromAsyncIterator<Vinyl>(srcset.generate(image, {
+		const [imageWithPostfix] = await vinylsFromAsyncIterator(srcset.generate(image, {
 			width: [320]
 		}));
 
@@ -96,7 +96,7 @@ describe('SrcsetGenerator', () => {
 			skipOptimization: true,
 			postfix: '@postfix'
 		});
-		const [imageWithPostfix] = await arrayFromAsyncIterator<Vinyl>(srcset.generate(image));
+		const [imageWithPostfix] = await vinylsFromAsyncIterator(srcset.generate(image));
 
 		expect(imageWithPostfix.stem).toBe('image@postfix');
 	});
@@ -114,7 +114,7 @@ describe('SrcsetGenerator', () => {
 			bmp.extname = '.bmp';
 
 			expect(
-				arrayFromAsyncIterator<Vinyl>(srcset.generate(bmp))
+				vinylsFromAsyncIterator(srcset.generate(bmp))
 			).rejects.toThrow();
 		});
 
@@ -123,7 +123,7 @@ describe('SrcsetGenerator', () => {
 			const srcset = new SrcsetGenerator({
 				optimization
 			});
-			const [notOptimizedImage] = await arrayFromAsyncIterator<Vinyl>(srcset.generate(image, {
+			const [notOptimizedImage] = await vinylsFromAsyncIterator(srcset.generate(image, {
 				skipOptimization: true
 			}));
 
@@ -132,7 +132,7 @@ describe('SrcsetGenerator', () => {
 
 		it('should skip scaling up', async () => {
 
-			const images = await arrayFromAsyncIterator<Vinyl>(srcset.generate(image, {
+			const images = await vinylsFromAsyncIterator(srcset.generate(image, {
 				scalingUp: false,
 				width: [1, 5000]
 			}));
@@ -142,7 +142,7 @@ describe('SrcsetGenerator', () => {
 
 		it('should add custom postfix', async () => {
 
-			const [imageWithPostfix] = await arrayFromAsyncIterator<Vinyl>(srcset.generate(image, {
+			const [imageWithPostfix] = await vinylsFromAsyncIterator(srcset.generate(image, {
 				postfix: '@postfix'
 			}));
 
@@ -151,7 +151,7 @@ describe('SrcsetGenerator', () => {
 
 		it('should generate desired widths', async () => {
 
-			const images = await arrayFromAsyncIterator<Vinyl>(srcset.generate(image, {
+			const images = await vinylsFromAsyncIterator(srcset.generate(image, {
 				width: [1, 1280, 320]
 			}));
 
@@ -167,7 +167,7 @@ describe('SrcsetGenerator', () => {
 
 		it('should generate desired formats', async () => {
 
-			const images = await arrayFromAsyncIterator<Vinyl>(srcset.generate(image, {
+			const images = await vinylsFromAsyncIterator(srcset.generate(image, {
 				format: ['jpg', 'webp', 'png']
 			}));
 
@@ -180,7 +180,7 @@ describe('SrcsetGenerator', () => {
 		it('should throw error if desired format is not supported', async () => {
 
 			expect(
-				arrayFromAsyncIterator<Vinyl>(srcset.generate(image, {
+				vinylsFromAsyncIterator(srcset.generate(image, {
 					format: 'bmp'
 				} as any))
 			).rejects.toThrow();
