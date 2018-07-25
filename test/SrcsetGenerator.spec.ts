@@ -12,7 +12,7 @@ const optimization = {
 
 jest.setTimeout(30000);
 
-async function vinylsFromAsyncIterator(iterator): Promise<Vinyl[]> {
+async function vinylsFromAsyncIterator(iterator: AsyncIterableIterator<Vinyl>): Promise<Vinyl[]> {
 
 	const vinyls: Vinyl[] = [];
 
