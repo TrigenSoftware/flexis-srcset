@@ -2,7 +2,7 @@ import Vinyl from 'vinyl';
 import minimatch from 'minimatch';
 import mediaQuery from 'css-mediaquery';
 import Sharp from 'sharp';
-import { typeIsSupported } from './extensions';
+import { isSupportedType } from './extensions';
 
 interface ISize {
 	width: number;
@@ -47,7 +47,7 @@ export async function matchImage(source: Vinyl, matcherOrMatchers: Matcher|Match
 
 	const sourceType = source.extname.replace(/^\./, '');
 
-	if (!typeIsSupported(sourceType)) {
+	if (!isSupportedType(sourceType)) {
 		return false;
 	}
 

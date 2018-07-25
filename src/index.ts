@@ -8,7 +8,7 @@ import {
 } from './defaults';
 import {
 	extensions,
-	typeIsSupported
+	isSupportedType
 } from './extensions';
 import {
 	attachMetadata,
@@ -16,7 +16,7 @@ import {
 } from './helpers';
 
 export {
-	typeIsSupported,
+	isSupportedType,
 	matchImage
 };
 
@@ -117,7 +117,7 @@ export default class SrcsetGenerator {
 
 		const sourceType = source.extname.replace(/^\./, '') as SupportedExtension;
 
-		if (!typeIsSupported(sourceType)) {
+		if (!isSupportedType(sourceType)) {
 			throw new Error(`"${sourceType}" is not supported.`);
 		}
 
@@ -146,7 +146,7 @@ export default class SrcsetGenerator {
 
 		for (const type of outputTypes) {
 
-			if (!typeIsSupported(type)) {
+			if (!isSupportedType(type)) {
 				throw new Error(`"${type}" is not supported.`);
 			}
 
