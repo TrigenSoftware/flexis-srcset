@@ -10,8 +10,6 @@ const optimization = {
 	})
 };
 
-jest.setTimeout(30000);
-
 async function vinylsFromAsyncIterator(iterator: AsyncIterableIterator<Vinyl>): Promise<Vinyl[]> {
 
 	const vinyls: Vinyl[] = [];
@@ -24,6 +22,8 @@ async function vinylsFromAsyncIterator(iterator: AsyncIterableIterator<Vinyl>): 
 }
 
 describe('SrcsetGenerator', () => {
+
+	jest.setTimeout(30000);
 
 	it('should create correct instance', () => {
 
