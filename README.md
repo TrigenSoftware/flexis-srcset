@@ -5,7 +5,7 @@
 [![Dependency status][deps]][deps-url]
 [![Build status][build]][build-url]
 [![Coverage status][coverage]][coverage-url]
-[![Greenkeeper badge](greenkeeper)](greenkeeper-url)
+[![Greenkeeper badge](greenkeeper)][greenkeeper-url]
 
 [npm]: https://img.shields.io/npm/v/%40flexis/srcset.svg
 [npm-url]: https://www.npmjs.com/package/@flexis/srcset
