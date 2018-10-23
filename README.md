@@ -1,12 +1,11 @@
 # @flexis/srcset
 
-[![Greenkeeper badge](https://badges.greenkeeper.io/TrigenSoftware/flexis-srcset.svg)](https://greenkeeper.io/)
-
 [![NPM version][npm]][npm-url]
 [![Node version][node]][node-url]
 [![Dependency status][deps]][deps-url]
 [![Build status][build]][build-url]
 [![Coverage status][coverage]][coverage-url]
+[![Greenkeeper badge](greenkeeper)](greenkeeper-url)
 
 [npm]: https://img.shields.io/npm/v/%40flexis/srcset.svg
 [npm-url]: https://www.npmjs.com/package/@flexis/srcset
@@ -22,6 +21,9 @@
 
 [coverage]: https://img.shields.io/coveralls/TrigenSoftware/flexis-srcset.svg
 [coverage-url]: https://coveralls.io/r/TrigenSoftware/flexis-srcset
+
+[greenkeeper]: https://badges.greenkeeper.io/TrigenSoftware/flexis-srcset.svg
+[greenkeeper-url]: https://greenkeeper.io/
 
 Highly customizable lib to generating responsive images.
 
