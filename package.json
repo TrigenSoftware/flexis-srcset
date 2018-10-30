@@ -42,7 +42,7 @@
     "css-mediaquery": "^0.1.2",
     "imagemin": "^6.0.0",
     "imagemin-giflossy": "^5.1.10",
-    "imagemin-mozjpeg": "^7.0.0",
+    "imagemin-mozjpeg": "^8.0.0",
     "imagemin-svgo": "^7.0.0",
     "imagemin-webp": "^4.0.0",
     "imagemin-zopfli": "^5.1.0",
