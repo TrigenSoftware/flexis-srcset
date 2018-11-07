@@ -34,7 +34,7 @@
     "responsive"
   ],
   "dependencies": {
-    "@babel/runtime": "^7.0.0",
+    "@babel/runtime": "^7.1.5",
     "@types/minimatch": "^3.0.3",
     "@types/node": "^10.5.5",
     "@types/sharp": "^0.21.0",
