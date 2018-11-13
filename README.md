@@ -27,7 +27,7 @@
 
 Highly customizable lib to generating responsive images.
 
-# Install
+## Install
 
 ```bash
 npm i -D @flexis/srcset
@@ -35,7 +35,7 @@ npm i -D @flexis/srcset
 yarn add -D @flexis/srcset
 ```
 
-# API
+## API
 
 Module exposes next API:
 
