@@ -11,6 +11,7 @@ import {
 	isSupportedType
 } from './extensions';
 import {
+	isVinylBuffer,
 	attachMetadata,
 	matchImage
 } from './helpers';
@@ -100,7 +101,7 @@ export default class SrcsetGenerator {
 	 */
 	async *generate(source: Vinyl, generateConfig: IGenerateConfig = {}) {
 
-		if (!Vinyl.isVinyl(source) || source.isNull() || source.isStream()) {
+		if (!isVinylBuffer(source)) {
 			throw new Error('Invalid source.');
 		}
 
