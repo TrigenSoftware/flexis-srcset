@@ -1,6 +1,6 @@
 {
   "name": "@flexis/srcset",
-  "version": "1.0.5",
+  "version": "1.0.6",
   "description": "Highly customizable lib to generating responsive images.",
   "author": "dangreen",
   "license": "MIT",
@@ -48,7 +48,7 @@
     "imagemin-zopfli": "^5.1.0",
     "minimatch": "^3.0.4",
     "sharp": "^0.21.0",
-    "vinyl": "^2.1.0"
+    "vinyl": "*"
   },
   "devDependencies": {
     "@babel/core": "7.1.5",
