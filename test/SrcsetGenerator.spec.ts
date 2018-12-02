@@ -2,7 +2,6 @@ import Vinyl from 'vinyl';
 import mozJpegPlugin from 'imagemin-mozjpeg';
 import ISrsetVinyl from '../src/ISrcsetVinyl';
 import SrcsetGenerator from '../src';
-import { attachMetadata } from '../src/helpers';
 import image, { expectedSize } from './image';
 
 const optimization = {
@@ -89,6 +88,7 @@ describe('SrcsetGenerator', () => {
 		}));
 
 		expect(imageWithPostfix.stem).toBe('image@320w');
+		expect(imageWithPostfix.postfix).toBe('@320w');
 	});
 
 	it('should add custom postfix', async () => {
@@ -100,6 +100,7 @@ describe('SrcsetGenerator', () => {
 		const [imageWithPostfix] = await vinylsFromAsyncIterator(srcset.generate(image));
 
 		expect(imageWithPostfix.stem).toBe('image@postfix');
+		expect(imageWithPostfix.postfix).toBe('@postfix');
 	});
 
 	describe('#generate', () => {
@@ -174,6 +175,7 @@ describe('SrcsetGenerator', () => {
 			}));
 
 			expect(imageWithPostfix.stem).toBe('image@postfix');
+			expect(imageWithPostfix.postfix).toBe('@postfix');
 		});
 
 		it('should generate desired widths', async () => {
@@ -181,10 +183,6 @@ describe('SrcsetGenerator', () => {
 			const images = await vinylsFromAsyncIterator(srcset.generate(image, {
 				width: [1, 1280, 320]
 			}));
-
-			await Promise.all(
-				images.map(_ => attachMetadata(_, false))
-			);
 
 			expect(images.length).toBe(3);
 			expect(images[0].metadata.width).toBe(expectedSize.width);
