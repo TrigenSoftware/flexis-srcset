@@ -1,5 +1,6 @@
 import Vinyl from 'vinyl';
 import mozJpegPlugin from 'imagemin-mozjpeg';
+import ISrsetVinyl from '../src/ISrcsetVinyl';
 import SrcsetGenerator from '../src';
 import { attachMetadata } from '../src/helpers';
 import image, { expectedSize } from './image';
@@ -10,9 +11,9 @@ const optimization = {
 	})
 };
 
-async function vinylsFromAsyncIterator(iterator: AsyncIterableIterator<Vinyl>): Promise<Vinyl[]> {
+async function vinylsFromAsyncIterator(iterator: AsyncIterableIterator<Vinyl>) {
 
-	const vinyls: Vinyl[] = [];
+	const vinyls: ISrsetVinyl[] = [];
 
 	for await (const vinyl of iterator) {
 		vinyls.push(vinyl);
@@ -140,6 +141,32 @@ describe('SrcsetGenerator', () => {
 			expect(images.length).toBe(1);
 		});
 
+		it('shouldn\'t generate any file, due to file format', async () => {
+
+			const gif = image.clone({ contents: false });
+
+			gif.extname = '.gif';
+
+			const images = await vinylsFromAsyncIterator(srcset.generate(gif, {
+				format: ['jpg', 'webp']
+			}));
+
+			expect(images.length).toBe(0);
+		});
+
+		it('should generate single file, due to file format', async () => {
+
+			const gif = image.clone({ contents: false });
+
+			gif.extname = '.gif';
+
+			const images = await vinylsFromAsyncIterator(srcset.generate(gif, {
+				format: ['jpg', 'webp', 'gif']
+			}));
+
+			expect(images.length).toBe(1);
+		});
+
 		it('should add custom postfix', async () => {
 
 			const [imageWithPostfix] = await vinylsFromAsyncIterator(srcset.generate(image, {
@@ -156,7 +183,7 @@ describe('SrcsetGenerator', () => {
 			}));
 
 			await Promise.all(
-				images.map(attachMetadata)
+				images.map(_ => attachMetadata(_, false))
 			);
 
 			expect(images.length).toBe(3);

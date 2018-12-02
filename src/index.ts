@@ -1,6 +1,7 @@
 import Vinyl from 'vinyl';
 import Sharp from 'sharp';
 import Imagemin from 'imagemin';
+import ISrsetVinyl from './ISrcsetVinyl';
 import {
 	processing as defaultProcessing,
 	optimization as defaultOptimization,
@@ -17,6 +18,7 @@ import {
 } from './helpers';
 
 export {
+	ISrsetVinyl,
 	isSupportedType,
 	matchImage
 };
@@ -99,7 +101,7 @@ export default class SrcsetGenerator {
 	 * @param  generateConfig - Image handle config.
 	 * @return Results of handling.
 	 */
-	async *generate(source: Vinyl, generateConfig: IGenerateConfig = {}) {
+	async *generate(source: ISrsetVinyl, generateConfig: IGenerateConfig = {}) {
 
 		if (!isVinylBuffer(source)) {
 			throw new Error('Invalid source.');
@@ -145,6 +147,8 @@ export default class SrcsetGenerator {
 		const onlyOptimize = extensions.svg.test(sourceType)
 			|| extensions.gif.test(sourceType);
 
+		await attachMetadata(source);
+
 		for (const type of outputTypes) {
 
 			if (!isSupportedType(type)) {
@@ -153,12 +157,20 @@ export default class SrcsetGenerator {
 
 			if (onlyOptimize) {
 
+				if (type !== sourceType) {
+					continue;
+				}
+
 				if (skipOptimization) {
 					yield source;
 					continue;
 				}
 
-				yield await this.optimizeImage(source, config);
+				const optimizedImage: ISrsetVinyl = await this.optimizeImage(source, config);
+
+				await attachMetadata(optimizedImage, true);
+
+				yield optimizedImage;
 				continue;
 			}
 
@@ -168,18 +180,17 @@ export default class SrcsetGenerator {
 					throw new Error('Invalid width parameter.');
 				}
 
-				let image = await attachMetadata(source);
-
-				if (!scalingUp && image.metadata.width < width) {
+				if (!scalingUp && source.metadata.width < width) {
 					continue;
 				}
 
-				image = await this.processImage(image, type, width, config);
-				Reflect.deleteProperty(image, 'metadata');
+				let image = await this.processImage(source, type, width, config);
 
 				if (!skipOptimization) {
 					image = await this.optimizeImage(image, config);
 				}
+
+				await attachMetadata(image, true);
 
 				yield image;
 			}
@@ -195,7 +206,7 @@ export default class SrcsetGenerator {
 	 * @return Destination image file.
 	 */
 	private async processImage(
-		source: Vinyl,
+		source: ISrsetVinyl,
 		outputType: string,
 		width: number = null,
 		config: IConfig = {}
@@ -277,25 +288,31 @@ export default class SrcsetGenerator {
 	 * @param customPostfix - Custom postfix generator.
 	 */
 	private addPostfix(
-		target: Vinyl,
+		target: ISrsetVinyl,
 		calculatedWidth: number,
 		width: number,
 		customPostfix: string|IPostfixFormatter = null
 	) {
 
 		const { postfix } = this;
+		let calculatedPostfix = '';
 
 		if (typeof customPostfix === 'string') {
-			target.stem += customPostfix;
+			calculatedPostfix = customPostfix;
 		} else
 		if (typeof customPostfix === 'function') {
-			target.stem += customPostfix(calculatedWidth, width);
+			calculatedPostfix = customPostfix(calculatedWidth, width);
 		} else
 		if (typeof postfix === 'string') {
-			target.stem += postfix;
+			calculatedPostfix = postfix;
 		} else
 		if (typeof postfix === 'function') {
-			target.stem += postfix(calculatedWidth, width);
+			calculatedPostfix = postfix(calculatedWidth, width);
+		}
+
+		if (typeof calculatedPostfix === 'string') {
+			target.postfix = calculatedPostfix;
+			target.stem += calculatedPostfix;
 		}
 	}
 }

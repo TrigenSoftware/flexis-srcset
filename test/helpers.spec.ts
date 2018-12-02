@@ -2,7 +2,12 @@ import {
 	attachMetadata,
 	matchImage
 } from '../src/helpers';
-import image, { expectedSize } from './image';
+import image, {
+	expectedSize as imageSize
+} from './image';
+import icon, {
+	expectedSize as iconSize
+} from './icon';
 
 describe('Helpers', () => {
 
@@ -16,8 +21,8 @@ describe('Helpers', () => {
 
 			await attachMetadata(image);
 
-			expect(image.metadata.width).toBe(expectedSize.width);
-			expect(image.metadata.height).toBe(expectedSize.height);
+			expect(image.metadata.width).toBe(imageSize.width);
+			expect(image.metadata.height).toBe(imageSize.height);
 		});
 
 		it('shouldn\'t reattach metadata', async () => {
@@ -26,6 +31,23 @@ describe('Helpers', () => {
 			await attachMetadata(image);
 
 			expect(image.metadata.mock).toBe(true);
+		});
+
+		it('should reattach metadata', async () => {
+
+			image.metadata = { mock: true };
+			await attachMetadata(image, true);
+
+			expect(image.metadata.width).toBe(imageSize.width);
+			expect(image.metadata.height).toBe(imageSize.height);
+		});
+
+		it('should attach metadata for SVG', async () => {
+
+			await attachMetadata(icon);
+
+			expect(icon.metadata.width).toBe(iconSize.width);
+			expect(icon.metadata.height).toBe(iconSize.height);
 		});
 	});
 
@@ -41,7 +63,7 @@ describe('Helpers', () => {
 		});
 
 		it('should match by media query', async () => {
-			expect(await matchImage(image, `(width: ${expectedSize.width}px)`)).toBe(true);
+			expect(await matchImage(image, `(width: ${imageSize.width}px)`)).toBe(true);
 		});
 
 		it('should dismatch by media query', async () => {
@@ -65,11 +87,11 @@ describe('Helpers', () => {
 		});
 
 		it('should match by few matchers', async () => {
-			expect(await matchImage(image, ['**/*.jpg', `(width: ${expectedSize.width}px)`])).toBe(true);
+			expect(await matchImage(image, ['**/*.jpg', `(width: ${imageSize.width}px)`])).toBe(true);
 		});
 
 		it('should dismatch by few matchers', async () => {
-			expect(await matchImage(image, ['**/*.png', `(width: ${expectedSize.width}px)`])).toBe(false);
+			expect(await matchImage(image, ['**/*.png', `(width: ${imageSize.width}px)`])).toBe(false);
 		});
 	});
 });
