@@ -42,9 +42,10 @@ Module exposes next API:
 ```js
 export default SrcsetGenerator;
 export {
-    ISrsetVinyl,
-    typeIsSupported,
-    matchImage
+	ISrsetVinyl,
+	isSupportedType,
+	attachMetadata,
+	matchImage
 }
 ```
 
