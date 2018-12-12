@@ -91,6 +91,7 @@
 							<h3>Functions</h3>
 							<ul class="tsd-index-list">
 								<li class="tsd-kind-function tsd-parent-kind-external-module"><a href="_helpers_.html#attachmetadata" class="tsd-kind-icon">attach<wbr>Metadata</a></li>
+								<li class="tsd-kind-function tsd-parent-kind-external-module"><a href="_helpers_.html#isvinylbuffer" class="tsd-kind-icon">is<wbr>Vinyl<wbr>Buffer</a></li>
 								<li class="tsd-kind-function tsd-parent-kind-external-module"><a href="_helpers_.html#matchimage" class="tsd-kind-icon">match<wbr>Image</a></li>
 							</ul>
 						</section>
@@ -105,7 +106,7 @@
 					<div class="tsd-signature tsd-kind-icon">Matcher<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span><span class="tsd-signature-symbol"> | </span><a href="../interfaces/_helpers_.imatcherfunction.html" class="tsd-signature-type">IMatcherFunction</a></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/TrigenSoftware/flexis-srcset/blob/15126b8/src/helpers.ts#L16">helpers.ts:16</a></li>
+							<li>Defined in <a href="https://github.com/TrigenSoftware/flexis-srcset/blob/58a824e/src/helpers.ts#L17">helpers.ts:17</a></li>
 						</ul>
 					</aside>
 				</section>
@@ -118,7 +119,7 @@
 					<div class="tsd-signature tsd-kind-icon">is<wbr>Media<wbr>Query<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">RegExp</span><span class="tsd-signature-symbol"> =&nbsp;/^\s*(\(\s*((max|min)-|)(width|height)\s*:\s*\d+\w*\s*\)\s*(,|and)\s*)*\(\s*((max|min)-|)(width|height)\s*:\s*\d+\w*\s*\)\s*$/g</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/TrigenSoftware/flexis-srcset/blob/15126b8/src/helpers.ts#L18">helpers.ts:18</a></li>
+							<li>Defined in <a href="https://github.com/TrigenSoftware/flexis-srcset/blob/58a824e/src/helpers.ts#L19">helpers.ts:19</a></li>
 						</ul>
 					</aside>
 				</section>
@@ -129,13 +130,13 @@
 					<a name="attachmetadata" class="tsd-anchor"></a>
 					<h3>attach<wbr>Metadata</h3>
 					<ul class="tsd-signatures tsd-kind-function tsd-parent-kind-external-module">
-						<li class="tsd-signature tsd-kind-icon">attach<wbr>Metadata<span class="tsd-signature-symbol">(</span>source<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Vinyl</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">File</span><span class="tsd-signature-symbol">&gt;</span></li>
+						<li class="tsd-signature tsd-kind-icon">attach<wbr>Metadata<span class="tsd-signature-symbol">(</span>source<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Vinyl</span>, force<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">boolean</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><a href="../interfaces/_isrcsetvinyl_.isrsetvinyl.html" class="tsd-signature-type">ISrsetVinyl</a><span class="tsd-signature-symbol">&gt;</span></li>
 					</ul>
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/TrigenSoftware/flexis-srcset/blob/15126b8/src/helpers.ts#L25">helpers.ts:25</a></li>
+									<li>Defined in <a href="https://github.com/TrigenSoftware/flexis-srcset/blob/58a824e/src/helpers.ts#L36">helpers.ts:36</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -151,9 +152,47 @@
 										<p>Image file.</p>
 									</div>
 								</li>
+								<li>
+									<h5><span class="tsd-flag ts-flagDefault value">Default value</span> force: <span class="tsd-signature-type">boolean</span><span class="tsd-signature-symbol"> =&nbsp;false</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>Force refetch metadata.</p>
+									</div>
+								</li>
 							</ul>
-							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">File</span><span class="tsd-signature-symbol">&gt;</span></h4>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><a href="../interfaces/_isrcsetvinyl_.isrsetvinyl.html" class="tsd-signature-type">ISrsetVinyl</a><span class="tsd-signature-symbol">&gt;</span></h4>
 							<p>Source image file with attached metadata.</p>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-function tsd-parent-kind-external-module">
+					<a name="isvinylbuffer" class="tsd-anchor"></a>
+					<h3>is<wbr>Vinyl<wbr>Buffer</h3>
+					<ul class="tsd-signatures tsd-kind-function tsd-parent-kind-external-module">
+						<li class="tsd-signature tsd-kind-icon">is<wbr>Vinyl<wbr>Buffer<span class="tsd-signature-symbol">(</span>source<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Vinyl</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">boolean</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/TrigenSoftware/flexis-srcset/blob/58a824e/src/helpers.ts#L26">helpers.ts:26</a></li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Check object is Vinyl-buffer.</p>
+								</div>
+							</div>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>source: <span class="tsd-signature-type">Vinyl</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>Object to check.</p>
+									</div>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">boolean</span></h4>
+							<p>Result.</p>
 						</li>
 					</ul>
 				</section>
@@ -161,13 +200,13 @@
 					<a name="matchimage" class="tsd-anchor"></a>
 					<h3>match<wbr>Image</h3>
 					<ul class="tsd-signatures tsd-kind-function tsd-parent-kind-external-module">
-						<li class="tsd-signature tsd-kind-icon">match<wbr>Image<span class="tsd-signature-symbol">(</span>source<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Vinyl</span>, matcherOrMatchers<span class="tsd-signature-symbol">?: </span><a href="_helpers_.html#matcher" class="tsd-signature-type">Matcher</a><span class="tsd-signature-symbol"> | </span><a href="_helpers_.html#matcher" class="tsd-signature-type">Matcher</a><span class="tsd-signature-symbol">[]</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">boolean</span><span class="tsd-signature-symbol">&gt;</span></li>
+						<li class="tsd-signature tsd-kind-icon">match<wbr>Image<span class="tsd-signature-symbol">(</span>source<span class="tsd-signature-symbol">: </span><a href="../interfaces/_isrcsetvinyl_.isrsetvinyl.html" class="tsd-signature-type">ISrsetVinyl</a>, matcherOrMatchers<span class="tsd-signature-symbol">?: </span><a href="_helpers_.html#matcher" class="tsd-signature-type">Matcher</a><span class="tsd-signature-symbol"> | </span><a href="_helpers_.html#matcher" class="tsd-signature-type">Matcher</a><span class="tsd-signature-symbol">[]</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">boolean</span><span class="tsd-signature-symbol">&gt;</span></li>
 					</ul>
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/TrigenSoftware/flexis-srcset/blob/15126b8/src/helpers.ts#L42">helpers.ts:42</a></li>
+									<li>Defined in <a href="https://github.com/TrigenSoftware/flexis-srcset/blob/58a824e/src/helpers.ts#L61">helpers.ts:61</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -178,7 +217,7 @@
 							<h4 class="tsd-parameters-title">Parameters</h4>
 							<ul class="tsd-parameters">
 								<li>
-									<h5>source: <span class="tsd-signature-type">Vinyl</span></h5>
+									<h5>source: <a href="../interfaces/_isrcsetvinyl_.isrsetvinyl.html" class="tsd-signature-type">ISrsetVinyl</a></h5>
 									<div class="tsd-comment tsd-typography">
 										<p>Image file.</p>
 									</div>
@@ -202,6 +241,9 @@
 				<ul>
 					<li class="globals  ">
 						<a href="../globals.html"><em>Globals</em></a>
+					</li>
+					<li class=" tsd-kind-external-module">
+						<a href="_isrcsetvinyl_.html">"ISrcset<wbr>Vinyl"</a>
 					</li>
 					<li class=" tsd-kind-external-module">
 						<a href="_defaults_.html">"defaults"</a>
@@ -233,6 +275,9 @@
 					</li>
 					<li class=" tsd-kind-function tsd-parent-kind-external-module">
 						<a href="_helpers_.html#attachmetadata" class="tsd-kind-icon">attach<wbr>Metadata</a>
+					</li>
+					<li class=" tsd-kind-function tsd-parent-kind-external-module">
+						<a href="_helpers_.html#isvinylbuffer" class="tsd-kind-icon">is<wbr>Vinyl<wbr>Buffer</a>
 					</li>
 					<li class=" tsd-kind-function tsd-parent-kind-external-module">
 						<a href="_helpers_.html#matchimage" class="tsd-kind-icon">match<wbr>Image</a>
