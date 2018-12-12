@@ -1,3 +1,4 @@
+import Vinyl from 'vinyl';
 import {
 	attachMetadata,
 	matchImage
@@ -48,6 +49,22 @@ describe('Helpers', () => {
 
 			expect(icon.metadata.width).toBe(iconSize.width);
 			expect(icon.metadata.height).toBe(iconSize.height);
+		});
+
+		it('should set extname from metadata', async () => {
+
+			const anonImage = new Vinyl({
+				contents: image.contents
+			});
+
+			expect(anonImage.path).toBeUndefined();
+
+			await attachMetadata(anonImage);
+
+			expect(anonImage.path).toBe('file.jpg');
+			expect(anonImage.extname).toBe('.jpg');
+			expect(anonImage.metadata.width).toBe(imageSize.width);
+			expect(anonImage.metadata.height).toBe(imageSize.height);
 		});
 	});
 

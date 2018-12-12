@@ -41,6 +41,14 @@ export async function attachMetadata(source: Vinyl, force = false): Promise<ISrs
 
 	source.metadata = await Sharp(source.contents as Buffer).metadata();
 
+	if (!source.path) {
+		source.path = 'file';
+	}
+
+	if (!source.extname && source.metadata.format) {
+		source.extname = `.${source.metadata.format.replace('jpeg', 'jpg')}`;
+	}
+
 	return source;
 }
 
@@ -56,6 +64,8 @@ export async function matchImage(source: ISrsetVinyl, matcherOrMatchers: Matcher
 		throw new Error('Invalid source.');
 	}
 
+	await attachMetadata(source);
+
 	const sourceType = source.extname.replace(/^\./, '');
 
 	if (!isSupportedType(sourceType)) {
@@ -69,8 +79,6 @@ export async function matchImage(source: ISrsetVinyl, matcherOrMatchers: Matcher
 	const matchers = Array.isArray(matcherOrMatchers)
 		? matcherOrMatchers
 		: [matcherOrMatchers];
-
-	await attachMetadata(source);
 
 	const {
 		metadata,

@@ -1,11 +1,13 @@
 
 export const extensions = {
-	webp: /^webp$/,
-	jpg:  /^jp(e|)g$/,
-	png:  /^png$/,
-	gif:  /^gif$/,
-	svg:  /^svg$/
+	webp: /^webp$/i,
+	jpg:  /^jpe?g$/i,
+	png:  /^png$/i,
+	gif:  /^gif$/i,
+	svg:  /^svg$/i
 };
+
+const patterns = Object.values(extensions);
 
 /**
  * Check image type
@@ -13,5 +15,5 @@ export const extensions = {
  * @return Image type is supported or not.
  */
 export function isSupportedType(type: string): boolean {
-	return extensions.hasOwnProperty(type);
+	return patterns.some(_ => _.test(type));
 }

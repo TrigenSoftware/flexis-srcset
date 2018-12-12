@@ -20,6 +20,7 @@ import {
 export {
 	ISrsetVinyl,
 	isSupportedType,
+	attachMetadata,
 	matchImage
 };
 
@@ -38,7 +39,7 @@ interface IOptimizationConfig {
 }
 
 interface IPostfixFormatter {
-	(width: number, mul: number): string;
+	(width: number, mul?: number, format?: string): string;
 }
 
 type Postfix = string|IPostfixFormatter;
@@ -107,6 +108,8 @@ export default class SrcsetGenerator {
 			throw new Error('Invalid source.');
 		}
 
+		await attachMetadata(source);
+
 		const config: IGenerateConfig = {
 			format:           [],
 			width:            [],
@@ -117,7 +120,6 @@ export default class SrcsetGenerator {
 			scalingUp:        this.scalingUp,
 			...generateConfig
 		};
-
 		const sourceType = source.extname.replace(/^\./, '') as SupportedExtension;
 
 		if (!isSupportedType(sourceType)) {
@@ -146,8 +148,6 @@ export default class SrcsetGenerator {
 
 		const onlyOptimize = extensions.svg.test(sourceType)
 			|| extensions.gif.test(sourceType);
-
-		await attachMetadata(source);
 
 		for (const type of outputTypes) {
 
@@ -220,6 +220,7 @@ export default class SrcsetGenerator {
 		};
 		const target = source.clone({ contents: false });
 		const processor = Sharp(source.contents as Buffer);
+		let willResize = false;
 
 		target.extname = `.${outputType}`;
 
@@ -233,13 +234,14 @@ export default class SrcsetGenerator {
 
 			if (calculatedWidth < originWidth) {
 				processor.resize(calculatedWidth);
+				willResize = true;
 			}
 
 		} else {
 			this.addPostfix(target, originWidth, originWidth, config.postfix);
 		}
 
-		if (width === 1 && source.extname === target.extname) {
+		if (!willResize && source.extname === target.extname) {
 			target.contents = source.contents;
 			return target;
 		}
@@ -294,6 +296,7 @@ export default class SrcsetGenerator {
 		customPostfix: string|IPostfixFormatter = null
 	) {
 
+		const format = target.extname.replace('.', '');
 		const { postfix } = this;
 		let calculatedPostfix = '';
 
@@ -301,13 +304,13 @@ export default class SrcsetGenerator {
 			calculatedPostfix = customPostfix;
 		} else
 		if (typeof customPostfix === 'function') {
-			calculatedPostfix = customPostfix(calculatedWidth, width);
+			calculatedPostfix = customPostfix(calculatedWidth, width, format);
 		} else
 		if (typeof postfix === 'string') {
 			calculatedPostfix = postfix;
 		} else
 		if (typeof postfix === 'function') {
-			calculatedPostfix = postfix(calculatedWidth, width);
+			calculatedPostfix = postfix(calculatedWidth, width, format);
 		}
 
 		if (typeof calculatedPostfix === 'string') {

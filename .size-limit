@@ -1,5 +1,5 @@
 [{
 	path:  "lib/index.js",
-	limit: "3 KB",
+	limit: "20 KB",
 	webpack: false
 }]
