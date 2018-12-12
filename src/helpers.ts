@@ -39,7 +39,11 @@ export async function attachMetadata(source: Vinyl, force = false): Promise<ISrs
 		return source;
 	}
 
-	source.metadata = await Sharp(source.contents as Buffer).metadata();
+	try {
+		source.metadata = await Sharp(source.contents as Buffer).metadata();
+	} catch (err) {
+		return source;
+	}
 
 	if (!source.path) {
 		source.path = 'file';
