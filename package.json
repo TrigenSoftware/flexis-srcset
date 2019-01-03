@@ -63,7 +63,7 @@
     "eslint-config-trigen": "^3.2.0",
     "husky": "^1.0.0-rc.10",
     "jest": "^23.4.2",
-    "rollup": "^0.67.0",
+    "rollup": "^0.68.0",
     "rollup-plugin-babel": "^4.0.0-beta.5",
     "rollup-plugin-commonjs": "^9.1.4",
     "rollup-plugin-eslint": "^5.0.0",
