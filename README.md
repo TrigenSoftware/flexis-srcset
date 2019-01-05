@@ -16,8 +16,8 @@
 [deps]: https://img.shields.io/david/TrigenSoftware/flexis-srcset.svg
 [deps-url]: https://david-dm.org/TrigenSoftware/flexis-srcset
 
-[build]: http://img.shields.io/travis/TrigenSoftware/flexis-srcset.svg
-[build-url]: https://travis-ci.org/TrigenSoftware/flexis-srcset
+[build]: http://img.shields.io/travis/com/TrigenSoftware/flexis-srcset.svg
+[build-url]: https://travis-ci.com/TrigenSoftware/flexis-srcset
 
 [coverage]: https://img.shields.io/coveralls/TrigenSoftware/flexis-srcset.svg
 [coverage-url]: https://coveralls.io/r/TrigenSoftware/flexis-srcset
