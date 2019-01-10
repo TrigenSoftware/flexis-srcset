@@ -67,7 +67,6 @@
     "rollup": "^1.0.1",
     "rollup-plugin-babel": "^4.0.0-beta.5",
     "rollup-plugin-commonjs": "^9.1.4",
-    "rollup-plugin-eslint": "^5.0.0",
     "rollup-plugin-tslint": "^0.1.34",
     "rollup-plugin-typescript2": "^0.18.0",
     "size-limit": "^0.21.0",
