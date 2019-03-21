@@ -896,10 +896,10 @@
   resolved "https://registry.yarnpkg.com/@types/q/-/q-1.5.1.tgz#48fd98c1561fe718b61733daed46ff115b496e18"
   integrity sha512-eqz8c/0kwNi/OEHQfvIuJVLTst3in0e7uTKeuY+WL/zfKn0xVujOTp42bS/vUUokhK5P2BppLd9JXMOMHcgbjA==
 
-"@types/sharp@^0.21.0":
-  version "0.21.0"
-  resolved "https://registry.yarnpkg.com/@types/sharp/-/sharp-0.21.0.tgz#e364b345c70e5924a5c626aaccaa236e0cfc2455"
-  integrity sha512-BmsCha5/lx2Afz2zwNo9F2txlkZ9HQf49N94lzSFmj5Oc7NfRMZguwVIhytb65qdY2zNF+azovzDNso6JUZpOw==
+"@types/sharp@^0.22.0":
+  version "0.22.0"
+  resolved "https://registry.yarnpkg.com/@types/sharp/-/sharp-0.22.0.tgz#d28f8a0cca4deaedaacb4e7101a30dfc54aa6087"
+  integrity sha512-aArqMOewA97tClqOaZPQhSqH8OZkhtwbmijAuxWOznrVma43UPQmNqzfBFmc+khIXwXefc7Sr77qv00MOcbKXA==
   dependencies:
     "@types/node" "*"
 
@@ -3640,7 +3640,7 @@ eslint-visitor-keys@^1.0.0:
   resolved "https://registry.yarnpkg.com/eslint-visitor-keys/-/eslint-visitor-keys-1.0.0.tgz#3f3180fb2e291017716acb4c9d6d5b5c34a6a81d"
   integrity sha512-qzm/XxIbxm/FHyH341ZrbnMUpe+5Bocte9xkmFMzPMjRaZMcXww+MpBptFvtU+79L362nqiLhekCxCxDPaUMBQ==
 
-eslint@^5.1.0, eslint@^5.2.0:
+eslint@^5.2.0:
   version "5.11.1"
   resolved "https://registry.yarnpkg.com/eslint/-/eslint-5.11.1.tgz#8deda83db9f354bf9d3f53f9677af7e0e13eadda"
   integrity sha512-gOKhM8JwlFOc2acbOrkYR05NW8M6DCMSvfcJiBB5NDxRE1gv8kbvxKaC9u69e6ZGEMWXcswA/7eKR229cEIpvg==
@@ -8848,14 +8848,6 @@ rollup-plugin-commonjs@^9.1.4:
     magic-string "^0.25.1"
     resolve "^1.8.1"
     rollup-pluginutils "^2.3.3"
-
-rollup-plugin-eslint@^5.0.0:
-  version "5.0.0"
-  resolved "https://registry.yarnpkg.com/rollup-plugin-eslint/-/rollup-plugin-eslint-5.0.0.tgz#18f6d51f2bfdf550c0a17df8a486058fa20e3170"
-  integrity sha512-9WZKT2Ie3F4A/nWfkBQiq2J4g43jyurmYPAUAxdIRHDgIOPU7KgSER4icFne6ALY8vROPNKEDNAt8Z1eYV9oZw==
-  dependencies:
-    eslint "^5.1.0"
-    rollup-pluginutils "^2.3.0"
 
 rollup-plugin-tslint@^0.1.34:
   version "0.1.38"
