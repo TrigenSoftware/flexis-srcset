@@ -41,7 +41,7 @@
     "@types/vinyl": "^2.0.2",
     "core-js": "3",
     "css-mediaquery": "^0.1.2",
-    "imagemin": "^6.0.0",
+    "imagemin": "^7.0.0",
     "imagemin-giflossy": "^5.1.10",
     "imagemin-mozjpeg": "^8.0.0",
     "imagemin-svgo": "^7.0.0",
