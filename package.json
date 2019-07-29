@@ -48,7 +48,7 @@
     "imagemin-webp": "^5.0.0",
     "imagemin-zopfli": "^6.0.0",
     "minimatch": "^3.0.4",
-    "sharp": "^0.22.1",
+    "sharp": "^0.23.0",
     "vinyl": "^2.1.0"
   },
   "devDependencies": {
