@@ -81,17 +81,17 @@ Supported options:
 
 ```ts
 interface ICommonConfig {
-	processing?: Partial<IProcessingConfig>;
-	optimization?: Partial<IOptimizationConfig>;
-	skipOptimization?: boolean;
-	scalingUp?: boolean;
-	postfix?: Postfix;
+    processing?: Partial<IProcessingConfig>;
+    optimization?: Partial<IOptimizationConfig>;
+    skipOptimization?: boolean;
+    scalingUp?: boolean;
+    postfix?: Postfix;
 }
 
 interface IRule extends ICommonConfig {
-	match?: Matcher;
-	format?: SupportedExtension|SupportedExtension[];
-	width?: number|number[];
+    match?: Matcher;
+    format?: SupportedExtension|SupportedExtension[];
+    width?: number|number[];
 }
 
 /**
@@ -137,20 +137,20 @@ Plugin options:
 
 ```ts
 interface ICommonConfig {
-	processing?: Partial<IProcessingConfig>;
-	optimization?: Partial<IOptimizationConfig>;
-	skipOptimization?: boolean;
-	scalingUp?: boolean;
-	postfix?: Postfix;
+    processing?: Partial<IProcessingConfig>;
+    optimization?: Partial<IOptimizationConfig>;
+    skipOptimization?: boolean;
+    scalingUp?: boolean;
+    postfix?: Postfix;
 }
 
 /**
  * First argument: IPluginRule[]
  */
 interface IPluginRule extends ICommonConfig {
-	match?: Matcher;
-	format?: SupportedExtension|SupportedExtension[];
-	width?: number|number[];
+    match?: Matcher;
+    format?: SupportedExtension|SupportedExtension[];
+    width?: number|number[];
 }
 
 /**
