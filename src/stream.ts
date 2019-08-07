@@ -66,7 +66,7 @@ export default function plugin(rules: IRule[] = [{}], {
 
 		log(
 			verbose,
-			`${chalk.blue('\n> Input:')} ${chalk.yellow(vinylFile.path)}\n`
+			`${chalk.blue('> Input:')} ${chalk.yellow(vinylFile.path)}`
 		);
 
 		try {
@@ -80,7 +80,7 @@ export default function plugin(rules: IRule[] = [{}], {
 
 						log(
 							verbose,
-							`${chalk.blue('\n> Match:')} ${chalk.yellow(vinylFile.path)}\n\n`,
+							`${chalk.blue('> Match:')} ${chalk.yellow(vinylFile.path)}\n\n`,
 							rule,
 							'\n'
 						);
@@ -91,7 +91,7 @@ export default function plugin(rules: IRule[] = [{}], {
 							this.push(image);
 							log(
 								verbose,
-								`${chalk.blue('\n> Output:')} ${chalk.yellow(`${vinylFile.path} -> ${image.basename}`)}\n`
+								`${chalk.blue('> Output:')} ${chalk.yellow(`${vinylFile.path} -> ${image.basename}`)}`
 							);
 						}
 
