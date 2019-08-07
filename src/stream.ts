@@ -55,7 +55,7 @@ export default function plugin(rules: IRule[] = [{}], {
 	};
 	const srcset = new SrcsetGenerator(options);
 
-	async function each(file, enc, next) {
+	async function each(file, _, next) {
 
 		if (file.isNull() || file.isStream()) {
 			next(null, file);

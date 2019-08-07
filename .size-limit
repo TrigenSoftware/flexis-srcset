@@ -4,5 +4,11 @@
 		"limit": "5 KB",
 		"webpack": false,
 		"running": false
+	},
+	{
+		"path": "lib/stream.js",
+		"limit": "2 KB",
+		"webpack": false,
+		"running": false
 	}
 ]
