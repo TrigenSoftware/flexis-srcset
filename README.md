@@ -131,6 +131,8 @@ gulp.task('images', () =>
 );
 ```
 
+> NOTICE: this plugin is available as [`gulp-srcset`](https://github.com/TrigenSoftware/gulp-srcset) package.
+
 Plugin options:
 
 ```ts
@@ -164,8 +166,6 @@ interface IPluginConfig extends ICommonConfig {
 - [`Postfix`](https://trigensoftware.github.io/flexis-srcset/interfaces/_htmlheaders_.iheadersconfig.html)
 - [`Matcher`](https://trigensoftware.github.io/flexis-srcset/interfaces/_icons_.iiconsconfig.html)
 - [`SupportedExtension`](https://trigensoftware.github.io/flexis-srcset/interfaces/_manifest_.imanifestconfig.html)
-
-> NOTICE: this plugin available as [`gulp-srcset`](https://github.com/TrigenSoftware/gulp-srcset) package.
 
 ### JS API
 
