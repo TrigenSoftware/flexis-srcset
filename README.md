@@ -113,7 +113,7 @@ interface IConfig extends ICommonConfig {
 
 ### Gulp
 
-Also you can use `@flexis/srcset` with [Gulp](https://github.com/gulpjs/gulp):
+You can use `@flexis/srcset` with [Gulp](https://github.com/gulpjs/gulp):
 
 ```js
 import srcset from '@flexis/srcset/stream';
@@ -131,7 +131,7 @@ gulp.task('images', () =>
 );
 ```
 
-> NOTICE: this plugin is available as [`gulp-srcset`](https://github.com/TrigenSoftware/gulp-srcset) package.
+> NOTICE: this plugin is also available as [`gulp-srcset`](https://github.com/TrigenSoftware/gulp-srcset) package.
 
 Plugin options:
 
