@@ -8,63 +8,28 @@ import {
 	postfix as defaultPostfix
 } from './defaults';
 import {
+	SupportedExtension,
 	extensions,
 	isSupportedType
 } from './extensions';
 import {
-	ISize,
-	IMatcherFunction,
-	Matcher,
 	isVinylBuffer,
-	attachMetadata,
-	matchImage
+	attachMetadata
 } from './helpers';
+import {
+	IProcessingConfig,
+	IOptimizationConfig,
+	Postfix,
+	IConfig,
+	IGenerateConfig
+} from './types';
 
+export * from './extensions';
+export * from './helpers';
+export * from './types';
 export {
-	ISrsetVinyl,
-	ISize,
-	IMatcherFunction,
-	Matcher,
-	isSupportedType,
-	extensions,
-	attachMetadata,
-	matchImage
+	ISrsetVinyl
 };
-
-export interface IProcessingConfig {
-	webp: Record<string, any>;
-	jpg: Record<string, any>;
-	png: Record<string, any>;
-}
-
-export interface IOptimizationConfig {
-	webp: any;
-	jpg: any;
-	png: any;
-	gif: any;
-	svg: any;
-}
-
-export interface IPostfixFormatter {
-	(width: number, mul?: number, format?: string): string;
-}
-
-export type Postfix = string|IPostfixFormatter;
-
-export interface IConfig {
-	processing?: Partial<IProcessingConfig>;
-	optimization?: Partial<IOptimizationConfig>;
-	skipOptimization?: boolean;
-	scalingUp?: boolean;
-	postfix?: Postfix;
-}
-
-export type SupportedExtension = keyof typeof extensions;
-
-export interface IGenerateConfig extends IConfig {
-	format?: SupportedExtension|SupportedExtension[];
-	width?: number|number[];
-}
 
 export default class SrcsetGenerator {
 
@@ -300,7 +265,7 @@ export default class SrcsetGenerator {
 		target: ISrsetVinyl,
 		calculatedWidth: number,
 		width: number,
-		customPostfix: string|IPostfixFormatter = null
+		customPostfix: Postfix = null
 	) {
 
 		const format = target.extname.replace('.', '');
