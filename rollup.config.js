@@ -25,7 +25,7 @@ const plugins = [
 	})
 ];
 
-export default {
+export default [{
 	input:    'src/index.ts',
 	plugins,
 	external: external(pkg, true),
@@ -35,4 +35,14 @@ export default {
 		exports:   'named',
 		sourcemap: 'inline'
 	}
-};
+}, {
+	input:    'src/stream.ts',
+	plugins,
+	external: () => true,
+	output:   {
+		file:      'lib/stream.js',
+		format:    'cjs',
+		exports:   'named',
+		sourcemap: 'inline'
+	}
+}];
