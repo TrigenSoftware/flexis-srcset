@@ -11,6 +11,9 @@
   "bugs": {
     "url": "https://github.com/TrigenSoftware/flexis-srcset/issues"
   },
+  "bin": {
+    "srcset": "lib/cli.js"
+  },
   "main": "lib/index.js",
   "types": "lib/index.d.ts",
   "engines": {
@@ -34,34 +37,45 @@
     "responsive"
   ],
   "dependencies": {
-    "@babel/runtime": "^7.2.0",
+    "@babel/runtime": "^7.5.5",
     "@types/minimatch": "^3.0.3",
-    "@types/node": "^12.0.7",
+    "@types/node": "^12.7.0",
     "@types/sharp": "^0.22.2",
-    "@types/vinyl": "^2.0.2",
+    "@types/through2-concurrent": "^2.0.0",
+    "@types/vinyl": "^2.0.3",
+    "@types/vinyl-fs": "^2.4.11",
+    "argue-cli": "^1.2.1",
+    "chalk": "^2.4.2",
     "core-js": "3",
     "css-mediaquery": "^0.1.2",
-    "imagemin": "^6.0.0",
+    "easy-table": "^1.1.1",
+    "imagemin": "^7.0.0",
     "imagemin-giflossy": "^5.1.10",
     "imagemin-mozjpeg": "^8.0.0",
     "imagemin-svgo": "^7.0.0",
     "imagemin-webp": "^5.0.0",
     "imagemin-zopfli": "^6.0.0",
     "minimatch": "^3.0.4",
-    "sharp": "^0.22.1",
-    "vinyl": "^2.1.0"
+    "omit-empty": "^1.0.0",
+    "rcfile": "^1.0.3",
+    "sharp": "^0.23.0",
+    "through2-concurrent": "^2.0.0",
+    "vinyl": "^2.2.0",
+    "vinyl-fs": "^3.0.3"
   },
   "devDependencies": {
-    "@trigen/scripts": "2",
-    "@trigen/scripts-plugin-babel": "2",
-    "@trigen/scripts-plugin-eslint": "2",
-    "@trigen/scripts-plugin-jest": "2",
-    "@trigen/scripts-plugin-rollup": "2",
-    "@trigen/scripts-plugin-size-limit": "2",
-    "@trigen/scripts-plugin-typescript": "2",
-    "@trigen/scripts-preset-lib": "2",
+    "@trigen/scripts": "2.6.3",
+    "@trigen/scripts-plugin-babel": "2.6.3",
+    "@trigen/scripts-plugin-eslint": "2.6.3",
+    "@trigen/scripts-plugin-jest": "2.6.4",
+    "@trigen/scripts-plugin-rollup": "2.4.0",
+    "@trigen/scripts-plugin-size-limit": "2.6.3",
+    "@trigen/scripts-plugin-typescript": "2.6.3",
+    "@trigen/scripts-preset-lib": "2.6.3",
+    "rollup-plugin-add-shebang": "^0.3.1",
+    "rollup-plugin-commonjs": "9.3.4",
     "rollup-plugin-tslint": "^0.2.2",
-    "rollup-plugin-typescript2": "^0.21.1"
+    "rollup-plugin-typescript2": "^0.22.1"
   },
   "files": [
     "lib"

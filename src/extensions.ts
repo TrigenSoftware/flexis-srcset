@@ -1,4 +1,6 @@
 
+export type SupportedExtension = 'webp'|'jpg'|'png'|'gif'|'svg';
+
 export const extensions = {
 	webp: /^webp$/i,
 	jpg:  /^jpe?g$/i,
