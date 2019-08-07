@@ -5,7 +5,8 @@
 [![Dependencies status][deps]][deps-url]
 [![Build status][build]][build-url]
 [![Coverage status][coverage]][coverage-url]
-[![Greenkeeper badge][greenkeeper]][greenkeeper-url]
+[![Dependabot badge][dependabot]][dependabot-url]
+[![Documentation badge][documentation]][documentation-url]
 
 [npm]: https://img.shields.io/npm/v/@flexis/srcset.svg
 [npm-url]: https://npmjs.com/package/@flexis/srcset
@@ -16,14 +17,17 @@
 [deps]: https://david-dm.org/TrigenSoftware/flexis-srcset.svg
 [deps-url]: https://david-dm.org/TrigenSoftware/flexis-srcset
 
-[build]: http://img.shields.io/travis/com/TrigenSoftware/flexis-srcset.svg
+[build]: http://img.shields.io/travis/com/TrigenSoftware/flexis-srcset/master.svg
 [build-url]: https://travis-ci.com/TrigenSoftware/flexis-srcset
 
 [coverage]: https://img.shields.io/coveralls/TrigenSoftware/flexis-srcset.svg
 [coverage-url]: https://coveralls.io/r/TrigenSoftware/flexis-srcset
 
-[greenkeeper]: https://badges.greenkeeper.io/TrigenSoftware/flexis-srcset.svg
-[greenkeeper-url]: https://greenkeeper.io/
+[dependabot]: https://api.dependabot.com/badges/status?host=github&repo=TrigenSoftware/flexis-srcset
+[dependabot-url]: https://dependabot.com/
+
+[documentation]: https://img.shields.io/badge/API-Documentation-2b7489.svg
+[documentation-url]: https://trigensoftware.github.io/flexis-srcset
 
 Highly customizable lib to generating responsive images.
 

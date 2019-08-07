@@ -3,7 +3,7 @@ import path from 'path';
 import Vinyl from 'vinyl';
 
 export default new Vinyl({
-	contents: fs.readFileSync(path.join(__dirname, './icon.svg')),
+	contents: fs.readFileSync(path.join(__dirname, './images/icon.svg')),
 	path:     '/some/icon.svg'
 });
 

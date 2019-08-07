@@ -12,6 +12,9 @@ import {
 	isSupportedType
 } from './extensions';
 import {
+	ISize,
+	IMatcherFunction,
+	Matcher,
 	isVinylBuffer,
 	attachMetadata,
 	matchImage
@@ -19,18 +22,22 @@ import {
 
 export {
 	ISrsetVinyl,
+	ISize,
+	IMatcherFunction,
+	Matcher,
 	isSupportedType,
+	extensions,
 	attachMetadata,
 	matchImage
 };
 
-interface IProcessingConfig {
+export interface IProcessingConfig {
 	webp: Record<string, any>;
 	jpg: Record<string, any>;
 	png: Record<string, any>;
 }
 
-interface IOptimizationConfig {
+export interface IOptimizationConfig {
 	webp: any;
 	jpg: any;
 	png: any;
@@ -38,13 +45,13 @@ interface IOptimizationConfig {
 	svg: any;
 }
 
-interface IPostfixFormatter {
+export interface IPostfixFormatter {
 	(width: number, mul?: number, format?: string): string;
 }
 
-type Postfix = string|IPostfixFormatter;
+export type Postfix = string|IPostfixFormatter;
 
-interface IConfig {
+export interface IConfig {
 	processing?: Partial<IProcessingConfig>;
 	optimization?: Partial<IOptimizationConfig>;
 	skipOptimization?: boolean;
@@ -52,9 +59,9 @@ interface IConfig {
 	postfix?: Postfix;
 }
 
-type SupportedExtension = keyof typeof extensions;
+export type SupportedExtension = keyof typeof extensions;
 
-interface IGenerateConfig extends IConfig {
+export interface IGenerateConfig extends IConfig {
 	format?: SupportedExtension|SupportedExtension[];
 	width?: number|number[];
 }

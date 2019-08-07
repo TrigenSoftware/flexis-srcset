@@ -3,18 +3,20 @@ import minimatch from 'minimatch';
 import mediaQuery from 'css-mediaquery';
 import Sharp from 'sharp';
 import ISrsetVinyl from './ISrcsetVinyl';
-import { isSupportedType } from './extensions';
+import {
+	isSupportedType
+} from './extensions';
 
-interface ISize {
+export interface ISize {
 	width: number;
 	height: number;
 }
 
-interface IMatcherFunction {
+export interface IMatcherFunction {
 	(path: string, size: ISize, source: Vinyl): boolean;
 }
 
-type Matcher = string|IMatcherFunction;
+export type Matcher = string|IMatcherFunction;
 
 const isMediaQuery = /^\s*(\(\s*((max|min)-|)(width|height)\s*:\s*\d+\w*\s*\)\s*(,|and)\s*)*\(\s*((max|min)-|)(width|height)\s*:\s*\d+\w*\s*\)\s*$/g; // tslint:disable-line
 
@@ -83,7 +85,6 @@ export async function matchImage(source: ISrsetVinyl, matcherOrMatchers: Matcher
 	const matchers = Array.isArray(matcherOrMatchers)
 		? matcherOrMatchers
 		: [matcherOrMatchers];
-
 	const {
 		metadata,
 		path

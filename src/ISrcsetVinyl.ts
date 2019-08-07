@@ -1,5 +1,7 @@
 import Vinyl from 'vinyl';
-import { Metadata } from 'sharp';
+import {
+	Metadata
+} from 'sharp';
 
 export default interface ISrsetVinyl extends Vinyl {
 	metadata?: Metadata;
