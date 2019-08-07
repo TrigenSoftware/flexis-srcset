@@ -11,6 +11,9 @@
   "bugs": {
     "url": "https://github.com/TrigenSoftware/flexis-srcset/issues"
   },
+  "bin": {
+    "srcset": "lib/cli.js"
+  },
   "main": "lib/index.js",
   "types": "lib/index.d.ts",
   "engines": {
