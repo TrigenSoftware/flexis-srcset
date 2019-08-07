@@ -3,7 +3,7 @@
 <head>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<title>IPostfixFormatter | @flexis/srcset</title>
+	<title>IOptimizationConfig | @flexis/srcset</title>
 	<meta name="description" content="">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" href="../assets/css/main.css">
@@ -54,54 +54,115 @@
 					<a href="../globals.html">Globals</a>
 				</li>
 				<li>
-					<a href="../modules/_index_.html">&quot;index&quot;</a>
+					<a href="../modules/_types_.html">&quot;types&quot;</a>
 				</li>
 				<li>
-					<a href="_index_.ipostfixformatter.html">IPostfixFormatter</a>
+					<a href="_types_.ioptimizationconfig.html">IOptimizationConfig</a>
 				</li>
 			</ul>
-			<h1>Interface IPostfixFormatter</h1>
+			<h1>Interface IOptimizationConfig</h1>
 		</div>
 	</div>
 </header>
 <div class="container container-main">
 	<div class="row">
 		<div class="col-8 col-content">
+			<section class="tsd-panel tsd-comment">
+				<div class="tsd-comment tsd-typography">
+					<div class="lead">
+						<p>Object with <a href="https://www.npmjs.com/package/imagemin">imagemin</a> plugins for each format.</p>
+					</div>
+					<p>Example:</p>
+					<pre><code class="language-js">{
+    <span class="hljs-attr">webp</span>: webpPlugin({
+        <span class="hljs-attr">quality</span>: <span class="hljs-number">100</span>
+    }),
+    <span class="hljs-attr">jpg</span>:  mozJpegPlugin({
+        <span class="hljs-attr">quality</span>: <span class="hljs-number">100</span>
+    }),
+    <span class="hljs-attr">png</span>:  zopfliPlugin(),
+    <span class="hljs-attr">gif</span>:  gifLossyPlugin(),
+    <span class="hljs-attr">svg</span>:  svgoPlugin()
+}</code></pre>
+				</div>
+			</section>
 			<section class="tsd-panel tsd-hierarchy">
 				<h3>Hierarchy</h3>
 				<ul class="tsd-hierarchy">
 					<li>
-						<span class="target">IPostfixFormatter</span>
+						<span class="target">IOptimizationConfig</span>
 					</li>
 				</ul>
 			</section>
-			<section class="tsd-panel">
-				<h3 class="tsd-before-signature">Callable</h3>
-				<ul class="tsd-signatures tsd-kind-interface tsd-parent-kind-external-module tsd-is-not-exported">
-					<li class="tsd-signature tsd-kind-icon">__call<span class="tsd-signature-symbol">(</span>width<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">number</span>, mul<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">number</span>, format<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span></li>
-				</ul>
-				<ul class="tsd-descriptions">
-					<li class="tsd-description">
-						<aside class="tsd-sources">
-							<ul>
-								<li>Defined in <a href="https://github.com/TrigenSoftware/flexis-srcset/blob/58a824e/src/index.ts#L41">index.ts:41</a></li>
+			<section class="tsd-panel-group tsd-index-group">
+				<h2>Index</h2>
+				<section class="tsd-panel tsd-index-panel">
+					<div class="tsd-index-content">
+						<section class="tsd-index-section ">
+							<h3>Properties</h3>
+							<ul class="tsd-index-list">
+								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="_types_.ioptimizationconfig.html#gif" class="tsd-kind-icon">gif</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="_types_.ioptimizationconfig.html#jpg" class="tsd-kind-icon">jpg</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="_types_.ioptimizationconfig.html#png" class="tsd-kind-icon">png</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="_types_.ioptimizationconfig.html#svg" class="tsd-kind-icon">svg</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="_types_.ioptimizationconfig.html#webp" class="tsd-kind-icon">webp</a></li>
 							</ul>
-						</aside>
-						<h4 class="tsd-parameters-title">Parameters</h4>
-						<ul class="tsd-parameters">
-							<li>
-								<h5>width: <span class="tsd-signature-type">number</span></h5>
-							</li>
-							<li>
-								<h5><span class="tsd-flag ts-flagOptional">Optional</span> mul: <span class="tsd-signature-type">number</span></h5>
-							</li>
-							<li>
-								<h5><span class="tsd-flag ts-flagOptional">Optional</span> format: <span class="tsd-signature-type">string</span></h5>
-							</li>
+						</section>
+					</div>
+				</section>
+			</section>
+			<section class="tsd-panel-group tsd-member-group ">
+				<h2>Properties</h2>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
+					<a name="gif" class="tsd-anchor"></a>
+					<h3>gif</h3>
+					<div class="tsd-signature tsd-kind-icon">gif<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">any</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in <a href="https://github.com/TrigenSoftware/flexis-srcset/blob/bc413c0/src/types.ts#L49">types.ts:49</a></li>
 						</ul>
-						<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">string</span></h4>
-					</li>
-				</ul>
+					</aside>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
+					<a name="jpg" class="tsd-anchor"></a>
+					<h3>jpg</h3>
+					<div class="tsd-signature tsd-kind-icon">jpg<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">any</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in <a href="https://github.com/TrigenSoftware/flexis-srcset/blob/bc413c0/src/types.ts#L47">types.ts:47</a></li>
+						</ul>
+					</aside>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
+					<a name="png" class="tsd-anchor"></a>
+					<h3>png</h3>
+					<div class="tsd-signature tsd-kind-icon">png<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">any</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in <a href="https://github.com/TrigenSoftware/flexis-srcset/blob/bc413c0/src/types.ts#L48">types.ts:48</a></li>
+						</ul>
+					</aside>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
+					<a name="svg" class="tsd-anchor"></a>
+					<h3>svg</h3>
+					<div class="tsd-signature tsd-kind-icon">svg<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">any</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in <a href="https://github.com/TrigenSoftware/flexis-srcset/blob/bc413c0/src/types.ts#L50">types.ts:50</a></li>
+						</ul>
+					</aside>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
+					<a name="webp" class="tsd-anchor"></a>
+					<h3>webp</h3>
+					<div class="tsd-signature tsd-kind-icon">webp<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">any</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in <a href="https://github.com/TrigenSoftware/flexis-srcset/blob/bc413c0/src/types.ts#L46">types.ts:46</a></li>
+						</ul>
+					</aside>
+				</section>
 			</section>
 		</div>
 		<div class="col-4 col-menu menu-sticky-wrap menu-highlight">
@@ -114,6 +175,9 @@
 						<a href="../modules/_isrcsetvinyl_.html">"ISrcset<wbr>Vinyl"</a>
 					</li>
 					<li class=" tsd-kind-external-module">
+						<a href="../modules/_cli_.html">"cli"</a>
+					</li>
+					<li class=" tsd-kind-external-module">
 						<a href="../modules/_defaults_.html">"defaults"</a>
 					</li>
 					<li class=" tsd-kind-external-module">
@@ -122,40 +186,57 @@
 					<li class=" tsd-kind-external-module">
 						<a href="../modules/_helpers_.html">"helpers"</a>
 					</li>
-					<li class="current tsd-kind-external-module">
+					<li class=" tsd-kind-external-module">
 						<a href="../modules/_index_.html">"index"</a>
+					</li>
+					<li class=" tsd-kind-external-module">
+						<a href="../modules/_stream_.html">"stream"</a>
+					</li>
+					<li class="current tsd-kind-external-module">
+						<a href="../modules/_types_.html">"types"</a>
 					</li>
 				</ul>
 			</nav>
 			<nav class="tsd-navigation secondary menu-sticky">
 				<ul class="before-current">
-					<li class=" tsd-kind-class tsd-parent-kind-external-module">
-						<a href="../classes/_index_.srcsetgenerator.html" class="tsd-kind-icon">Srcset<wbr>Generator</a>
+					<li class=" tsd-kind-interface tsd-parent-kind-external-module">
+						<a href="_types_.iconfig.html" class="tsd-kind-icon">IConfig</a>
 					</li>
-					<li class=" tsd-kind-interface tsd-parent-kind-external-module tsd-is-not-exported">
-						<a href="_index_.iconfig.html" class="tsd-kind-icon">IConfig</a>
-					</li>
-					<li class=" tsd-kind-interface tsd-parent-kind-external-module tsd-is-not-exported">
-						<a href="_index_.igenerateconfig.html" class="tsd-kind-icon">IGenerate<wbr>Config</a>
-					</li>
-					<li class=" tsd-kind-interface tsd-parent-kind-external-module tsd-is-not-exported">
-						<a href="_index_.ioptimizationconfig.html" class="tsd-kind-icon">IOptimization<wbr>Config</a>
+					<li class=" tsd-kind-interface tsd-parent-kind-external-module">
+						<a href="_types_.igenerateconfig.html" class="tsd-kind-icon">IGenerate<wbr>Config</a>
 					</li>
 				</ul>
 				<ul class="current">
-					<li class="current tsd-kind-interface tsd-parent-kind-external-module tsd-is-not-exported">
-						<a href="_index_.ipostfixformatter.html" class="tsd-kind-icon">IPostfix<wbr>Formatter</a>
+					<li class="current tsd-kind-interface tsd-parent-kind-external-module">
+						<a href="_types_.ioptimizationconfig.html" class="tsd-kind-icon">IOptimization<wbr>Config</a>
+						<ul>
+							<li class=" tsd-kind-property tsd-parent-kind-interface">
+								<a href="_types_.ioptimizationconfig.html#gif" class="tsd-kind-icon">gif</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-interface">
+								<a href="_types_.ioptimizationconfig.html#jpg" class="tsd-kind-icon">jpg</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-interface">
+								<a href="_types_.ioptimizationconfig.html#png" class="tsd-kind-icon">png</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-interface">
+								<a href="_types_.ioptimizationconfig.html#svg" class="tsd-kind-icon">svg</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-interface">
+								<a href="_types_.ioptimizationconfig.html#webp" class="tsd-kind-icon">webp</a>
+							</li>
+						</ul>
 					</li>
 				</ul>
 				<ul class="after-current">
-					<li class=" tsd-kind-interface tsd-parent-kind-external-module tsd-is-not-exported">
-						<a href="_index_.iprocessingconfig.html" class="tsd-kind-icon">IProcessing<wbr>Config</a>
+					<li class=" tsd-kind-interface tsd-parent-kind-external-module">
+						<a href="_types_.ipostfixformatter.html" class="tsd-kind-icon">IPostfix<wbr>Formatter</a>
 					</li>
-					<li class=" tsd-kind-type-alias tsd-parent-kind-external-module tsd-is-not-exported">
-						<a href="../modules/_index_.html#postfix" class="tsd-kind-icon">Postfix</a>
+					<li class=" tsd-kind-interface tsd-parent-kind-external-module">
+						<a href="_types_.iprocessingconfig.html" class="tsd-kind-icon">IProcessing<wbr>Config</a>
 					</li>
-					<li class=" tsd-kind-type-alias tsd-parent-kind-external-module tsd-is-not-exported">
-						<a href="../modules/_index_.html#supportedextension" class="tsd-kind-icon">Supported<wbr>Extension</a>
+					<li class=" tsd-kind-type-alias tsd-parent-kind-external-module">
+						<a href="../modules/_types_.html#postfix" class="tsd-kind-icon">Postfix</a>
 					</li>
 				</ul>
 			</nav>

@@ -105,11 +105,11 @@ interface IConfig extends ICommonConfig {
 }
 ```
 
-- [`IProcessingConfig`](https://trigensoftware.github.io/flexis-srcset/interfaces/_htmlheaders_.iheadersconfig.html)
-- [`IOptimizationConfig`](https://trigensoftware.github.io/flexis-srcset/interfaces/_htmlheaders_.iheadersconfig.html)
-- [`Postfix`](https://trigensoftware.github.io/flexis-srcset/interfaces/_htmlheaders_.iheadersconfig.html)
-- [`Matcher`](https://trigensoftware.github.io/flexis-srcset/interfaces/_icons_.iiconsconfig.html)
-- [`SupportedExtension`](https://trigensoftware.github.io/flexis-srcset/interfaces/_manifest_.imanifestconfig.html)
+- [`IProcessingConfig`](https://trigensoftware.github.io/flexis-srcset/interfaces/_types_.iprocessingconfig.html)
+- [`IOptimizationConfig`](https://trigensoftware.github.io/flexis-srcset/interfaces/_types_.ioptimizationconfig.html)
+- [`Postfix`](https://trigensoftware.github.io/flexis-srcset/modules/_types_.html#postfix)
+- [`Matcher`](https://trigensoftware.github.io/flexis-srcset/modules/_helpers_.html#matcher)
+- [`SupportedExtension`](https://trigensoftware.github.io/flexis-srcset/modules/_extensions_.html#supportedextension)
 
 ### Gulp
 
@@ -161,11 +161,11 @@ interface IPluginConfig extends ICommonConfig {
 }
 ```
 
-- [`IProcessingConfig`](https://trigensoftware.github.io/flexis-srcset/interfaces/_htmlheaders_.iheadersconfig.html)
-- [`IOptimizationConfig`](https://trigensoftware.github.io/flexis-srcset/interfaces/_htmlheaders_.iheadersconfig.html)
-- [`Postfix`](https://trigensoftware.github.io/flexis-srcset/interfaces/_htmlheaders_.iheadersconfig.html)
-- [`Matcher`](https://trigensoftware.github.io/flexis-srcset/interfaces/_icons_.iiconsconfig.html)
-- [`SupportedExtension`](https://trigensoftware.github.io/flexis-srcset/interfaces/_manifest_.imanifestconfig.html)
+- [`IProcessingConfig`](https://trigensoftware.github.io/flexis-srcset/interfaces/_types_.iprocessingconfig.html)
+- [`IOptimizationConfig`](https://trigensoftware.github.io/flexis-srcset/interfaces/_types_.ioptimizationconfig.html)
+- [`Postfix`](https://trigensoftware.github.io/flexis-srcset/modules/_types_.html#postfix)
+- [`Matcher`](https://trigensoftware.github.io/flexis-srcset/modules/_helpers_.html#matcher)
+- [`SupportedExtension`](https://trigensoftware.github.io/flexis-srcset/modules/_extensions_.html#supportedextension)
 
 ### JS API
 

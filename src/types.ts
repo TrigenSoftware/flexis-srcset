@@ -40,6 +40,7 @@ export interface IProcessingConfig {
  *     gif:  gifLossyPlugin(),
  *     svg:  svgoPlugin()
  * }
+ * ```
  */
 export interface IOptimizationConfig {
 	webp: any;

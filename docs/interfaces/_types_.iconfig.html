@@ -3,7 +3,7 @@
 <head>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<title>&quot;ISrcsetVinyl&quot; | @flexis/srcset</title>
+	<title>IConfig | @flexis/srcset</title>
 	<meta name="description" content="">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" href="../assets/css/main.css">
@@ -54,27 +54,103 @@
 					<a href="../globals.html">Globals</a>
 				</li>
 				<li>
-					<a href="_isrcsetvinyl_.html">&quot;ISrcsetVinyl&quot;</a>
+					<a href="../modules/_types_.html">&quot;types&quot;</a>
+				</li>
+				<li>
+					<a href="_types_.iconfig.html">IConfig</a>
 				</li>
 			</ul>
-			<h1>External module &quot;ISrcsetVinyl&quot;</h1>
+			<h1>Interface IConfig</h1>
 		</div>
 	</div>
 </header>
 <div class="container container-main">
 	<div class="row">
 		<div class="col-8 col-content">
+			<section class="tsd-panel tsd-hierarchy">
+				<h3>Hierarchy</h3>
+				<ul class="tsd-hierarchy">
+					<li>
+						<span class="target">IConfig</span>
+						<ul class="tsd-hierarchy">
+							<li>
+								<a href="_types_.igenerateconfig.html" class="tsd-signature-type">IGenerateConfig</a>
+							</li>
+							<li>
+								<a href="_stream_.ipluginconfig.html" class="tsd-signature-type">IPluginConfig</a>
+							</li>
+						</ul>
+					</li>
+				</ul>
+			</section>
 			<section class="tsd-panel-group tsd-index-group">
 				<h2>Index</h2>
 				<section class="tsd-panel tsd-index-panel">
 					<div class="tsd-index-content">
 						<section class="tsd-index-section ">
-							<h3>Interfaces</h3>
+							<h3>Properties</h3>
 							<ul class="tsd-index-list">
-								<li class="tsd-kind-interface tsd-parent-kind-external-module"><a href="../interfaces/_isrcsetvinyl_.isrsetvinyl.html" class="tsd-kind-icon">ISrset<wbr>Vinyl</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="_types_.iconfig.html#optimization" class="tsd-kind-icon">optimization</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="_types_.iconfig.html#postfix" class="tsd-kind-icon">postfix</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="_types_.iconfig.html#processing" class="tsd-kind-icon">processing</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="_types_.iconfig.html#scalingup" class="tsd-kind-icon">scaling<wbr>Up</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="_types_.iconfig.html#skipoptimization" class="tsd-kind-icon">skip<wbr>Optimization</a></li>
 							</ul>
 						</section>
 					</div>
+				</section>
+			</section>
+			<section class="tsd-panel-group tsd-member-group ">
+				<h2>Properties</h2>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
+					<a name="optimization" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagOptional">Optional</span> optimization</h3>
+					<div class="tsd-signature tsd-kind-icon">optimization<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">Partial</span><span class="tsd-signature-symbol">&lt;</span><a href="_types_.ioptimizationconfig.html" class="tsd-signature-type">IOptimizationConfig</a><span class="tsd-signature-symbol">&gt;</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in <a href="https://github.com/TrigenSoftware/flexis-srcset/blob/bc413c0/src/types.ts#L61">types.ts:61</a></li>
+						</ul>
+					</aside>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
+					<a name="postfix" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagOptional">Optional</span> postfix</h3>
+					<div class="tsd-signature tsd-kind-icon">postfix<span class="tsd-signature-symbol">:</span> <a href="../modules/_types_.html#postfix" class="tsd-signature-type">Postfix</a></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in <a href="https://github.com/TrigenSoftware/flexis-srcset/blob/bc413c0/src/types.ts#L64">types.ts:64</a></li>
+						</ul>
+					</aside>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
+					<a name="processing" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagOptional">Optional</span> processing</h3>
+					<div class="tsd-signature tsd-kind-icon">processing<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">Partial</span><span class="tsd-signature-symbol">&lt;</span><a href="_types_.iprocessingconfig.html" class="tsd-signature-type">IProcessingConfig</a><span class="tsd-signature-symbol">&gt;</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in <a href="https://github.com/TrigenSoftware/flexis-srcset/blob/bc413c0/src/types.ts#L60">types.ts:60</a></li>
+						</ul>
+					</aside>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
+					<a name="scalingup" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagOptional">Optional</span> scaling<wbr>Up</h3>
+					<div class="tsd-signature tsd-kind-icon">scaling<wbr>Up<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">boolean</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in <a href="https://github.com/TrigenSoftware/flexis-srcset/blob/bc413c0/src/types.ts#L63">types.ts:63</a></li>
+						</ul>
+					</aside>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
+					<a name="skipoptimization" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagOptional">Optional</span> skip<wbr>Optimization</h3>
+					<div class="tsd-signature tsd-kind-icon">skip<wbr>Optimization<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">boolean</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in <a href="https://github.com/TrigenSoftware/flexis-srcset/blob/bc413c0/src/types.ts#L62">types.ts:62</a></li>
+						</ul>
+					</aside>
 				</section>
 			</section>
 		</div>
@@ -84,36 +160,72 @@
 					<li class="globals  ">
 						<a href="../globals.html"><em>Globals</em></a>
 					</li>
+					<li class=" tsd-kind-external-module">
+						<a href="../modules/_isrcsetvinyl_.html">"ISrcset<wbr>Vinyl"</a>
+					</li>
+					<li class=" tsd-kind-external-module">
+						<a href="../modules/_cli_.html">"cli"</a>
+					</li>
+					<li class=" tsd-kind-external-module">
+						<a href="../modules/_defaults_.html">"defaults"</a>
+					</li>
+					<li class=" tsd-kind-external-module">
+						<a href="../modules/_extensions_.html">"extensions"</a>
+					</li>
+					<li class=" tsd-kind-external-module">
+						<a href="../modules/_helpers_.html">"helpers"</a>
+					</li>
+					<li class=" tsd-kind-external-module">
+						<a href="../modules/_index_.html">"index"</a>
+					</li>
+					<li class=" tsd-kind-external-module">
+						<a href="../modules/_stream_.html">"stream"</a>
+					</li>
 					<li class="current tsd-kind-external-module">
-						<a href="_isrcsetvinyl_.html">"ISrcset<wbr>Vinyl"</a>
-					</li>
-					<li class=" tsd-kind-external-module">
-						<a href="_cli_.html">"cli"</a>
-					</li>
-					<li class=" tsd-kind-external-module">
-						<a href="_defaults_.html">"defaults"</a>
-					</li>
-					<li class=" tsd-kind-external-module">
-						<a href="_extensions_.html">"extensions"</a>
-					</li>
-					<li class=" tsd-kind-external-module">
-						<a href="_helpers_.html">"helpers"</a>
-					</li>
-					<li class=" tsd-kind-external-module">
-						<a href="_index_.html">"index"</a>
-					</li>
-					<li class=" tsd-kind-external-module">
-						<a href="_stream_.html">"stream"</a>
-					</li>
-					<li class=" tsd-kind-external-module">
-						<a href="_types_.html">"types"</a>
+						<a href="../modules/_types_.html">"types"</a>
 					</li>
 				</ul>
 			</nav>
 			<nav class="tsd-navigation secondary menu-sticky">
 				<ul class="before-current">
+				</ul>
+				<ul class="current">
+					<li class="current tsd-kind-interface tsd-parent-kind-external-module">
+						<a href="_types_.iconfig.html" class="tsd-kind-icon">IConfig</a>
+						<ul>
+							<li class=" tsd-kind-property tsd-parent-kind-interface">
+								<a href="_types_.iconfig.html#optimization" class="tsd-kind-icon">optimization</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-interface">
+								<a href="_types_.iconfig.html#postfix" class="tsd-kind-icon">postfix</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-interface">
+								<a href="_types_.iconfig.html#processing" class="tsd-kind-icon">processing</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-interface">
+								<a href="_types_.iconfig.html#scalingup" class="tsd-kind-icon">scaling<wbr>Up</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-interface">
+								<a href="_types_.iconfig.html#skipoptimization" class="tsd-kind-icon">skip<wbr>Optimization</a>
+							</li>
+						</ul>
+					</li>
+				</ul>
+				<ul class="after-current">
 					<li class=" tsd-kind-interface tsd-parent-kind-external-module">
-						<a href="../interfaces/_isrcsetvinyl_.isrsetvinyl.html" class="tsd-kind-icon">ISrset<wbr>Vinyl</a>
+						<a href="_types_.igenerateconfig.html" class="tsd-kind-icon">IGenerate<wbr>Config</a>
+					</li>
+					<li class=" tsd-kind-interface tsd-parent-kind-external-module">
+						<a href="_types_.ioptimizationconfig.html" class="tsd-kind-icon">IOptimization<wbr>Config</a>
+					</li>
+					<li class=" tsd-kind-interface tsd-parent-kind-external-module">
+						<a href="_types_.ipostfixformatter.html" class="tsd-kind-icon">IPostfix<wbr>Formatter</a>
+					</li>
+					<li class=" tsd-kind-interface tsd-parent-kind-external-module">
+						<a href="_types_.iprocessingconfig.html" class="tsd-kind-icon">IProcessing<wbr>Config</a>
+					</li>
+					<li class=" tsd-kind-type-alias tsd-parent-kind-external-module">
+						<a href="../modules/_types_.html#postfix" class="tsd-kind-icon">Postfix</a>
 					</li>
 				</ul>
 			</nav>
