@@ -24,6 +24,14 @@ DO NOT TOUCH. SAVE IT ON TOP.
 
 -->
 
+## [1.4.0] - 2019-08-08
+### Added
+- CLI tool;
+- Stream plugin.
+
+### Changed
+- Better docs.
+
 ## [1.3.0] - 2019-06-09
 ### Added
 - `trigen-scripts` dev tool.
