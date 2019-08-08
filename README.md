@@ -59,7 +59,7 @@ yarn exec -- srcset [...sources] [...options]
 |--------|-------------|---------|
 | sources | Source image(s) glob patterns. | |
 | &#x2011;&#x2011;help, -h | Print this message. | |
-| &#x2011;&#x2011;verbose, -v | Print additional info about RegExps. | |
+| &#x2011;&#x2011;verbose, -v | Print additional info about progress. | |
 | &#x2011;&#x2011;match, -m | Glob patern(s) or media query(ies) to match image(s) by name or size. | all images |
 | &#x2011;&#x2011;width, -w | Output image(s) widths to resize, value less than or equal to 1 will be detected as multiplier. | no resize |
 | &#x2011;&#x2011;format, -f | Output image(s) formats to convert. | no convert |
@@ -81,16 +81,43 @@ Supported options:
 
 ```ts
 interface ICommonConfig {
+    /**
+     * Object with Sharp configs for each supported format.
+     */
     processing?: Partial<IProcessingConfig>;
+    /**
+     * Object with imagemin plugins for each format.
+     */
     optimization?: Partial<IOptimizationConfig>;
+    /**
+     * Do not optimize output images.
+     */
     skipOptimization?: boolean;
+    /**
+     * Generate images with higher resolution than they's sources are.
+     */
     scalingUp?: boolean;
+    /**
+     * Postfix string or function to generate postfix for image.
+     */
     postfix?: Postfix;
 }
 
 interface IRule extends ICommonConfig {
+    /**
+     * There is support of 3 types of matchers:
+     * 1. Glob pattern of file path;
+     * 2. Media query to match image by size;
+     * 3. `(path: string, size: ISize, source: Vinyl) => boolean` function.
+     */
     match?: Matcher;
+    /**
+     * Output image(s) formats to convert.
+     */
     format?: SupportedExtension|SupportedExtension[];
+    /**
+     * Output image(s) widths to resize, value less than or equal to 1 will be detected as multiplier.
+     */
     width?: number|number[];
 }
 
@@ -98,9 +125,21 @@ interface IRule extends ICommonConfig {
  * RC file:
  */
 interface IConfig extends ICommonConfig {
+    /**
+     * Source image(s) glob patterns.
+     */
     src?: string|string[];
+    /**
+     * Rules.
+     */
     rules?: IRule[];
+    /**
+     * Print additional info about progress.
+     */
     verbose?: boolean;
+    /**
+     * Destination directory.
+     */
     dest?: string;
 }
 ```
@@ -137,10 +176,25 @@ Plugin options:
 
 ```ts
 interface ICommonConfig {
+    /**
+     * Object with Sharp configs for each supported format.
+     */
     processing?: Partial<IProcessingConfig>;
+    /**
+     * Object with imagemin plugins for each format.
+     */
     optimization?: Partial<IOptimizationConfig>;
+    /**
+     * Do not optimize output images.
+     */
     skipOptimization?: boolean;
+    /**
+     * Generate images with higher resolution than they's sources are.
+     */
     scalingUp?: boolean;
+    /**
+     * Postfix string or function to generate postfix for image.
+     */
     postfix?: Postfix;
 }
 
@@ -148,8 +202,20 @@ interface ICommonConfig {
  * First argument: IPluginRule[]
  */
 interface IPluginRule extends ICommonConfig {
+    /**
+     * There is support of 3 types of matchers:
+     * 1. Glob pattern of file path;
+     * 2. Media query to match image by size;
+     * 3. `(path: string, size: ISize, source: Vinyl) => boolean` function.
+     */
     match?: Matcher;
+    /**
+     * Output image(s) formats to convert.
+     */
     format?: SupportedExtension|SupportedExtension[];
+    /**
+     * Output image(s) widths to resize, value less than or equal to 1 will be detected as multiplier.
+     */
     width?: number|number[];
 }
 
@@ -157,6 +223,9 @@ interface IPluginRule extends ICommonConfig {
  * Second argument: 
  */
 interface IPluginConfig extends ICommonConfig {
+    /**
+     * Print additional info about progress.
+     */
     verbose?: boolean;
 }
 ```

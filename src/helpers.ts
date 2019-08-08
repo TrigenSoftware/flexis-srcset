@@ -16,6 +16,12 @@ export interface IMatcherFunction {
 	(path: string, size: ISize, source: Vinyl): boolean;
 }
 
+/**
+ * There is support of 3 types of matchers:
+ * 1. Glob pattern of file path;
+ * 2. Media query to match image by size;
+ * 3. `(path: string, size: ISize, source: Vinyl) => boolean` function.
+ */
 export type Matcher = string|IMatcherFunction;
 
 const isMediaQuery = /^\s*(\(\s*((max|min)-|)(width|height)\s*:\s*\d+\w*\s*\)\s*(,|and)\s*)*\(\s*((max|min)-|)(width|height)\s*:\s*\d+\w*\s*\)\s*$/g; // tslint:disable-line

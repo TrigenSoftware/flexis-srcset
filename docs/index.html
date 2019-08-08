@@ -107,7 +107,7 @@ yarn <span class="hljs-built_in">exec</span> -- srcset [...sources] [...options]
 						</tr>
 						<tr>
 							<td>&#x2011;&#x2011;verbose, -v</td>
-							<td>Print additional info about RegExps.</td>
+							<td>Print additional info about progress.</td>
 							<td></td>
 						</tr>
 						<tr>
@@ -147,16 +147,43 @@ yarn <span class="hljs-built_in">exec</span> -- srcset [...sources] [...options]
 				<p>Configuration file is optional. If needed, can be defined through <code>.srcsetrc</code> (JSON file) or <code>.srcsetrc.js</code> in the root directory of the project.</p>
 				<p>Supported options:</p>
 				<pre><code class="language-ts"><span class="hljs-keyword">interface</span> ICommonConfig {
+    <span class="hljs-comment">/**
+     * Object with Sharp configs for each supported format.
+     */</span>
     processing?: Partial&lt;IProcessingConfig&gt;;
+    <span class="hljs-comment">/**
+     * Object with imagemin plugins for each format.
+     */</span>
     optimization?: Partial&lt;IOptimizationConfig&gt;;
+    <span class="hljs-comment">/**
+     * Do not optimize output images.
+     */</span>
     skipOptimization?: <span class="hljs-built_in">boolean</span>;
+    <span class="hljs-comment">/**
+     * Generate images with higher resolution than they's sources are.
+     */</span>
     scalingUp?: <span class="hljs-built_in">boolean</span>;
+    <span class="hljs-comment">/**
+     * Postfix string or function to generate postfix for image.
+     */</span>
     postfix?: Postfix;
 }
 
 <span class="hljs-keyword">interface</span> IRule <span class="hljs-keyword">extends</span> ICommonConfig {
+    <span class="hljs-comment">/**
+     * There is support of 3 types of matchers:
+     * 1. Glob pattern of file path;
+     * 2. Media query to match image by size;
+     * 3. `(path: string, size: ISize, source: Vinyl) =&gt; boolean` function.
+     */</span>
     match?: Matcher;
+    <span class="hljs-comment">/**
+     * Output image(s) formats to convert.
+     */</span>
     format?: SupportedExtension|SupportedExtension[];
+    <span class="hljs-comment">/**
+     * Output image(s) widths to resize, value less than or equal to 1 will be detected as multiplier.
+     */</span>
     width?: <span class="hljs-built_in">number</span>|<span class="hljs-built_in">number</span>[];
 }
 
@@ -164,17 +191,29 @@ yarn <span class="hljs-built_in">exec</span> -- srcset [...sources] [...options]
  * RC file:
  */</span>
 <span class="hljs-keyword">interface</span> IConfig <span class="hljs-keyword">extends</span> ICommonConfig {
+    <span class="hljs-comment">/**
+     * Source image(s) glob patterns.
+     */</span>
     src?: <span class="hljs-built_in">string</span>|<span class="hljs-built_in">string</span>[];
+    <span class="hljs-comment">/**
+     * Rules.
+     */</span>
     rules?: IRule[];
+    <span class="hljs-comment">/**
+     * Print additional info about progress.
+     */</span>
     verbose?: <span class="hljs-built_in">boolean</span>;
+    <span class="hljs-comment">/**
+     * Destination directory.
+     */</span>
     dest?: <span class="hljs-built_in">string</span>;
 }</code></pre>
 				<ul>
 					<li><a href="https://trigensoftware.github.io/flexis-srcset/interfaces/_types_.iprocessingconfig.html"><code>IProcessingConfig</code></a></li>
-					<li><a href="https://trigensoftware.github.io/flexis-srcset/interfaces/_htmlheaders_.iheadersconfig.html"><code>IOptimizationConfig</code></a></li>
-					<li><a href="https://trigensoftware.github.io/flexis-srcset/interfaces/_htmlheaders_.iheadersconfig.html"><code>Postfix</code></a></li>
-					<li><a href="https://trigensoftware.github.io/flexis-srcset/interfaces/_icons_.iiconsconfig.html"><code>Matcher</code></a></li>
-					<li><a href="https://trigensoftware.github.io/flexis-srcset/interfaces/_manifest_.imanifestconfig.html"><code>SupportedExtension</code></a></li>
+					<li><a href="https://trigensoftware.github.io/flexis-srcset/interfaces/_types_.ioptimizationconfig.html"><code>IOptimizationConfig</code></a></li>
+					<li><a href="https://trigensoftware.github.io/flexis-srcset/modules/_types_.html#postfix"><code>Postfix</code></a></li>
+					<li><a href="https://trigensoftware.github.io/flexis-srcset/modules/_helpers_.html#matcher"><code>Matcher</code></a></li>
+					<li><a href="https://trigensoftware.github.io/flexis-srcset/modules/_extensions_.html#supportedextension"><code>SupportedExtension</code></a></li>
 				</ul>
 				<h3 id="gulp">Gulp</h3>
 				<p>You can use <code>@flexis/srcset</code> with <a href="https://github.com/gulpjs/gulp">Gulp</a>:</p>
@@ -196,10 +235,25 @@ gulp.task(<span class="hljs-string">'images'</span>, () =&gt;
 				</blockquote>
 				<p>Plugin options:</p>
 				<pre><code class="language-ts"><span class="hljs-keyword">interface</span> ICommonConfig {
+    <span class="hljs-comment">/**
+     * Object with Sharp configs for each supported format.
+     */</span>
     processing?: Partial&lt;IProcessingConfig&gt;;
+    <span class="hljs-comment">/**
+     * Object with imagemin plugins for each format.
+     */</span>
     optimization?: Partial&lt;IOptimizationConfig&gt;;
+    <span class="hljs-comment">/**
+     * Do not optimize output images.
+     */</span>
     skipOptimization?: <span class="hljs-built_in">boolean</span>;
+    <span class="hljs-comment">/**
+     * Generate images with higher resolution than they's sources are.
+     */</span>
     scalingUp?: <span class="hljs-built_in">boolean</span>;
+    <span class="hljs-comment">/**
+     * Postfix string or function to generate postfix for image.
+     */</span>
     postfix?: Postfix;
 }
 
@@ -207,8 +261,20 @@ gulp.task(<span class="hljs-string">'images'</span>, () =&gt;
  * First argument: IPluginRule[]
  */</span>
 <span class="hljs-keyword">interface</span> IPluginRule <span class="hljs-keyword">extends</span> ICommonConfig {
+    <span class="hljs-comment">/**
+     * There is support of 3 types of matchers:
+     * 1. Glob pattern of file path;
+     * 2. Media query to match image by size;
+     * 3. `(path: string, size: ISize, source: Vinyl) =&gt; boolean` function.
+     */</span>
     match?: Matcher;
+    <span class="hljs-comment">/**
+     * Output image(s) formats to convert.
+     */</span>
     format?: SupportedExtension|SupportedExtension[];
+    <span class="hljs-comment">/**
+     * Output image(s) widths to resize, value less than or equal to 1 will be detected as multiplier.
+     */</span>
     width?: <span class="hljs-built_in">number</span>|<span class="hljs-built_in">number</span>[];
 }
 
@@ -216,14 +282,17 @@ gulp.task(<span class="hljs-string">'images'</span>, () =&gt;
  * Second argument: 
  */</span>
 <span class="hljs-keyword">interface</span> IPluginConfig <span class="hljs-keyword">extends</span> ICommonConfig {
+    <span class="hljs-comment">/**
+     * Print additional info about progress.
+     */</span>
     verbose?: <span class="hljs-built_in">boolean</span>;
 }</code></pre>
 				<ul>
-					<li><a href="https://trigensoftware.github.io/flexis-srcset/interfaces/_htmlheaders_.iheadersconfig.html"><code>IProcessingConfig</code></a></li>
-					<li><a href="https://trigensoftware.github.io/flexis-srcset/interfaces/_htmlheaders_.iheadersconfig.html"><code>IOptimizationConfig</code></a></li>
-					<li><a href="https://trigensoftware.github.io/flexis-srcset/interfaces/_htmlheaders_.iheadersconfig.html"><code>Postfix</code></a></li>
-					<li><a href="https://trigensoftware.github.io/flexis-srcset/interfaces/_icons_.iiconsconfig.html"><code>Matcher</code></a></li>
-					<li><a href="https://trigensoftware.github.io/flexis-srcset/interfaces/_manifest_.imanifestconfig.html"><code>SupportedExtension</code></a></li>
+					<li><a href="https://trigensoftware.github.io/flexis-srcset/interfaces/_types_.iprocessingconfig.html"><code>IProcessingConfig</code></a></li>
+					<li><a href="https://trigensoftware.github.io/flexis-srcset/interfaces/_types_.ioptimizationconfig.html"><code>IOptimizationConfig</code></a></li>
+					<li><a href="https://trigensoftware.github.io/flexis-srcset/modules/_types_.html#postfix"><code>Postfix</code></a></li>
+					<li><a href="https://trigensoftware.github.io/flexis-srcset/modules/_helpers_.html#matcher"><code>Matcher</code></a></li>
+					<li><a href="https://trigensoftware.github.io/flexis-srcset/modules/_extensions_.html#supportedextension"><code>SupportedExtension</code></a></li>
 				</ul>
 				<h3 id="js-api">JS API</h3>
 				<p>Module exposes next API:</p>

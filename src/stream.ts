@@ -12,10 +12,19 @@ import SrcsetGenerator, {
 } from './';
 
 interface IPluginConfig extends IConfig {
+	/**
+	 * Print additional info about progress.
+	 */
 	verbose?: boolean;
 }
 
 interface IRule extends IGenerateConfig {
+	/**
+	 * There is support of 3 types of matchers:
+	 * 1. Glob pattern of file path;
+	 * 2. Media query to match image by size;
+	 * 3. `(path: string, size: ISize, source: Vinyl) => boolean` function.
+	 */
 	match?: Matcher;
 }
 
