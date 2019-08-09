@@ -1,7 +1,7 @@
 {
   "name": "@flexis/srcset",
   "version": "1.4.0",
-  "description": "Highly customizable lib to generating responsive images.",
+  "description": "Highly customizable tool for generating responsive images.",
   "author": "dangreen",
   "license": "MIT",
   "repository": {
