@@ -24,7 +24,7 @@ export interface IMatcherFunction {
  */
 export type Matcher = string|IMatcherFunction;
 
-const isMediaQuery = /^\s*(\(\s*((max|min)-|)(width|height)\s*:\s*\d+\w*\s*\)\s*(,|and)\s*)*\(\s*((max|min)-|)(width|height)\s*:\s*\d+\w*\s*\)\s*$/g; // tslint:disable-line
+const isMediaQuery = /\(\s*([^\s\:\)]+)\s*(?:\:\s*([^\s\)]+))?\s*\)/;
 
 /**
  * Check object is Vinyl-buffer.
