@@ -155,7 +155,7 @@ interface IConfig extends ICommonConfig {
 You can use `@flexis/srcset` with [Gulp](https://github.com/gulpjs/gulp):
 
 ```js
-import srcset from '@flexis/srcset/stream';
+import srcset from '@flexis/srcset/lib/stream';
 
 gulp.task('images', () =>
     gulp.src('src/*.{jpg,png}')
