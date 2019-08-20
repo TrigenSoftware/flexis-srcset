@@ -27,4 +27,25 @@ describe('stream', () => {
 				done();
 			});
 	});
+
+	it('should match by glob', (done) => {
+
+		let counter = 0;
+
+		vfs.src(
+			path.join(__dirname, 'images/*.{jpg,png,gif,ico}')
+		)
+			.pipe(srcset([{
+				match: '**/*.png',
+				width: [1, .5]
+			}]))
+			.on('error', done)
+			.on('data', (...args) => {
+				counter++;
+			})
+			.on('end', () => {
+				expect(counter).toBe(5);
+				done();
+			});
+	});
 });
