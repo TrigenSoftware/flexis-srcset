@@ -40,7 +40,7 @@ describe('stream', () => {
 				width: [1, .5]
 			}]))
 			.on('error', done)
-			.on('data', (...args) => {
+			.on('data', () => {
 				counter++;
 			})
 			.on('end', () => {
