@@ -37,6 +37,8 @@ Highly customizable tool for generating responsive images.
 - You can run it from the [CLI](#cli) ⌨️
 - Works with [Gulp](#gulp), [Webpack](https://github.com/TrigenSoftware/flexis-srcset-loader) and as [JS library](#js-api) 🦄
 
+<img src="https://pbs.twimg.com/media/ECeCK9jXoAIN_E0?format=jpg&name=large" width="90%">
+
 ## Install
 
 ```bash
