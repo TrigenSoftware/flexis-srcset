@@ -199,7 +199,7 @@ export default class SrcsetGenerator {
 		if (width !== null) {
 
 			const calculatedWidth = originWidth && width <= 1
-				? width * originWidth
+				? Math.ceil(width * originWidth)
 				: width;
 
 			this.addPostfix(target, calculatedWidth, width, config.postfix);
