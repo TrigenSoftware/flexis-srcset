@@ -62,7 +62,9 @@
 	<div class="row">
 		<div class="col-8 col-content">
 			<div class="tsd-panel tsd-typography">
-				<h1 id="-flexis-srcset">@flexis/srcset</h1>
+				<a href="#flexissrcset" id="flexissrcset" style="color: inherit; text-decoration: none;">
+					<h1>@flexis/srcset</h1>
+				</a>
 				<p><a href="https://npmjs.com/package/@flexis/srcset"><img src="https://img.shields.io/npm/v/@flexis/srcset.svg" alt="NPM version"></a>
 					<a href="https://nodejs.org"><img src="https://img.shields.io/node/v/@flexis/srcset.svg" alt="Node version"></a>
 					<a href="https://david-dm.org/TrigenSoftware/flexis-srcset"><img src="https://david-dm.org/TrigenSoftware/flexis-srcset.svg" alt="Dependencies status"></a>
@@ -76,14 +78,21 @@
 					<li>Optimize images with <a href="https://www.npmjs.com/package/imagemin">imagemin</a> 🗜</li>
 					<li>Convert images to <a href="https://developer.mozilla.org/ru/docs/Learn/HTML/Multimedia_and_embedding/Responsive_images#Use_modern_image_formats_boldly">modern formats such as WebP</a> 📸</li>
 					<li>You can run it from the <a href="#cli">CLI</a> ⌨️</li>
-					<li>Works with <a href="#gulp">Gulp</a> and as <a href="#js-api">JS library</a> 🦄</li>
+					<li>Works with <a href="#gulp">Gulp</a>, <a href="https://github.com/TrigenSoftware/flexis-srcset-loader">Webpack</a> and as <a href="#js-api">JS library</a> 🦄</li>
 				</ul>
-				<h2 id="install">Install</h2>
+				<img src="https://pbs.twimg.com/media/ECeCK9jXoAIN_E0?format=jpg&name=large" width="90%">
+				<a href="#install" id="install" style="color: inherit; text-decoration: none;">
+					<h2>Install</h2>
+				</a>
 				<pre><code class="language-bash">npm i -D @flexis/srcset
 <span class="hljs-comment"># or</span>
 yarn add -D @flexis/srcset</code></pre>
-				<h2 id="usage">Usage</h2>
-				<h3 id="cli">CLI</h3>
+				<a href="#usage" id="usage" style="color: inherit; text-decoration: none;">
+					<h2>Usage</h2>
+				</a>
+				<a href="#cli" id="cli" style="color: inherit; text-decoration: none;">
+					<h3>CLI</h3>
+				</a>
 				<pre><code class="language-sh">npx srcset [...sources] [...options]
 <span class="hljs-comment"># or</span>
 yarn <span class="hljs-built_in">exec</span> -- srcset [...sources] [...options]</code></pre>
@@ -141,9 +150,13 @@ yarn <span class="hljs-built_in">exec</span> -- srcset [...sources] [...options]
 							<td></td>
 						</tr>
 				</tbody></table>
-				<h4 id="example">Example</h4>
+				<a href="#example" id="example" style="color: inherit; text-decoration: none;">
+					<h4>Example</h4>
+				</a>
 				<pre><code class="language-sh">srcset <span class="hljs-string">"src/images/*.jpg"</span> --match <span class="hljs-string">"(min-width: 1920px)"</span> --width 1920,1280,1024,860,540,320 --format jpg,webp -d static/images</code></pre>
-				<h4 id="configuration">Configuration</h4>
+				<a href="#configuration" id="configuration" style="color: inherit; text-decoration: none;">
+					<h4>Configuration</h4>
+				</a>
 				<p>Configuration file is optional. If needed, can be defined through <code>.srcsetrc</code> (JSON file) or <code>.srcsetrc.js</code> in the root directory of the project.</p>
 				<p>Supported options:</p>
 				<pre><code class="language-ts"><span class="hljs-keyword">interface</span> ICommonConfig {
@@ -215,7 +228,9 @@ yarn <span class="hljs-built_in">exec</span> -- srcset [...sources] [...options]
 					<li><a href="https://trigensoftware.github.io/flexis-srcset/modules/_helpers_.html#matcher"><code>Matcher</code></a></li>
 					<li><a href="https://trigensoftware.github.io/flexis-srcset/modules/_extensions_.html#supportedextension"><code>SupportedExtension</code></a></li>
 				</ul>
-				<h3 id="gulp">Gulp</h3>
+				<a href="#gulp" id="gulp" style="color: inherit; text-decoration: none;">
+					<h3>Gulp</h3>
+				</a>
 				<p>You can use <code>@flexis/srcset</code> with <a href="https://github.com/gulpjs/gulp">Gulp</a>:</p>
 				<pre><code class="language-js"><span class="hljs-keyword">import</span> srcset <span class="hljs-keyword">from</span> <span class="hljs-string">'@flexis/srcset/lib/stream'</span>;
 
@@ -294,7 +309,9 @@ gulp.task(<span class="hljs-string">'images'</span>, () =&gt;
 					<li><a href="https://trigensoftware.github.io/flexis-srcset/modules/_helpers_.html#matcher"><code>Matcher</code></a></li>
 					<li><a href="https://trigensoftware.github.io/flexis-srcset/modules/_extensions_.html#supportedextension"><code>SupportedExtension</code></a></li>
 				</ul>
-				<h3 id="js-api">JS API</h3>
+				<a href="#js-api" id="js-api" style="color: inherit; text-decoration: none;">
+					<h3>JS API</h3>
+				</a>
 				<p>Module exposes next API:</p>
 				<pre><code class="language-js"><span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> SrcsetGenerator;
 <span class="hljs-keyword">export</span> {
@@ -314,7 +331,9 @@ gulp.task(<span class="hljs-string">'images'</span>, () =&gt;
     attachMetadata,
     matchImage
 }</code></pre>
-				<h4 id="example">Example</h4>
+				<a href="#example-1" id="example-1" style="color: inherit; text-decoration: none;">
+					<h4>Example</h4>
+				</a>
 				<pre><code class="language-js"><span class="hljs-keyword">import</span> {
     promises <span class="hljs-keyword">as</span> fs
 } <span class="hljs-keyword">from</span> <span class="hljs-string">'fs'</span>;
@@ -342,7 +361,7 @@ gulp.task(<span class="hljs-string">'images'</span>, () =&gt;
 }
 
 generate();</code></pre>
-				<p><a href="https://trigensoftware.github.io/flexis-srcset/index.html">Description of this methods you can find in Documentation.</a></p>
+				<p><a href="https://trigensoftware.github.io/flexis-srcset/index.html">Description of all methods you can find in Documentation.</a></p>
 			</div>
 		</div>
 		<div class="col-4 col-menu menu-sticky-wrap menu-highlight">
@@ -396,6 +415,7 @@ generate();</code></pre>
 				<li class="tsd-kind-function tsd-has-type-parameter"><span class="tsd-kind-icon">Function with type parameter</span></li>
 				<li class="tsd-kind-index-signature"><span class="tsd-kind-icon">Index signature</span></li>
 				<li class="tsd-kind-type-alias"><span class="tsd-kind-icon">Type alias</span></li>
+				<li class="tsd-kind-type-alias tsd-has-type-parameter"><span class="tsd-kind-icon">Type alias with type parameter</span></li>
 			</ul>
 			<ul class="tsd-legend">
 				<li class="tsd-kind-enum"><span class="tsd-kind-icon">Enumeration</span></li>
@@ -444,7 +464,7 @@ generate();</code></pre>
 	</div>
 </footer>
 <div class="container tsd-generator">
-	<p>Generated using <a href="http://typedoc.org/" target="_blank">TypeDoc</a></p>
+	<p>Generated using <a href="https://typedoc.org/" target="_blank">TypeDoc</a></p>
 </div>
 <div class="overlay"></div>
 <script src="assets/js/main.js"></script>
