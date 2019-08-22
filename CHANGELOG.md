@@ -24,6 +24,10 @@ DO NOT TOUCH. SAVE IT ON TOP.
 
 -->
 
+## [1.4.2] - 2019-08-22
+### Fixed
+- [#63](https://github.com/TrigenSoftware/flexis-srcset/pull/63) - thanks to [ashleahhill](https://github.com/ashleahhill) ❤️
+
 ## [1.4.0] - 2019-08-08
 ### Added
 - CLI tool;
