@@ -190,6 +190,18 @@ describe('SrcsetGenerator', () => {
 			expect(images[2].metadata.width).toBe(320);
 		});
 
+		it('should generate desired scaled widths', async () => {
+
+			const images = await vinylsFromAsyncIterator(srcset.generate(image, {
+				width: [0.33, 0.66, 1]
+			}));
+
+			expect(images.length).toBe(3);
+			expect(images[2].metadata.width).toBe(expectedSize.width);
+			expect(images[1].metadata.width).toBe(2060);
+			expect(images[0].metadata.width).toBe(1030);
+		});
+
 		it('should generate desired formats', async () => {
 
 			const images = await vinylsFromAsyncIterator(srcset.generate(image, {
