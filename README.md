@@ -281,7 +281,7 @@ async function generate() {
         contents
     });
     const srcset = new SrcsetGenerator();
-    const images = favicons.generate(source, {
+    const images = srcset.generate(source, {
         width:  [1920, 1280, 1024, 860, 540, 320],
         format: ['jpg', 'webp']
     });
