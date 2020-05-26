@@ -24,6 +24,10 @@ DO NOT TOUCH. SAVE IT ON TOP.
 
 -->
 
+## [2.0.0] - 2020-05-26
+### Breaking
+- Requires `Node 10+`
+
 ## [1.4.2] - 2019-08-22
 ### Fixed
 - [#63](https://github.com/TrigenSoftware/flexis-srcset/pull/63) - thanks to [ashleahhill](https://github.com/ashleahhill) ❤️

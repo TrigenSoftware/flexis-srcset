@@ -1,6 +1,6 @@
 {
   "name": "@flexis/srcset",
-  "version": "1.4.2",
+  "version": "2.0.0",
   "description": "Highly customizable tool for generating responsive images.",
   "author": "dangreen",
   "license": "MIT",
@@ -17,7 +17,7 @@
   "main": "lib/index.js",
   "types": "lib/index.d.ts",
   "engines": {
-    "node": ">=8.0.0"
+    "node": ">=10.0.0"
   },
   "scripts": {
     "lint": "trigen-scripts lint",
@@ -63,7 +63,7 @@
     "vinyl-fs": "^3.0.3"
   },
   "devDependencies": {
-    "@size-limit/preset-small-lib": "^3.0.1",
+    "@size-limit/preset-small-lib": "^4.5.0",
     "@trigen/scripts": "6.0.0",
     "@trigen/scripts-plugin-babel": "6.1.1",
     "@trigen/scripts-plugin-eslint": "6.0.0",
