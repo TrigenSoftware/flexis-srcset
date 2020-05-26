@@ -45,7 +45,7 @@
     "@types/vinyl": "^2.0.3",
     "@types/vinyl-fs": "^2.4.11",
     "argue-cli": "^1.2.1",
-    "chalk": "^2.4.2",
+    "chalk": "^4.0.0",
     "css-mediaquery": "^0.1.2",
     "easy-table": "^1.1.1",
     "imagemin": "^7.0.0",
