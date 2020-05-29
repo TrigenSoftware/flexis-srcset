@@ -53,7 +53,7 @@
     "imagemin-mozjpeg": "^8.0.0",
     "imagemin-svgo": "^8.0.0",
     "imagemin-webp": "^6.0.0",
-    "imagemin-zopfli": "^6.0.0",
+    "imagemin-zopfli": "^7.0.0",
     "minimatch": "^3.0.4",
     "omit-empty": "^1.0.0",
     "rcfile": "^1.0.3",
