@@ -2,7 +2,9 @@ import Vinyl from 'vinyl';
 import minimatch from 'minimatch';
 import mediaQuery from 'css-mediaquery';
 import Sharp from 'sharp';
-import ISrsetVinyl from './ISrcsetVinyl';
+import {
+	ISrcSetVinyl
+} from './types';
 import {
 	isSupportedType
 } from './extensions';
@@ -41,7 +43,7 @@ export function isVinylBuffer(source: Vinyl) {
  * @param  force - Force refetch metadata.
  * @return Source image file with attached metadata.
  */
-export async function attachMetadata(source: Vinyl, force = false): Promise<ISrsetVinyl> {
+export async function attachMetadata(source: Vinyl, force = false): Promise<ISrcSetVinyl> {
 
 	if (!force && typeof source.metadata === 'object') {
 		return source;
@@ -53,6 +55,7 @@ export async function attachMetadata(source: Vinyl, force = false): Promise<ISrs
 
 		source.metadata = await Sharp(source.contents as Buffer).metadata();
 		source.metadata.originMultiplier = originMultiplier;
+
 	} catch (err) {
 		return source;
 	}
@@ -74,7 +77,7 @@ export async function attachMetadata(source: Vinyl, force = false): Promise<ISrs
  * @param  matcherOrMatchers - Rules to match image file.
  * @return Image is matched or not.
  */
-export async function matchImage(source: ISrsetVinyl, matcherOrMatchers: Matcher|Matcher[] = null) {
+export async function matchImage(source: ISrcSetVinyl, matcherOrMatchers: Matcher|Matcher[] = null) {
 
 	if (!isVinylBuffer(source)) {
 		throw new Error('Invalid source.');

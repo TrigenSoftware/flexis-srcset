@@ -1,6 +1,17 @@
+import Vinyl from 'vinyl';
+import {
+	Metadata
+} from 'sharp';
 import {
 	SupportedExtension
 } from './extensions';
+
+export interface ISrcSetVinyl extends Vinyl {
+	metadata?: Metadata & {
+		originMultiplier?: number;
+	};
+	postfix?: string;
+}
 
 /**
  * Object with [Sharp configs](http://sharp.readthedocs.io/en/stable/api-output/) for each supported format.

@@ -1,7 +1,6 @@
 import Vinyl from 'vinyl';
 import Sharp from 'sharp';
 import Imagemin from 'imagemin';
-import ISrsetVinyl from './ISrcsetVinyl';
 import {
 	processing as defaultProcessing,
 	optimization as defaultOptimization,
@@ -17,6 +16,7 @@ import {
 	attachMetadata
 } from './helpers';
 import {
+	ISrcSetVinyl,
 	IProcessingConfig,
 	IOptimizationConfig,
 	Postfix,
@@ -27,11 +27,8 @@ import {
 export * from './extensions';
 export * from './helpers';
 export * from './types';
-export {
-	ISrsetVinyl
-};
 
-export default class SrcsetGenerator {
+export default class SrcSetGenerator {
 
 	private readonly processing: IProcessingConfig = defaultProcessing;
 	private readonly optimization: IOptimizationConfig = defaultOptimization;
@@ -74,7 +71,7 @@ export default class SrcsetGenerator {
 	 * @param  generateConfig - Image handle config.
 	 * @return Results of handling.
 	 */
-	async *generate(source: ISrsetVinyl, generateConfig: IGenerateConfig = {}) {
+	async *generate(source: ISrcSetVinyl, generateConfig: IGenerateConfig = {}) {
 
 		if (!isVinylBuffer(source)) {
 			throw new Error('Invalid source.');
@@ -138,7 +135,7 @@ export default class SrcsetGenerator {
 					continue;
 				}
 
-				const optimizedImage: ISrsetVinyl = await this.optimizeImage(source, config);
+				const optimizedImage: ISrcSetVinyl = await this.optimizeImage(source, config);
 
 				await attachMetadata(optimizedImage, true);
 
@@ -178,7 +175,7 @@ export default class SrcsetGenerator {
 	 * @return Destination image file.
 	 */
 	private async processImage(
-		source: ISrsetVinyl,
+		source: ISrcSetVinyl,
 		outputType: string,
 		width: number = null,
 		config: IConfig = {}
@@ -195,6 +192,10 @@ export default class SrcsetGenerator {
 		let willResize = false;
 
 		target.extname = `.${outputType}`;
+
+		if (target.metadata) {
+			Reflect.deleteProperty(target.metadata, 'originMultiplier');
+		}
 
 		if (width !== null) {
 
@@ -267,7 +268,7 @@ export default class SrcsetGenerator {
 	 * @param customPostfix - Custom postfix generator.
 	 */
 	private addPostfix(
-		target: ISrsetVinyl,
+		target: ISrcSetVinyl,
 		calculatedWidth: number,
 		width: number,
 		customPostfix: Postfix = null

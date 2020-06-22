@@ -4,7 +4,7 @@ import {
 import Vinyl from 'vinyl';
 import through from 'through2-concurrent';
 import chalk from 'chalk';
-import SrcsetGenerator, {
+import SrcSetGenerator, {
 	IConfig,
 	IGenerateConfig,
 	Matcher,
@@ -62,7 +62,7 @@ export default function plugin(rules: IRule[] = [{}], {
 		scalingUp:        true,
 		...inputOptions
 	};
-	const srcset = new SrcsetGenerator(options);
+	const srcSet = new SrcSetGenerator(options);
 
 	async function each(file, _, next) {
 
@@ -94,7 +94,7 @@ export default function plugin(rules: IRule[] = [{}], {
 							'\n'
 						);
 
-						const images = srcset.generate(vinylFile, rule);
+						const images = srcSet.generate(vinylFile, rule);
 
 						for await (const image of images) {
 							this.push(image);

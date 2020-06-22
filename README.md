@@ -59,7 +59,7 @@ yarn exec -- srcset [...sources] [...options]
 
 | Option | Description | Default |
 |--------|-------------|---------|
-| sources | Source image(s) glob patterns. | |
+| sources | Source image(s) glob patterns. | required |
 | &#x2011;&#x2011;help, -h | Print this message. | |
 | &#x2011;&#x2011;verbose, -v | Print additional info about progress. | |
 | &#x2011;&#x2011;match, -m | Glob patern(s) or media query(ies) to match image(s) by name or size. | all images |
@@ -67,7 +67,7 @@ yarn exec -- srcset [...sources] [...options]
 | &#x2011;&#x2011;format, -f | Output image(s) formats to convert. | no convert |
 | &#x2011;&#x2011;skipOptimization | Do not optimize output images. | `false` |
 | &#x2011;&#x2011;noScalingUp | Do not generate images with higher resolution than they's sources are. | `false`
-| &#x2011;&#x2011;dest, -d | Destination directory. | |
+| &#x2011;&#x2011;dest, -d | Destination directory. | required |
 
 #### Example
 
@@ -75,95 +75,63 @@ yarn exec -- srcset [...sources] [...options]
 srcset "src/images/*.jpg" --match "(min-width: 1920px)" --width 1920,1280,1024,860,540,320 --format jpg,webp -d static/images
 ```
 
-#### Configuration
+### Configuration
+
+#### Common options
+
+| Option | Type | Description | Default |
+|--------|------|-------------|---------|
+| processing | Partial\<[IProcessingConfig]\> | Object with Sharp configs for each supported format. | see [defaults.ts](src/defaults.ts) |
+| optimization | Partial\<[IOptimizationConfig]\> | Object with imagemin plugins for each format. | see [defaults.ts](src/defaults.ts) |
+| skipOptimization | boolean | Do not optimize output images. | `false` |
+| scalingUp | boolean | Generate images with higher resolution than they's sources are. | `true` |
+| postfix | [Postfix] | Output image(s) widths to resize, value less than or equal to 1 will be detected as multiplier. | see [defaults.ts](src/defaults.ts) |
+
+#### Rule options
+
+Extends [common options](#common-options).
+
+| Option | Type | Description | Default |
+|--------|------|-------------|---------|
+| match | [Matcher] | There is support of 3 types of matchers:<br>1. Glob pattern of file path;<br>2. Media query to match image by size;<br>3. `(path: string, size: ISize, source: Vinyl) => boolean` function. | all images |
+| format | [SupportedExtension]\|[SupportedExtension]\[\] | Output image(s) formats to convert. | no convert |
+| width | number\|number[] | Output image(s) widths to resize, value less than or equal to 1 will be detected as multiplier. | `[1]` |
+
+#### Configuration file
 
 Configuration file is optional. If needed, can be defined through `.srcsetrc` (JSON file) or `.srcsetrc.js` in the root directory of the project.
 
-Supported options:
+Supported options, extends [common options](#common-options):
 
-```ts
-interface ICommonConfig {
-    /**
-     * Object with Sharp configs for each supported format.
-     */
-    processing?: Partial<IProcessingConfig>;
-    /**
-     * Object with imagemin plugins for each format.
-     */
-    optimization?: Partial<IOptimizationConfig>;
-    /**
-     * Do not optimize output images.
-     */
-    skipOptimization?: boolean;
-    /**
-     * Generate images with higher resolution than they's sources are.
-     */
-    scalingUp?: boolean;
-    /**
-     * Postfix string or function to generate postfix for image.
-     */
-    postfix?: Postfix;
-}
+| Option | Type | Description | Default |
+|--------|------|-------------|---------|
+| src | string\|string[] | Source image(s) glob patterns. | required |
+| rules | [IRule](#rule-options)\[\] | Rules. | `[]` |
+| verbose | boolean | Print additional info about progress. | `false` |
+| dest | string | Destination directory. | required |
 
-interface IRule extends ICommonConfig {
-    /**
-     * There is support of 3 types of matchers:
-     * 1. Glob pattern of file path;
-     * 2. Media query to match image by size;
-     * 3. `(path: string, size: ISize, source: Vinyl) => boolean` function.
-     */
-    match?: Matcher;
-    /**
-     * Output image(s) formats to convert.
-     */
-    format?: SupportedExtension|SupportedExtension[];
-    /**
-     * Output image(s) widths to resize, value less than or equal to 1 will be detected as multiplier.
-     */
-    width?: number|number[];
-}
-
-/**
- * RC file:
- */
-interface IConfig extends ICommonConfig {
-    /**
-     * Source image(s) glob patterns.
-     */
-    src?: string|string[];
-    /**
-     * Rules.
-     */
-    rules?: IRule[];
-    /**
-     * Print additional info about progress.
-     */
-    verbose?: boolean;
-    /**
-     * Destination directory.
-     */
-    dest?: string;
-}
-```
-
-- [`IProcessingConfig`](https://trigensoftware.github.io/flexis-srcset/interfaces/_types_.iprocessingconfig.html)
-- [`IOptimizationConfig`](https://trigensoftware.github.io/flexis-srcset/interfaces/_types_.ioptimizationconfig.html)
-- [`Postfix`](https://trigensoftware.github.io/flexis-srcset/modules/_types_.html#postfix)
-- [`Matcher`](https://trigensoftware.github.io/flexis-srcset/modules/_helpers_.html#matcher)
-- [`SupportedExtension`](https://trigensoftware.github.io/flexis-srcset/modules/_extensions_.html#supportedextension)
+[IProcessingConfig]: https://trigensoftware.github.io/flexis-srcset/interfaces/_types_.iprocessingconfig.html
+[IOptimizationConfig]: https://trigensoftware.github.io/flexis-srcset/interfaces/_types_.ioptimizationconfig.html
+[Postfix]: https://trigensoftware.github.io/flexis-srcset/modules/_types_.html#postfix
+[Matcher]: https://trigensoftware.github.io/flexis-srcset/modules/_helpers_.html#matcher
+[SupportedExtension]: https://trigensoftware.github.io/flexis-srcset/modules/_extensions_.html#supportedextension
 
 ### Gulp
 
 You can use `@flexis/srcset` with [Gulp](https://github.com/gulpjs/gulp):
 
 ```js
-import srcset from '@flexis/srcset/lib/stream';
+import srcSet from '@flexis/srcset/lib/stream';
 
 gulp.task('images', () =>
     gulp.src('src/*.{jpg,png}')
-        .pipe(srcset([{
+        .pipe(srcSet([{
             match:  '(min-width: 3000px)',
             width:  [1920, 1280, 1024, 860, 540, 320],
+            format: ['jpg', 'webp']
+        }, {
+            match:  '(max-width: 3000px)',
+            width:  [1, .5],
             format: ['jpg', 'webp']
         }], {
             skipOptimization: true
@@ -176,78 +144,22 @@ gulp.task('images', () =>
 
 Plugin options:
 
-```ts
-interface ICommonConfig {
-    /**
-     * Object with Sharp configs for each supported format.
-     */
-    processing?: Partial<IProcessingConfig>;
-    /**
-     * Object with imagemin plugins for each format.
-     */
-    optimization?: Partial<IOptimizationConfig>;
-    /**
-     * Do not optimize output images.
-     */
-    skipOptimization?: boolean;
-    /**
-     * Generate images with higher resolution than they's sources are.
-     */
-    scalingUp?: boolean;
-    /**
-     * Postfix string or function to generate postfix for image.
-     */
-    postfix?: Postfix;
-}
+First argument is [IRule](#rule-options)\[\], second argument extends [common options](#common-options):
 
-/**
- * First argument: IPluginRule[]
- */
-interface IPluginRule extends ICommonConfig {
-    /**
-     * There is support of 3 types of matchers:
-     * 1. Glob pattern of file path;
-     * 2. Media query to match image by size;
-     * 3. `(path: string, size: ISize, source: Vinyl) => boolean` function.
-     */
-    match?: Matcher;
-    /**
-     * Output image(s) formats to convert.
-     */
-    format?: SupportedExtension|SupportedExtension[];
-    /**
-     * Output image(s) widths to resize, value less than or equal to 1 will be detected as multiplier.
-     */
-    width?: number|number[];
-}
-
-/**
- * Second argument: 
- */
-interface IPluginConfig extends ICommonConfig {
-    /**
-     * Print additional info about progress.
-     */
-    verbose?: boolean;
-}
-```
-
-- [`IProcessingConfig`](https://trigensoftware.github.io/flexis-srcset/interfaces/_types_.iprocessingconfig.html)
-- [`IOptimizationConfig`](https://trigensoftware.github.io/flexis-srcset/interfaces/_types_.ioptimizationconfig.html)
-- [`Postfix`](https://trigensoftware.github.io/flexis-srcset/modules/_types_.html#postfix)
-- [`Matcher`](https://trigensoftware.github.io/flexis-srcset/modules/_helpers_.html#matcher)
-- [`SupportedExtension`](https://trigensoftware.github.io/flexis-srcset/modules/_extensions_.html#supportedextension)
+| Option | Type | Description | Default |
+|--------|------|-------------|---------|
+| verbose | boolean | Print additional info about progress. | `false` |
 
 ### JS API
 
 Module exposes next API:
 
 ```js
-export default SrcsetGenerator;
+export default SrcSetGenerator;
 export {
     IProcessingConfig,
     IOptimizationConfig,
-    ISrsetVinyl,
+    ISrcSetVinyl,
     ISize,
     IMatcherFunction,
     SupportedExtension,
@@ -269,7 +181,7 @@ export {
 import {
     promises as fs
 } from 'fs';
-import SrcsetGenerator from '@flexis/favicons';
+import SrcSetGenerator from '@flexis/favicons';
 import Vinyl from 'vinyl';
 
 async function generate() {
@@ -280,8 +192,8 @@ async function generate() {
         path,
         contents
     });
-    const srcset = new SrcsetGenerator();
-    const images = srcset.generate(source, {
+    const srcSet = new SrcSetGenerator();
+    const images = srcSet.generate(source, {
         width:  [1920, 1280, 1024, 860, 540, 320],
         format: ['jpg', 'webp']
     });

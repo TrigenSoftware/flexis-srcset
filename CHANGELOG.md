@@ -24,6 +24,13 @@ DO NOT TOUCH. SAVE IT ON TOP.
 
 -->
 
+## [3.0.0] - 2020-06-23
+### Breaking
+- Naming change: srcset -> srcSet, Srcset -> SrcSet
+
+### Added
+- `originMultiplier` image metadata
+
 ## [2.0.0] - 2020-05-26
 ### Breaking
 - Requires `Node 10+`

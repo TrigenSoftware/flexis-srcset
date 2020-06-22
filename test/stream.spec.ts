@@ -1,6 +1,6 @@
 import path from 'path';
 import vfs from 'vinyl-fs';
-import srcset from '../src/stream';
+import srcSet from '../src/stream';
 
 jest.setTimeout(50000);
 
@@ -13,7 +13,7 @@ describe('stream', () => {
 		vfs.src(
 			path.join(__dirname, 'images/*.{jpg,png,gif,ico}')
 		)
-			.pipe(srcset([{
+			.pipe(srcSet([{
 				match:  '(min-width: 3000px)',
 				width:  [1, 3200, 1920, 1280, 720, 560, 320],
 				format: ['jpg', 'webp']
@@ -35,7 +35,7 @@ describe('stream', () => {
 		vfs.src(
 			path.join(__dirname, 'images/*.{jpg,png,gif,ico}')
 		)
-			.pipe(srcset([{
+			.pipe(srcSet([{
 				match: '**/*.png',
 				width: [1, .5]
 			}]))
