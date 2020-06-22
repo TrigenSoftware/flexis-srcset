@@ -48,7 +48,11 @@ export async function attachMetadata(source: Vinyl, force = false): Promise<ISrs
 	}
 
 	try {
+
+		const originMultiplier = source?.metadata?.originMultiplier;
+
 		source.metadata = await Sharp(source.contents as Buffer).metadata();
+		source.metadata.originMultiplier = originMultiplier;
 	} catch (err) {
 		return source;
 	}

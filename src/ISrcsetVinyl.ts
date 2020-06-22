@@ -4,6 +4,8 @@ import {
 } from 'sharp';
 
 export default interface ISrsetVinyl extends Vinyl {
-	metadata?: Metadata;
+	metadata?: Metadata & {
+		originMultiplier?: number;
+	};
 	postfix?: string;
 }

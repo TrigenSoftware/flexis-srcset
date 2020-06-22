@@ -222,5 +222,19 @@ describe('SrcsetGenerator', () => {
 				} as any))
 			).rejects.toThrow();
 		});
+
+		it('should add originMultiplier to metadate', async () => {
+
+			const [
+				x2,
+				x1
+			] = await vinylsFromAsyncIterator(srcset.generate(image, {
+				scalingUp: false,
+				width: [1, .5]
+			}));
+
+			expect(x2.metadata.originMultiplier).toBe(1);
+			expect(x1.metadata.originMultiplier).toBe(.5);
+		});
 	});
 });

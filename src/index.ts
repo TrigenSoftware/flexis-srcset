@@ -198,9 +198,14 @@ export default class SrcsetGenerator {
 
 		if (width !== null) {
 
-			const calculatedWidth = originWidth && width <= 1
+			const isMultiplier = width <= 1;
+			const calculatedWidth = originWidth && isMultiplier
 				? Math.ceil(width * originWidth)
 				: width;
+
+			if (isMultiplier) {
+				target.metadata.originMultiplier = width;
+			}
 
 			this.addPostfix(target, calculatedWidth, width, config.postfix);
 
