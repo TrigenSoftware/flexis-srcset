@@ -4,7 +4,7 @@
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<title>@flexis/srcset</title>
-	<meta name="description" content="">
+	<meta name="description" content="Documentation for @flexis/srcset">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" href="assets/css/main.css">
 </head>
@@ -13,7 +13,7 @@
 	<div class="tsd-page-toolbar">
 		<div class="container">
 			<div class="table-wrap">
-				<div class="table-cell" id="tsd-search" data-index="assets/js/search.js" data-base=".">
+				<div class="table-cell" id="tsd-search" data-index="assets/js/search.json" data-base=".">
 					<div class="field">
 						<label for="tsd-search-field" class="tsd-widget search no-caption">Search</label>
 						<input id="tsd-search-field" type="text" />
@@ -54,7 +54,7 @@
 					<a href="globals.html">Globals</a>
 				</li>
 			</ul>
-			<h1> @flexis/srcset</h1>
+			<h1>@flexis/srcset</h1>
 		</div>
 	</div>
 </header>
@@ -107,7 +107,7 @@ yarn <span class="hljs-built_in">exec</span> -- srcset [...sources] [...options]
 					<tbody><tr>
 							<td>sources</td>
 							<td>Source image(s) glob patterns.</td>
-							<td></td>
+							<td>required</td>
 						</tr>
 						<tr>
 							<td>&#x2011;&#x2011;help, -h</td>
@@ -147,7 +147,7 @@ yarn <span class="hljs-built_in">exec</span> -- srcset [...sources] [...options]
 						<tr>
 							<td>&#x2011;&#x2011;dest, -d</td>
 							<td>Destination directory.</td>
-							<td></td>
+							<td>required</td>
 						</tr>
 				</tbody></table>
 				<a href="#example" id="example" style="color: inherit; text-decoration: none;">
@@ -155,90 +155,137 @@ yarn <span class="hljs-built_in">exec</span> -- srcset [...sources] [...options]
 				</a>
 				<pre><code class="language-sh">srcset <span class="hljs-string">"src/images/*.jpg"</span> --match <span class="hljs-string">"(min-width: 1920px)"</span> --width 1920,1280,1024,860,540,320 --format jpg,webp -d static/images</code></pre>
 				<a href="#configuration" id="configuration" style="color: inherit; text-decoration: none;">
-					<h4>Configuration</h4>
+					<h3>Configuration</h3>
+				</a>
+				<a href="#common-options" id="common-options" style="color: inherit; text-decoration: none;">
+					<h4>Common options</h4>
+				</a>
+				<table>
+					<thead>
+						<tr>
+							<th>Option</th>
+							<th>Type</th>
+							<th>Description</th>
+							<th>Default</th>
+						</tr>
+					</thead>
+					<tbody><tr>
+							<td>processing</td>
+							<td>Partial&lt;<a href="https://trigensoftware.github.io/flexis-srcset/interfaces/_types_.iprocessingconfig.html">IProcessingConfig</a>&gt;</td>
+							<td>Object with Sharp configs for each supported format.</td>
+							<td>see <a href="src/defaults.ts">defaults.ts</a></td>
+						</tr>
+						<tr>
+							<td>optimization</td>
+							<td>Partial&lt;<a href="https://trigensoftware.github.io/flexis-srcset/interfaces/_types_.ioptimizationconfig.html">IOptimizationConfig</a>&gt;</td>
+							<td>Object with imagemin plugins for each format.</td>
+							<td>see <a href="src/defaults.ts">defaults.ts</a></td>
+						</tr>
+						<tr>
+							<td>skipOptimization</td>
+							<td>boolean</td>
+							<td>Do not optimize output images.</td>
+							<td><code>false</code></td>
+						</tr>
+						<tr>
+							<td>scalingUp</td>
+							<td>boolean</td>
+							<td>Generate images with higher resolution than they&#39;s sources are.</td>
+							<td><code>true</code></td>
+						</tr>
+						<tr>
+							<td>postfix</td>
+							<td><a href="https://trigensoftware.github.io/flexis-srcset/modules/_types_.html#postfix">Postfix</a></td>
+							<td>Output image(s) widths to resize, value less than or equal to 1 will be detected as multiplier.</td>
+							<td>see <a href="src/defaults.ts">defaults.ts</a></td>
+						</tr>
+				</tbody></table>
+				<a href="#rule-options" id="rule-options" style="color: inherit; text-decoration: none;">
+					<h4>Rule options</h4>
+				</a>
+				<p>Extends <a href="#common-options">common options</a>.</p>
+				<table>
+					<thead>
+						<tr>
+							<th>Option</th>
+							<th>Type</th>
+							<th>Description</th>
+							<th>Default</th>
+						</tr>
+					</thead>
+					<tbody><tr>
+							<td>match</td>
+							<td><a href="https://trigensoftware.github.io/flexis-srcset/modules/_helpers_.html#matcher">Matcher</a></td>
+							<td>There is support of 3 types of matchers:<br>1. Glob pattern of file path;<br>2. Media query to match image by size;<br>3. <code>(path: string, size: ISize, source: Vinyl) =&gt; boolean</code> function.</td>
+							<td>all images</td>
+						</tr>
+						<tr>
+							<td>format</td>
+							<td><a href="https://trigensoftware.github.io/flexis-srcset/modules/_extensions_.html#supportedextension">SupportedExtension</a>|<a href="https://trigensoftware.github.io/flexis-srcset/modules/_extensions_.html#supportedextension">SupportedExtension</a>[]</td>
+							<td>Output image(s) formats to convert.</td>
+							<td>no convert</td>
+						</tr>
+						<tr>
+							<td>width</td>
+							<td>number|number[]</td>
+							<td>Output image(s) widths to resize, value less than or equal to 1 will be detected as multiplier.</td>
+							<td><code>[1]</code></td>
+						</tr>
+				</tbody></table>
+				<a href="#configuration-file" id="configuration-file" style="color: inherit; text-decoration: none;">
+					<h4>Configuration file</h4>
 				</a>
 				<p>Configuration file is optional. If needed, can be defined through <code>.srcsetrc</code> (JSON file) or <code>.srcsetrc.js</code> in the root directory of the project.</p>
-				<p>Supported options:</p>
-				<pre><code class="language-ts"><span class="hljs-keyword">interface</span> ICommonConfig {
-    <span class="hljs-comment">/**
-     * Object with Sharp configs for each supported format.
-     */</span>
-    processing?: Partial&lt;IProcessingConfig&gt;;
-    <span class="hljs-comment">/**
-     * Object with imagemin plugins for each format.
-     */</span>
-    optimization?: Partial&lt;IOptimizationConfig&gt;;
-    <span class="hljs-comment">/**
-     * Do not optimize output images.
-     */</span>
-    skipOptimization?: <span class="hljs-built_in">boolean</span>;
-    <span class="hljs-comment">/**
-     * Generate images with higher resolution than they's sources are.
-     */</span>
-    scalingUp?: <span class="hljs-built_in">boolean</span>;
-    <span class="hljs-comment">/**
-     * Postfix string or function to generate postfix for image.
-     */</span>
-    postfix?: Postfix;
-}
-
-<span class="hljs-keyword">interface</span> IRule <span class="hljs-keyword">extends</span> ICommonConfig {
-    <span class="hljs-comment">/**
-     * There is support of 3 types of matchers:
-     * 1. Glob pattern of file path;
-     * 2. Media query to match image by size;
-     * 3. `(path: string, size: ISize, source: Vinyl) =&gt; boolean` function.
-     */</span>
-    match?: Matcher;
-    <span class="hljs-comment">/**
-     * Output image(s) formats to convert.
-     */</span>
-    format?: SupportedExtension|SupportedExtension[];
-    <span class="hljs-comment">/**
-     * Output image(s) widths to resize, value less than or equal to 1 will be detected as multiplier.
-     */</span>
-    width?: <span class="hljs-built_in">number</span>|<span class="hljs-built_in">number</span>[];
-}
-
-<span class="hljs-comment">/**
- * RC file:
- */</span>
-<span class="hljs-keyword">interface</span> IConfig <span class="hljs-keyword">extends</span> ICommonConfig {
-    <span class="hljs-comment">/**
-     * Source image(s) glob patterns.
-     */</span>
-    src?: <span class="hljs-built_in">string</span>|<span class="hljs-built_in">string</span>[];
-    <span class="hljs-comment">/**
-     * Rules.
-     */</span>
-    rules?: IRule[];
-    <span class="hljs-comment">/**
-     * Print additional info about progress.
-     */</span>
-    verbose?: <span class="hljs-built_in">boolean</span>;
-    <span class="hljs-comment">/**
-     * Destination directory.
-     */</span>
-    dest?: <span class="hljs-built_in">string</span>;
-}</code></pre>
-				<ul>
-					<li><a href="https://trigensoftware.github.io/flexis-srcset/interfaces/_types_.iprocessingconfig.html"><code>IProcessingConfig</code></a></li>
-					<li><a href="https://trigensoftware.github.io/flexis-srcset/interfaces/_types_.ioptimizationconfig.html"><code>IOptimizationConfig</code></a></li>
-					<li><a href="https://trigensoftware.github.io/flexis-srcset/modules/_types_.html#postfix"><code>Postfix</code></a></li>
-					<li><a href="https://trigensoftware.github.io/flexis-srcset/modules/_helpers_.html#matcher"><code>Matcher</code></a></li>
-					<li><a href="https://trigensoftware.github.io/flexis-srcset/modules/_extensions_.html#supportedextension"><code>SupportedExtension</code></a></li>
-				</ul>
+				<p>Supported options, extends <a href="#common-options">common options</a>:</p>
+				<table>
+					<thead>
+						<tr>
+							<th>Option</th>
+							<th>Type</th>
+							<th>Description</th>
+							<th>Default</th>
+						</tr>
+					</thead>
+					<tbody><tr>
+							<td>src</td>
+							<td>string|string[]</td>
+							<td>Source image(s) glob patterns.</td>
+							<td>required</td>
+						</tr>
+						<tr>
+							<td>rules</td>
+							<td><a href="#rule-options">IRule</a>[]</td>
+							<td>Rules.</td>
+							<td><code>[]</code></td>
+						</tr>
+						<tr>
+							<td>verbose</td>
+							<td>boolean</td>
+							<td>Print additional info about progress.</td>
+							<td><code>false</code></td>
+						</tr>
+						<tr>
+							<td>dest</td>
+							<td>string</td>
+							<td>Destination directory.</td>
+							<td>required</td>
+						</tr>
+				</tbody></table>
 				<a href="#gulp" id="gulp" style="color: inherit; text-decoration: none;">
 					<h3>Gulp</h3>
 				</a>
 				<p>You can use <code>@flexis/srcset</code> with <a href="https://github.com/gulpjs/gulp">Gulp</a>:</p>
-				<pre><code class="language-js"><span class="hljs-keyword">import</span> srcset <span class="hljs-keyword">from</span> <span class="hljs-string">'@flexis/srcset/lib/stream'</span>;
+				<pre><code class="language-js"><span class="hljs-keyword">import</span> srcSet <span class="hljs-keyword">from</span> <span class="hljs-string">'@flexis/srcset/lib/stream'</span>;
 
 gulp.task(<span class="hljs-string">'images'</span>, () =&gt;
     gulp.src(<span class="hljs-string">'src/*.{jpg,png}'</span>)
-        .pipe(srcset([{
+        .pipe(srcSet([{
             <span class="hljs-attr">match</span>:  <span class="hljs-string">'(min-width: 3000px)'</span>,
             <span class="hljs-attr">width</span>:  [<span class="hljs-number">1920</span>, <span class="hljs-number">1280</span>, <span class="hljs-number">1024</span>, <span class="hljs-number">860</span>, <span class="hljs-number">540</span>, <span class="hljs-number">320</span>],
+            <span class="hljs-attr">format</span>: [<span class="hljs-string">'jpg'</span>, <span class="hljs-string">'webp'</span>]
+        }, {
+            <span class="hljs-attr">match</span>:  <span class="hljs-string">'(max-width: 3000px)'</span>,
+            <span class="hljs-attr">width</span>:  [<span class="hljs-number">1</span>, <span class="hljs-number">.5</span>],
             <span class="hljs-attr">format</span>: [<span class="hljs-string">'jpg'</span>, <span class="hljs-string">'webp'</span>]
         }], {
             <span class="hljs-attr">skipOptimization</span>: <span class="hljs-literal">true</span>
@@ -249,75 +296,32 @@ gulp.task(<span class="hljs-string">'images'</span>, () =&gt;
 					<p>NOTICE: this plugin is also available as <a href="https://github.com/TrigenSoftware/gulp-srcset"><code>gulp-srcset</code></a> package.</p>
 				</blockquote>
 				<p>Plugin options:</p>
-				<pre><code class="language-ts"><span class="hljs-keyword">interface</span> ICommonConfig {
-    <span class="hljs-comment">/**
-     * Object with Sharp configs for each supported format.
-     */</span>
-    processing?: Partial&lt;IProcessingConfig&gt;;
-    <span class="hljs-comment">/**
-     * Object with imagemin plugins for each format.
-     */</span>
-    optimization?: Partial&lt;IOptimizationConfig&gt;;
-    <span class="hljs-comment">/**
-     * Do not optimize output images.
-     */</span>
-    skipOptimization?: <span class="hljs-built_in">boolean</span>;
-    <span class="hljs-comment">/**
-     * Generate images with higher resolution than they's sources are.
-     */</span>
-    scalingUp?: <span class="hljs-built_in">boolean</span>;
-    <span class="hljs-comment">/**
-     * Postfix string or function to generate postfix for image.
-     */</span>
-    postfix?: Postfix;
-}
-
-<span class="hljs-comment">/**
- * First argument: IPluginRule[]
- */</span>
-<span class="hljs-keyword">interface</span> IPluginRule <span class="hljs-keyword">extends</span> ICommonConfig {
-    <span class="hljs-comment">/**
-     * There is support of 3 types of matchers:
-     * 1. Glob pattern of file path;
-     * 2. Media query to match image by size;
-     * 3. `(path: string, size: ISize, source: Vinyl) =&gt; boolean` function.
-     */</span>
-    match?: Matcher;
-    <span class="hljs-comment">/**
-     * Output image(s) formats to convert.
-     */</span>
-    format?: SupportedExtension|SupportedExtension[];
-    <span class="hljs-comment">/**
-     * Output image(s) widths to resize, value less than or equal to 1 will be detected as multiplier.
-     */</span>
-    width?: <span class="hljs-built_in">number</span>|<span class="hljs-built_in">number</span>[];
-}
-
-<span class="hljs-comment">/**
- * Second argument: 
- */</span>
-<span class="hljs-keyword">interface</span> IPluginConfig <span class="hljs-keyword">extends</span> ICommonConfig {
-    <span class="hljs-comment">/**
-     * Print additional info about progress.
-     */</span>
-    verbose?: <span class="hljs-built_in">boolean</span>;
-}</code></pre>
-				<ul>
-					<li><a href="https://trigensoftware.github.io/flexis-srcset/interfaces/_types_.iprocessingconfig.html"><code>IProcessingConfig</code></a></li>
-					<li><a href="https://trigensoftware.github.io/flexis-srcset/interfaces/_types_.ioptimizationconfig.html"><code>IOptimizationConfig</code></a></li>
-					<li><a href="https://trigensoftware.github.io/flexis-srcset/modules/_types_.html#postfix"><code>Postfix</code></a></li>
-					<li><a href="https://trigensoftware.github.io/flexis-srcset/modules/_helpers_.html#matcher"><code>Matcher</code></a></li>
-					<li><a href="https://trigensoftware.github.io/flexis-srcset/modules/_extensions_.html#supportedextension"><code>SupportedExtension</code></a></li>
-				</ul>
+				<p>First argument is <a href="#rule-options">IRule</a>[], second argument extends <a href="#common-options">common options</a>:</p>
+				<table>
+					<thead>
+						<tr>
+							<th>Option</th>
+							<th>Type</th>
+							<th>Description</th>
+							<th>Default</th>
+						</tr>
+					</thead>
+					<tbody><tr>
+							<td>verbose</td>
+							<td>boolean</td>
+							<td>Print additional info about progress.</td>
+							<td><code>false</code></td>
+						</tr>
+				</tbody></table>
 				<a href="#js-api" id="js-api" style="color: inherit; text-decoration: none;">
 					<h3>JS API</h3>
 				</a>
 				<p>Module exposes next API:</p>
-				<pre><code class="language-js"><span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> SrcsetGenerator;
+				<pre><code class="language-js"><span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> SrcSetGenerator;
 <span class="hljs-keyword">export</span> {
     IProcessingConfig,
     IOptimizationConfig,
-    ISrsetVinyl,
+    ISrcSetVinyl,
     ISize,
     IMatcherFunction,
     SupportedExtension,
@@ -337,7 +341,7 @@ gulp.task(<span class="hljs-string">'images'</span>, () =&gt;
 				<pre><code class="language-js"><span class="hljs-keyword">import</span> {
     promises <span class="hljs-keyword">as</span> fs
 } <span class="hljs-keyword">from</span> <span class="hljs-string">'fs'</span>;
-<span class="hljs-keyword">import</span> SrcsetGenerator <span class="hljs-keyword">from</span> <span class="hljs-string">'@flexis/favicons'</span>;
+<span class="hljs-keyword">import</span> SrcSetGenerator <span class="hljs-keyword">from</span> <span class="hljs-string">'@flexis/favicons'</span>;
 <span class="hljs-keyword">import</span> Vinyl <span class="hljs-keyword">from</span> <span class="hljs-string">'vinyl'</span>;
 
 <span class="hljs-keyword">async</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">generate</span>(<span class="hljs-params"></span>) </span>{
@@ -348,8 +352,8 @@ gulp.task(<span class="hljs-string">'images'</span>, () =&gt;
         path,
         contents
     });
-    <span class="hljs-keyword">const</span> srcset = <span class="hljs-keyword">new</span> SrcsetGenerator();
-    <span class="hljs-keyword">const</span> images = favicons.generate(source, {
+    <span class="hljs-keyword">const</span> srcSet = <span class="hljs-keyword">new</span> SrcSetGenerator();
+    <span class="hljs-keyword">const</span> images = srcSet.generate(source, {
         <span class="hljs-attr">width</span>:  [<span class="hljs-number">1920</span>, <span class="hljs-number">1280</span>, <span class="hljs-number">1024</span>, <span class="hljs-number">860</span>, <span class="hljs-number">540</span>, <span class="hljs-number">320</span>],
         <span class="hljs-attr">format</span>: [<span class="hljs-string">'jpg'</span>, <span class="hljs-string">'webp'</span>]
     });
@@ -370,29 +374,26 @@ generate();</code></pre>
 					<li class="globals  ">
 						<a href="globals.html"><em>Globals</em></a>
 					</li>
-					<li class=" tsd-kind-external-module">
-						<a href="modules/_isrcsetvinyl_.html">"ISrcset<wbr>Vinyl"</a>
+					<li class=" tsd-kind-module">
+						<a href="modules/_cli_.html">&quot;cli&quot;</a>
 					</li>
-					<li class=" tsd-kind-external-module">
-						<a href="modules/_cli_.html">"cli"</a>
+					<li class=" tsd-kind-module">
+						<a href="modules/_defaults_.html">&quot;defaults&quot;</a>
 					</li>
-					<li class=" tsd-kind-external-module">
-						<a href="modules/_defaults_.html">"defaults"</a>
+					<li class=" tsd-kind-module">
+						<a href="modules/_extensions_.html">&quot;extensions&quot;</a>
 					</li>
-					<li class=" tsd-kind-external-module">
-						<a href="modules/_extensions_.html">"extensions"</a>
+					<li class=" tsd-kind-module">
+						<a href="modules/_helpers_.html">&quot;helpers&quot;</a>
 					</li>
-					<li class=" tsd-kind-external-module">
-						<a href="modules/_helpers_.html">"helpers"</a>
+					<li class=" tsd-kind-module">
+						<a href="modules/_index_.html">&quot;index&quot;</a>
 					</li>
-					<li class=" tsd-kind-external-module">
-						<a href="modules/_index_.html">"index"</a>
+					<li class=" tsd-kind-module">
+						<a href="modules/_stream_.html">&quot;stream&quot;</a>
 					</li>
-					<li class=" tsd-kind-external-module">
-						<a href="modules/_stream_.html">"stream"</a>
-					</li>
-					<li class=" tsd-kind-external-module">
-						<a href="modules/_types_.html">"types"</a>
+					<li class=" tsd-kind-module">
+						<a href="modules/_types_.html">&quot;types&quot;</a>
 					</li>
 				</ul>
 			</nav>
@@ -408,57 +409,16 @@ generate();</code></pre>
 		<h2>Legend</h2>
 		<div class="tsd-legend-group">
 			<ul class="tsd-legend">
-				<li class="tsd-kind-module"><span class="tsd-kind-icon">Module</span></li>
 				<li class="tsd-kind-object-literal"><span class="tsd-kind-icon">Object literal</span></li>
 				<li class="tsd-kind-variable"><span class="tsd-kind-icon">Variable</span></li>
 				<li class="tsd-kind-function"><span class="tsd-kind-icon">Function</span></li>
-				<li class="tsd-kind-function tsd-has-type-parameter"><span class="tsd-kind-icon">Function with type parameter</span></li>
-				<li class="tsd-kind-index-signature"><span class="tsd-kind-icon">Index signature</span></li>
 				<li class="tsd-kind-type-alias"><span class="tsd-kind-icon">Type alias</span></li>
-				<li class="tsd-kind-type-alias tsd-has-type-parameter"><span class="tsd-kind-icon">Type alias with type parameter</span></li>
-			</ul>
-			<ul class="tsd-legend">
-				<li class="tsd-kind-enum"><span class="tsd-kind-icon">Enumeration</span></li>
-				<li class="tsd-kind-enum-member"><span class="tsd-kind-icon">Enumeration member</span></li>
-				<li class="tsd-kind-property tsd-parent-kind-enum"><span class="tsd-kind-icon">Property</span></li>
-				<li class="tsd-kind-method tsd-parent-kind-enum"><span class="tsd-kind-icon">Method</span></li>
 			</ul>
 			<ul class="tsd-legend">
 				<li class="tsd-kind-interface"><span class="tsd-kind-icon">Interface</span></li>
-				<li class="tsd-kind-interface tsd-has-type-parameter"><span class="tsd-kind-icon">Interface with type parameter</span></li>
-				<li class="tsd-kind-constructor tsd-parent-kind-interface"><span class="tsd-kind-icon">Constructor</span></li>
-				<li class="tsd-kind-property tsd-parent-kind-interface"><span class="tsd-kind-icon">Property</span></li>
-				<li class="tsd-kind-method tsd-parent-kind-interface"><span class="tsd-kind-icon">Method</span></li>
-				<li class="tsd-kind-index-signature tsd-parent-kind-interface"><span class="tsd-kind-icon">Index signature</span></li>
 			</ul>
 			<ul class="tsd-legend">
 				<li class="tsd-kind-class"><span class="tsd-kind-icon">Class</span></li>
-				<li class="tsd-kind-class tsd-has-type-parameter"><span class="tsd-kind-icon">Class with type parameter</span></li>
-				<li class="tsd-kind-constructor tsd-parent-kind-class"><span class="tsd-kind-icon">Constructor</span></li>
-				<li class="tsd-kind-property tsd-parent-kind-class"><span class="tsd-kind-icon">Property</span></li>
-				<li class="tsd-kind-method tsd-parent-kind-class"><span class="tsd-kind-icon">Method</span></li>
-				<li class="tsd-kind-accessor tsd-parent-kind-class"><span class="tsd-kind-icon">Accessor</span></li>
-				<li class="tsd-kind-index-signature tsd-parent-kind-class"><span class="tsd-kind-icon">Index signature</span></li>
-			</ul>
-			<ul class="tsd-legend">
-				<li class="tsd-kind-constructor tsd-parent-kind-class tsd-is-inherited"><span class="tsd-kind-icon">Inherited constructor</span></li>
-				<li class="tsd-kind-property tsd-parent-kind-class tsd-is-inherited"><span class="tsd-kind-icon">Inherited property</span></li>
-				<li class="tsd-kind-method tsd-parent-kind-class tsd-is-inherited"><span class="tsd-kind-icon">Inherited method</span></li>
-				<li class="tsd-kind-accessor tsd-parent-kind-class tsd-is-inherited"><span class="tsd-kind-icon">Inherited accessor</span></li>
-			</ul>
-			<ul class="tsd-legend">
-				<li class="tsd-kind-property tsd-parent-kind-class tsd-is-protected"><span class="tsd-kind-icon">Protected property</span></li>
-				<li class="tsd-kind-method tsd-parent-kind-class tsd-is-protected"><span class="tsd-kind-icon">Protected method</span></li>
-				<li class="tsd-kind-accessor tsd-parent-kind-class tsd-is-protected"><span class="tsd-kind-icon">Protected accessor</span></li>
-			</ul>
-			<ul class="tsd-legend">
-				<li class="tsd-kind-property tsd-parent-kind-class tsd-is-private"><span class="tsd-kind-icon">Private property</span></li>
-				<li class="tsd-kind-method tsd-parent-kind-class tsd-is-private"><span class="tsd-kind-icon">Private method</span></li>
-				<li class="tsd-kind-accessor tsd-parent-kind-class tsd-is-private"><span class="tsd-kind-icon">Private accessor</span></li>
-			</ul>
-			<ul class="tsd-legend">
-				<li class="tsd-kind-property tsd-parent-kind-class tsd-is-static"><span class="tsd-kind-icon">Static property</span></li>
-				<li class="tsd-kind-call-signature tsd-parent-kind-class tsd-is-static"><span class="tsd-kind-icon">Static method</span></li>
 			</ul>
 		</div>
 	</div>
