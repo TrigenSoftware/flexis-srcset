@@ -85,7 +85,7 @@ srcset "src/images/*.jpg" --match "(min-width: 1920px)" --width 1920,1280,1024,8
 | optimization | Partial\<[IOptimizationConfig]\> | Object with imagemin plugins for each format. | see [defaults.ts](src/defaults.ts) |
 | skipOptimization | boolean | Do not optimize output images. | `false` |
 | scalingUp | boolean | Generate images with higher resolution than they's sources are. | `true` |
-| postfix | [Postfix] | Output image(s) widths to resize, value less than or equal to 1 will be detected as multiplier. | see [defaults.ts](src/defaults.ts) |
+| postfix | [Postfix] | Postfix string or function to generate postfix for image. | see [defaults.ts](src/defaults.ts) |
 
 #### Rule options
 
