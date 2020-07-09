@@ -54,11 +54,11 @@ export interface IProcessingConfig {
  * ```
  */
 export interface IOptimizationConfig {
-	webp: any;
-	jpg: any;
-	png: any;
-	gif: any;
-	svg: any;
+	webp: any | any[];
+	jpg: any | any[];
+	png: any | any[];
+	gif: any | any[];
+	svg: any | any[];
 }
 
 export interface IPostfixFormatter {

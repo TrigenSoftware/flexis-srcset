@@ -1,6 +1,6 @@
 import webpPlugin from 'imagemin-webp';
 import mozJpegPlugin from 'imagemin-mozjpeg';
-import zopfliPlugin from 'imagemin-zopfli';
+import pngquantPlugin from 'imagemin-pngquant';
 import gifLossyPlugin from 'imagemin-giflossy';
 import svgoPlugin from 'imagemin-svgo';
 
@@ -17,7 +17,7 @@ export const processing = {
 export const optimization = {
 	webp: webpPlugin(),
 	jpg:  mozJpegPlugin(),
-	png:  zopfliPlugin(),
+	png:  pngquantPlugin(),
 	gif:  gifLossyPlugin(),
 	svg:  svgoPlugin()
 };

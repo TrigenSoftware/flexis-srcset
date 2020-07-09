@@ -252,9 +252,12 @@ export default class SrcSetGenerator {
 			...this.optimization,
 			...config.optimization
 		};
+		const plugins = optimization[source.extname.replace(/^\./, '')];
 
 		target.contents = await Imagemin.buffer(source.contents as Buffer, {
-			plugins: [optimization[source.extname.replace(/^\./, '')]]
+			plugins: Array.isArray(plugins)
+				? plugins
+				: [plugins]
 		});
 
 		return target;

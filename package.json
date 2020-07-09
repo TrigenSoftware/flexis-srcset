@@ -1,6 +1,6 @@
 {
   "name": "@flexis/srcset",
-  "version": "3.0.1",
+  "version": "3.1.0",
   "description": "Highly customizable tool for generating responsive images.",
   "author": "dangreen",
   "license": "MIT",
@@ -37,9 +37,9 @@
     "responsive"
   ],
   "dependencies": {
-    "@babel/runtime-corejs3": "^7.10.3",
+    "@babel/runtime-corejs3": "^7.10.4",
     "@types/minimatch": "^3.0.3",
-    "@types/node": "^14.0.13",
+    "@types/node": "^14.0.20",
     "@types/sharp": "^0.25.0",
     "@types/through2-concurrent": "^2.0.0",
     "@types/vinyl": "^2.0.3",
@@ -51,9 +51,9 @@
     "imagemin": "^7.0.0",
     "imagemin-giflossy": "^5.1.10",
     "imagemin-mozjpeg": "^9.0.0",
+    "imagemin-pngquant": "^9.0.0",
     "imagemin-svgo": "^8.0.0",
     "imagemin-webp": "^6.0.0",
-    "imagemin-zopfli": "^7.0.0",
     "minimatch": "^3.0.4",
     "omit-empty": "^1.0.0",
     "rcfile": "^1.0.3",
@@ -63,7 +63,7 @@
     "vinyl-fs": "^3.0.3"
   },
   "devDependencies": {
-    "@size-limit/preset-small-lib": "^4.5.1",
+    "@size-limit/preset-small-lib": "^4.5.3",
     "@trigen/scripts": "6.0.0",
     "@trigen/scripts-plugin-babel": "6.1.1",
     "@trigen/scripts-plugin-eslint": "6.0.0",
