@@ -15,12 +15,8 @@ export const processing = {
 };
 
 export const optimization = {
-	webp: webpPlugin({
-		quality: 100
-	}),
-	jpg:  mozJpegPlugin({
-		quality: 100
-	}),
+	webp: webpPlugin(),
+	jpg:  mozJpegPlugin(),
 	png:  zopfliPlugin(),
 	gif:  gifLossyPlugin(),
 	svg:  svgoPlugin()
