@@ -57,7 +57,7 @@
     "minimatch": "^3.0.4",
     "omit-empty": "^1.0.0",
     "rcfile": "^1.0.3",
-    "sharp": "^0.25.4",
+    "sharp": "^0.26.0",
     "through2-concurrent": "^2.0.0",
     "vinyl": "^2.2.0",
     "vinyl-fs": "^3.0.3"
