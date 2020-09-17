@@ -11,6 +11,7 @@ import {
 	ISrcSetVinyl
 } from './types';
 import {
+	SupportedExtension,
 	isSupportedType
 } from './extensions';
 
@@ -126,4 +127,8 @@ export async function matchImage(source: ISrcSetVinyl, matcherOrMatchers: Matche
 
 		return false;
 	});
+}
+
+export function getFormat(file: Vinyl) {
+	return file.extname.replace(/^\./, '').toLowerCase() as SupportedExtension;
 }

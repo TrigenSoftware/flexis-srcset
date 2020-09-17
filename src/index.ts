@@ -13,7 +13,8 @@ import {
 } from './extensions';
 import {
 	isVinylBuffer,
-	attachMetadata
+	attachMetadata,
+	getFormat
 } from './helpers';
 import {
 	ISrcSetVinyl,
@@ -85,15 +86,17 @@ export default class SrcSetGenerator {
 			scalingUp: this.scalingUp,
 			...generateConfig
 		};
-		const sourceType = source.extname.replace(/^\./, '') as SupportedExtension;
+		const sourceType = getFormat(source);
 
 		if (!isSupportedType(sourceType)) {
 			throw new Error(`"${sourceType}" is not supported.`);
 		}
 
-		const outputTypes = Array.isArray(config.format)
-			? config.format
-			: [config.format];
+		const outputTypes = (
+			Array.isArray(config.format)
+				? config.format
+				: [config.format]
+		).map(_ => _.toLowerCase() as SupportedExtension);
 		const widths = Array.isArray(config.width)
 			? config.width
 			: [config.width];
@@ -212,19 +215,41 @@ export default class SrcSetGenerator {
 			this.addPostfix(target, originWidth, originWidth, config.postfix);
 		}
 
-		if (!willResize && source.extname === target.extname) {
+		if (!willResize && source.extname.toLowerCase() === target.extname) {
 			target.contents = source.contents;
 			return target;
 		}
 
-		if (extensions.webp.test(outputType)) {
-			processor.webp(processing.webp);
-		} else
-		if (extensions.jpg.test(outputType)) {
-			processor.jpeg(processing.jpg);
-		} else
-		if (extensions.png.test(outputType)) {
-			processor.png(processing.png);
+		switch (true) {
+			case extensions.webp.test(outputType):
+				processor.webp(processing.webp);
+				break;
+
+			case extensions.jpg.test(outputType):
+				processor.jpeg(processing.jpg);
+				break;
+
+			case extensions.png.test(outputType):
+				processor.png(processing.png);
+				break;
+
+			case extensions.heic.test(outputType):
+				// @ts-expect-error Types is not up to date.
+				processor.heif({
+					...processing.heic,
+					compression: 'hevc'
+				});
+				break;
+
+			case extensions.avif.test(outputType):
+				// @ts-expect-error Types is not up to date.
+				processor.heif({
+					...processing.avif,
+					compression: 'av1'
+				});
+				break;
+
+			default:
 		}
 
 		target.contents = await processor.toBuffer();
@@ -246,7 +271,7 @@ export default class SrcSetGenerator {
 			...this.optimization,
 			...config.optimization
 		};
-		const plugins = optimization[source.extname.replace(/^\./, '') as SupportedExtension];
+		const plugins = optimization[getFormat(source)];
 
 		target.contents = await Imagemin.buffer(source.contents as Buffer, {
 			plugins: Array.isArray(plugins)
@@ -270,7 +295,7 @@ export default class SrcSetGenerator {
 		width: number,
 		customPostfix: Postfix = null
 	) {
-		const format = target.extname.replace('.', '');
+		const format = getFormat(target);
 		const {
 			postfix
 		} = this;

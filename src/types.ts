@@ -33,6 +33,7 @@ export interface ISrcSetVinyl extends Vinyl {
  * ```
  */
 export interface IProcessingConfig {
+	avif: Record<string, unknown>;
 	webp: Record<string, unknown>;
 	jpg: Record<string, unknown>;
 	png: Record<string, unknown>;

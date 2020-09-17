@@ -13,7 +13,13 @@ export const processing = {
 	jpg: {
 		quality: 100
 	},
-	png: {}
+	png: {},
+	heic: {
+		quality: 100
+	},
+	avif: {
+		quality: 100
+	}
 };
 
 export const optimization = {
