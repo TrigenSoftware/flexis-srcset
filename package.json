@@ -39,7 +39,7 @@
   "dependencies": {
     "@babel/runtime-corejs3": "^7.10.4",
     "@types/minimatch": "^3.0.3",
-    "@types/node": "^14.0.20",
+    "@types/node": "^14.14.2",
     "@types/sharp": "^0.26.0",
     "@types/through2-concurrent": "^2.0.0",
     "@types/vinyl": "^2.0.3",
