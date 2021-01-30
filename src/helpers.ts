@@ -1,3 +1,8 @@
+/* eslint-disable @typescript-eslint/no-unsafe-call */
+/* eslint-disable @typescript-eslint/restrict-template-expressions */
+/* eslint-disable @typescript-eslint/no-unsafe-member-access */
+/* eslint-disable @typescript-eslint/no-unsafe-assignment */
+/* eslint-disable require-atomic-updates */
 import Vinyl from 'vinyl';
 import minimatch from 'minimatch';
 import mediaQuery from 'css-mediaquery';
@@ -14,9 +19,7 @@ export interface ISize {
 	height: number;
 }
 
-export interface IMatcherFunction {
-	(path: string, size: ISize, source: Vinyl): boolean;
-}
+export type IMatcherFunction = (path: string, size: ISize, source: Vinyl) => boolean;
 
 /**
  * There is support of 3 types of matchers:
@@ -26,12 +29,12 @@ export interface IMatcherFunction {
  */
 export type Matcher = string|IMatcherFunction;
 
-const isMediaQuery = /\(\s*([^\s\:\)]+)\s*(?:\:\s*([^\s\)]+))?\s*\)/;
+const isMediaQuery = /\(\s*([^\s:)]+)\s*(?::\s*([^\s)]+))?\s*\)/;
 
 /**
  * Check object is Vinyl-buffer.
  * @param  source - Object to check.
- * @return Result.
+ * @returns Result.
  */
 export function isVinylBuffer(source: Vinyl) {
 	return Vinyl.isVinyl(source) && source.isBuffer() && !source.isNull() && !source.isStream();
@@ -41,21 +44,18 @@ export function isVinylBuffer(source: Vinyl) {
  * Attach image metadata to the vinyl file.
  * @param  source - Image file.
  * @param  force - Force refetch metadata.
- * @return Source image file with attached metadata.
+ * @returns Source image file with attached metadata.
  */
 export async function attachMetadata(source: Vinyl, force = false): Promise<ISrcSetVinyl> {
-
 	if (!force && typeof source.metadata === 'object') {
 		return source;
 	}
 
 	try {
-
 		const originMultiplier = source?.metadata?.originMultiplier;
 
 		source.metadata = await Sharp(source.contents as Buffer).metadata();
 		source.metadata.originMultiplier = originMultiplier;
-
 	} catch (err) {
 		return source;
 	}
@@ -75,10 +75,9 @@ export async function attachMetadata(source: Vinyl, force = false): Promise<ISrc
  * Match image file by path and size
  * @param  source - Image file.
  * @param  matcherOrMatchers - Rules to match image file.
- * @return Image is matched or not.
+ * @returns Image is matched or not.
  */
 export async function matchImage(source: ISrcSetVinyl, matcherOrMatchers: Matcher|Matcher[] = null) {
-
 	if (!isVinylBuffer(source)) {
 		throw new Error('Invalid source.');
 	}
@@ -108,14 +107,12 @@ export async function matchImage(source: ISrcSetVinyl, matcherOrMatchers: Matche
 	}
 
 	const size: ISize = {
-		width:  metadata.width,
+		width: metadata.width,
 		height: metadata.height
 	};
 
 	return matchers.every((funcOrPatternOrMediaQuery) => {
-
 		if (typeof funcOrPatternOrMediaQuery === 'string') {
-
 			if (isMediaQuery.test(funcOrPatternOrMediaQuery)) {
 				return mediaQuery.match(funcOrPatternOrMediaQuery, size);
 			}

@@ -1,3 +1,5 @@
+/* eslint-disable @typescript-eslint/no-unsafe-call */
+/* eslint-disable @typescript-eslint/no-unsafe-assignment */
 import webpPlugin from 'imagemin-webp';
 import mozJpegPlugin from 'imagemin-mozjpeg';
 import pngquantPlugin from 'imagemin-pngquant';
@@ -16,10 +18,10 @@ export const processing = {
 
 export const optimization = {
 	webp: webpPlugin(),
-	jpg:  mozJpegPlugin(),
-	png:  pngquantPlugin(),
-	gif:  gifLossyPlugin(),
-	svg:  svgoPlugin()
+	jpg: mozJpegPlugin(),
+	png: pngquantPlugin(),
+	gif: gifLossyPlugin(),
+	svg: svgoPlugin()
 };
 
 export function postfix(width: number, mul: number): string {

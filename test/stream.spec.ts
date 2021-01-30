@@ -5,17 +5,15 @@ import srcSet from '../src/stream';
 jest.setTimeout(50000);
 
 describe('stream', () => {
-
 	it('should emit files', (done) => {
-
 		let counter = 0;
 
 		vfs.src(
 			path.join(__dirname, 'images/*.{jpg,png,gif,ico}')
 		)
 			.pipe(srcSet([{
-				match:  '(min-width: 3000px)',
-				width:  [1, 3200, 1920, 1280, 720, 560, 320],
+				match: '(min-width: 3000px)',
+				width: [1, 3200, 1920, 1280, 720, 560, 320],
 				format: ['jpg', 'webp']
 			}]))
 			.on('error', done)
@@ -29,7 +27,6 @@ describe('stream', () => {
 	});
 
 	it('should match by glob', (done) => {
-
 		let counter = 0;
 
 		vfs.src(

@@ -3,6 +3,9 @@ import {
 	Metadata
 } from 'sharp';
 import {
+	Plugin
+} from 'imagemin';
+import {
 	SupportedExtension
 } from './extensions';
 
@@ -30,9 +33,9 @@ export interface ISrcSetVinyl extends Vinyl {
  * ```
  */
 export interface IProcessingConfig {
-	webp: Record<string, any>;
-	jpg: Record<string, any>;
-	png: Record<string, any>;
+	webp: Record<string, unknown>;
+	jpg: Record<string, unknown>;
+	png: Record<string, unknown>;
 }
 
 /**
@@ -54,16 +57,14 @@ export interface IProcessingConfig {
  * ```
  */
 export interface IOptimizationConfig {
-	webp: any | any[];
-	jpg: any | any[];
-	png: any | any[];
-	gif: any | any[];
-	svg: any | any[];
+	webp: Plugin | Plugin[];
+	jpg: Plugin | Plugin[];
+	png: Plugin | Plugin[];
+	gif: Plugin | Plugin[];
+	svg: Plugin | Plugin[];
 }
 
-export interface IPostfixFormatter {
-	(width: number, mul?: number, format?: string): string;
-}
+export type IPostfixFormatter = (width: number, mul?: number, format?: string) => string;
 
 /**
  * Postfix string or function to generate postfix for image.

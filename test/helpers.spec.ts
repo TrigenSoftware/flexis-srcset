@@ -11,15 +11,12 @@ import icon, {
 } from './icon';
 
 describe('Helpers', () => {
-
 	beforeEach(() => {
 		Reflect.deleteProperty(image, 'metadata');
 	});
 
 	describe('attachMetadata', () => {
-
 		it('should attach correct metadata', async () => {
-
 			await attachMetadata(image);
 
 			expect(image.metadata.width).toBe(imageSize.width);
@@ -27,16 +24,18 @@ describe('Helpers', () => {
 		});
 
 		it('shouldn\'t reattach metadata', async () => {
-
-			image.metadata = { mock: true };
+			image.metadata = {
+				mock: true
+			};
 			await attachMetadata(image);
 
 			expect(image.metadata.mock).toBe(true);
 		});
 
 		it('should reattach metadata', async () => {
-
-			image.metadata = { mock: true };
+			image.metadata = {
+				mock: true
+			};
 			await attachMetadata(image, true);
 
 			expect(image.metadata.width).toBe(imageSize.width);
@@ -44,7 +43,6 @@ describe('Helpers', () => {
 		});
 
 		it('should attach metadata for SVG', async () => {
-
 			await attachMetadata(icon);
 
 			expect(icon.metadata.width).toBe(iconSize.width);
@@ -52,7 +50,6 @@ describe('Helpers', () => {
 		});
 
 		it('should set extname from metadata', async () => {
-
 			const anonImage = new Vinyl({
 				contents: image.contents
 			});
@@ -69,10 +66,10 @@ describe('Helpers', () => {
 	});
 
 	describe('matchImage', () => {
-
 		it('should dismatch unsupported image format', async () => {
-
-			const bmp = image.clone({ contents: false });
+			const bmp = image.clone({
+				contents: false
+			});
 
 			bmp.extname = '.bmp';
 

@@ -1,3 +1,8 @@
+/* eslint-disable @typescript-eslint/restrict-template-expressions */
+/* eslint-disable @typescript-eslint/no-unsafe-call */
+/* eslint-disable @typescript-eslint/no-unsafe-member-access */
+/* eslint-disable @typescript-eslint/no-unsafe-assignment */
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import {
 	argv,
 	end,
@@ -26,14 +31,17 @@ const {
 	['match', 'm'],
 	['width', 'w'],
 	['format', 'f'],
-	{ 'postfix': 'p' },
-	{ 'dest': 'd' },
+	{
+		postfix: 'p'
+	},
+	{
+		dest: 'd'
+	},
 	'skipOptimization',
 	'noScalingUp'
 ]);
 
 if (help) {
-
 	end();
 
 	const optionsTable = new Table();
@@ -82,6 +90,7 @@ if (help) {
 	optionsTable.cell('Description', 'Destination directory.');
 	optionsTable.newRow();
 
+	// eslint-disable-next-line no-console
 	console.log(`\nsrcset [...sources] [...options]\n\n${optionsTable.toString()}`);
 	process.exit(0);
 }
@@ -89,7 +98,7 @@ if (help) {
 const rc = getRc('srcset');
 const rule = match || width || format ? omit({
 	match,
-	width: width && width.map(Number),
+	width: width?.map(Number),
 	format
 }) : null;
 const rules = rule
@@ -98,7 +107,7 @@ const rules = rule
 const params = {
 	...rc,
 	...omit({
-		src:       argv.length
+		src: argv.length
 			? argv
 			: rc.src,
 		scalingUp: typeof noScalingUp === 'undefined'
