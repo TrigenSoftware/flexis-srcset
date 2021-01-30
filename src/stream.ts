@@ -1,3 +1,7 @@
+/* eslint-disable @typescript-eslint/no-misused-promises */
+/* eslint-disable @typescript-eslint/no-unsafe-call */
+/* eslint-disable @typescript-eslint/no-unsafe-member-access */
+/* eslint-disable @typescript-eslint/no-unsafe-return */
 import {
 	cpus
 } from 'os';
@@ -9,7 +13,7 @@ import SrcSetGenerator, {
 	IGenerateConfig,
 	Matcher,
 	matchImage
-} from './';
+} from '.';
 
 interface IPluginConfig extends IConfig {
 	/**
@@ -41,8 +45,8 @@ function toVinyl(source): Vinyl {
 }
 
 function log(verbose: boolean, ...message) {
-
 	if (verbose) {
+		// eslint-disable-next-line no-console
 		console.log(...message);
 	}
 }
@@ -51,7 +55,6 @@ export default function plugin(rules: IRule[] = [{}], {
 	verbose,
 	...inputOptions
 }: IPluginConfig = {}) {
-
 	log(
 		verbose,
 		chalk.blue('\n> Start\n')
@@ -59,13 +62,12 @@ export default function plugin(rules: IRule[] = [{}], {
 
 	const options = {
 		skipOptimization: false,
-		scalingUp:        true,
+		scalingUp: true,
 		...inputOptions
 	};
 	const srcSet = new SrcSetGenerator(options);
 
 	async function each(file, _, next) {
-
 		if (file.isNull() || file.isStream()) {
 			next(null, file);
 			return;
@@ -79,14 +81,11 @@ export default function plugin(rules: IRule[] = [{}], {
 		);
 
 		try {
-
 			const results = await Promise.all(
 				rules.map(async (rule) => {
-
 					const matches = await matchImage(vinylFile, rule.match);
 
 					if (matches) {
-
 						log(
 							verbose,
 							`${chalk.blue('> Match:')} ${chalk.yellow(vinylFile.path)}\n\n`,
@@ -122,10 +121,8 @@ export default function plugin(rules: IRule[] = [{}], {
 
 			next();
 			return;
-
 		} catch (err) {
 			next(err);
-			return;
 		}
 	}
 

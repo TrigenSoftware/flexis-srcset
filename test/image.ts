@@ -4,7 +4,7 @@ import Vinyl from 'vinyl';
 
 export default new Vinyl({
 	contents: fs.readFileSync(path.join(__dirname, './images/image.jpg')),
-	path:     '/some/image.jpg'
+	path: '/some/image.jpg'
 });
 
 export const expectedSize = {

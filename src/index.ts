@@ -29,7 +29,6 @@ export * from './helpers';
 export * from './types';
 
 export default class SrcSetGenerator {
-
 	private readonly processing: IProcessingConfig = defaultProcessing;
 	private readonly optimization: IOptimizationConfig = defaultOptimization;
 	private readonly skipOptimization: boolean = false;
@@ -37,9 +36,7 @@ export default class SrcSetGenerator {
 	private readonly postfix: Postfix = defaultPostfix;
 
 	constructor(config: IConfig = {}) {
-
 		if (typeof config === 'object') {
-
 			const {
 				processing,
 				optimization,
@@ -67,12 +64,11 @@ export default class SrcSetGenerator {
 
 	/**
 	 * Create set of sources form original image.
-	 * @param  source - Image file.
-	 * @param  generateConfig - Image handle config.
-	 * @return Results of handling.
+	 * @param source - Image file.
+	 * @param generateConfig - Image handle config.
+	 * @yields Results of handling.
 	 */
 	async *generate(source: ISrcSetVinyl, generateConfig: IGenerateConfig = {}) {
-
 		if (!isVinylBuffer(source)) {
 			throw new Error('Invalid source.');
 		}
@@ -80,13 +76,13 @@ export default class SrcSetGenerator {
 		await attachMetadata(source);
 
 		const config: IGenerateConfig = {
-			format:           [],
-			width:            [],
-			postfix:          null,
-			processing:       null,
-			optimization:     null,
+			format: [],
+			width: [],
+			postfix: null,
+			processing: null,
+			optimization: null,
 			skipOptimization: this.skipOptimization,
-			scalingUp:        this.scalingUp,
+			scalingUp: this.scalingUp,
 			...generateConfig
 		};
 		const sourceType = source.extname.replace(/^\./, '') as SupportedExtension;
@@ -114,18 +110,15 @@ export default class SrcSetGenerator {
 			skipOptimization,
 			scalingUp
 		} = config;
-
 		const onlyOptimize = extensions.svg.test(sourceType)
 			|| extensions.gif.test(sourceType);
 
 		for (const type of outputTypes) {
-
 			if (!isSupportedType(type)) {
 				throw new Error(`"${type}" is not supported.`);
 			}
 
 			if (onlyOptimize) {
-
 				if (type !== sourceType) {
 					continue;
 				}
@@ -144,7 +137,6 @@ export default class SrcSetGenerator {
 			}
 
 			for (const width of widths) {
-
 				if (typeof width !== 'number') {
 					throw new Error('Invalid width parameter.');
 				}
@@ -172,7 +164,7 @@ export default class SrcSetGenerator {
 	 * @param  outputType - Destination image file format.
 	 * @param  width - Aspect ratio multiplier for destination image.
 	 * @param  config - Image handle config.
-	 * @return Destination image file.
+	 * @returns Destination image file.
 	 */
 	private async processImage(
 		source: ISrcSetVinyl,
@@ -180,14 +172,17 @@ export default class SrcSetGenerator {
 		width: number = null,
 		config: IConfig = {}
 	) {
-
-		const { metadata } = source;
+		const {
+			metadata
+		} = source;
 		const originWidth: number = typeof metadata === 'object' ? metadata.width : 0;
 		const processing: IProcessingConfig = {
 			...this.processing,
 			...config.processing
 		};
-		const target = source.clone({ contents: false });
+		const target = source.clone({
+			contents: false
+		});
 		const processor = Sharp(source.contents as Buffer);
 		let willResize = false;
 
@@ -198,7 +193,6 @@ export default class SrcSetGenerator {
 		}
 
 		if (width !== null) {
-
 			const isMultiplier = width <= 1;
 			const calculatedWidth = originWidth && isMultiplier
 				? Math.ceil(width * originWidth)
@@ -214,7 +208,6 @@ export default class SrcSetGenerator {
 				processor.resize(calculatedWidth);
 				willResize = true;
 			}
-
 		} else {
 			this.addPostfix(target, originWidth, originWidth, config.postfix);
 		}
@@ -243,16 +236,17 @@ export default class SrcSetGenerator {
 	 * Optimize image with imagemin.
 	 * @param  source - Image file.
 	 * @param  config - Image handle config.
-	 * @return Destination image file.
+	 * @returns Destination image file.
 	 */
 	private async optimizeImage(source: Vinyl, config: IConfig = {}) {
-
-		const target = source.clone({ contents: false });
+		const target = source.clone({
+			contents: false
+		});
 		const optimization: IOptimizationConfig = {
 			...this.optimization,
 			...config.optimization
 		};
-		const plugins = optimization[source.extname.replace(/^\./, '')];
+		const plugins = optimization[source.extname.replace(/^\./, '') as SupportedExtension];
 
 		target.contents = await Imagemin.buffer(source.contents as Buffer, {
 			plugins: Array.isArray(plugins)
@@ -276,9 +270,10 @@ export default class SrcSetGenerator {
 		width: number,
 		customPostfix: Postfix = null
 	) {
-
 		const format = target.extname.replace('.', '');
-		const { postfix } = this;
+		const {
+			postfix
+		} = this;
 		let calculatedPostfix = '';
 
 		if (typeof customPostfix === 'string') {
