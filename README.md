@@ -167,7 +167,7 @@ export {
     IPostfixFormatter,
     Postfix,
     IConfig,
-    IGenerateConfig
+    IGenerateConfig,
     isSupportedType,
     extensions,
     attachMetadata,
