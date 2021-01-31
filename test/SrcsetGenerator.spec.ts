@@ -24,7 +24,7 @@ async function vinylsFromAsyncIterator(iterator: AsyncIterableIterator<Vinyl>) {
 }
 
 describe('SrcSetGenerator', () => {
-	jest.setTimeout(30000);
+	jest.setTimeout(60000);
 
 	it('should create correct instance', () => {
 		const srcSet = new SrcSetGenerator();
@@ -95,6 +95,18 @@ describe('SrcSetGenerator', () => {
 
 		expect(imageWithPostfix.stem).toBe('image@postfix');
 		expect(imageWithPostfix.postfix).toBe('@postfix');
+	});
+
+	it('should support avif', async () => {
+		const srcSet = new SrcSetGenerator({
+			skipOptimization: true
+		});
+		const [avifImage] = await vinylsFromAsyncIterator(srcSet.generate(image, {
+			format: 'avif'
+		}));
+
+		expect(avifImage.metadata.format).toBe('heif');
+		expect(avifImage.extname).toBe('.avif');
 	});
 
 	describe('#generate', () => {

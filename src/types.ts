@@ -33,9 +33,10 @@ export interface ISrcSetVinyl extends Vinyl {
  * ```
  */
 export interface IProcessingConfig {
-	webp: Record<string, unknown>;
-	jpg: Record<string, unknown>;
-	png: Record<string, unknown>;
+	avif?: Record<string, unknown>;
+	webp?: Record<string, unknown>;
+	jpg?: Record<string, unknown>;
+	png?: Record<string, unknown>;
 }
 
 /**
@@ -57,11 +58,12 @@ export interface IProcessingConfig {
  * ```
  */
 export interface IOptimizationConfig {
-	webp: Plugin | Plugin[];
-	jpg: Plugin | Plugin[];
-	png: Plugin | Plugin[];
-	gif: Plugin | Plugin[];
-	svg: Plugin | Plugin[];
+	avif?: Plugin | Plugin[];
+	webp?: Plugin | Plugin[];
+	jpg?: Plugin | Plugin[];
+	png?: Plugin | Plugin[];
+	gif?: Plugin | Plugin[];
+	svg?: Plugin | Plugin[];
 }
 
 export type IPostfixFormatter = (width: number, mul?: number, format?: string) => string;
@@ -75,11 +77,11 @@ export interface IConfig {
 	/**
 	 * Object with Sharp configs for each supported format.
 	 */
-	processing?: Partial<IProcessingConfig>;
+	processing?: IProcessingConfig;
 	/**
 	 * Object with imagemin plugins for each format.
 	 */
-	optimization?: Partial<IOptimizationConfig>;
+	optimization?: IOptimizationConfig;
 	/**
 	 * Do not optimize output images.
 	 */

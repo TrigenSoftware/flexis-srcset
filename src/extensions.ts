@@ -1,7 +1,8 @@
 
-export type SupportedExtension = 'webp'|'jpg'|'png'|'gif'|'svg';
+export type SupportedExtension = 'avif' | 'webp' | 'jpg' | 'png' | 'gif' | 'svg';
 
 export const extensions = {
+	avif: /^avif$/i,
 	webp: /^webp$/i,
 	jpg: /^jpe?g$/i,
 	png: /^png$/i,
