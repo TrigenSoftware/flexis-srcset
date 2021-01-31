@@ -105,7 +105,7 @@ describe('SrcSetGenerator', () => {
 			format: 'avif'
 		}));
 
-		expect(avifImage.metadata.format).toBe('avif');
+		expect(avifImage.metadata.format).toBe('heif');
 		expect(avifImage.extname).toBe('.avif');
 	});
 
