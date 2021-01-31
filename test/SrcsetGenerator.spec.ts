@@ -24,7 +24,7 @@ async function vinylsFromAsyncIterator(iterator: AsyncIterableIterator<Vinyl>) {
 }
 
 describe('SrcSetGenerator', () => {
-	jest.setTimeout(30000);
+	jest.setTimeout(60000);
 
 	it('should create correct instance', () => {
 		const srcSet = new SrcSetGenerator();
