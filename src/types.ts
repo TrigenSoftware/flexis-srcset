@@ -58,6 +58,7 @@ export interface IProcessingConfig {
  * ```
  */
 export interface IOptimizationConfig {
+	avif: Plugin | Plugin[];
 	webp: Plugin | Plugin[];
 	jpg: Plugin | Plugin[];
 	png: Plugin | Plugin[];

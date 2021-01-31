@@ -97,21 +97,7 @@ describe('SrcSetGenerator', () => {
 		expect(imageWithPostfix.postfix).toBe('@postfix');
 	});
 
-	it('should support heic', async () => {
-
-		const srcSet = new SrcSetGenerator({
-			skipOptimization: true
-		});
-		const [heicImage] = await vinylsFromAsyncIterator(srcSet.generate(image, {
-			format: 'heic'
-		}));
-
-		expect(heicImage.metadata.format).toBe('heif');
-		expect(heicImage.extname).toBe('.heic');
-	});
-
 	it('should support avif', async () => {
-
 		const srcSet = new SrcSetGenerator({
 			skipOptimization: true
 		});

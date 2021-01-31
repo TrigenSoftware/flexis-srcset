@@ -233,20 +233,8 @@ export default class SrcSetGenerator {
 				processor.png(processing.png);
 				break;
 
-			case extensions.heic.test(outputType):
-				// @ts-expect-error Types is not up to date.
-				processor.heif({
-					...processing.heic,
-					compression: 'hevc'
-				});
-				break;
-
 			case extensions.avif.test(outputType):
-				// @ts-expect-error Types is not up to date.
-				processor.heif({
-					...processing.avif,
-					compression: 'av1'
-				});
+				processor.avif(processing.avif);
 				break;
 
 			default:

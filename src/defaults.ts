@@ -7,19 +7,16 @@ import gifLossyPlugin from 'imagemin-giflossy';
 import svgoPlugin from 'imagemin-svgo';
 
 export const processing = {
+	avif: {
+		quality: 100
+	},
 	webp: {
 		quality: 100
 	},
 	jpg: {
 		quality: 100
 	},
-	png: {},
-	heic: {
-		quality: 100
-	},
-	avif: {
-		quality: 100
-	}
+	png: {}
 };
 
 export const optimization = {
