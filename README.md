@@ -94,8 +94,8 @@ Extends [common options](#common-options).
 | Option | Type | Description | Default |
 |--------|------|-------------|---------|
 | match | [Matcher] | There is support of 3 types of matchers:<br>1. Glob pattern of file path;<br>2. Media query to match image by size;<br>3. `(path: string, size: ISize, source: Vinyl) => boolean` function. | all images |
-| format | [SupportedExtension]\|[SupportedExtension]\[\] | Output image(s) formats to convert. | no convert |
-| width | number\|number[] | Output image(s) widths to resize, value less than or equal to 1 will be detected as multiplier. | `[1]` |
+| format | [SupportedExtension] \| [SupportedExtension]\[\] | Output image(s) formats to convert. | no convert |
+| width | number \| number[] | Output image(s) widths to resize, value less than or equal to 1 will be detected as multiplier. | `[1]` |
 
 #### Configuration file
 
@@ -105,7 +105,7 @@ Supported options, extends [common options](#common-options):
 
 | Option | Type | Description | Default |
 |--------|------|-------------|---------|
-| src | string\|string[] | Source image(s) glob patterns. | required |
+| src | string \| string[] | Source image(s) glob patterns. | required |
 | rules | [IRule](#rule-options)\[\] | Rules. | `[]` |
 | verbose | boolean | Print additional info about progress. | `false` |
 | dest | string | Destination directory. | required |
