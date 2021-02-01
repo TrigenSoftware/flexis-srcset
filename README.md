@@ -33,7 +33,7 @@ Highly customizable tool for generating responsive images.
 
 - [Responsive images](https://developer.mozilla.org/ru/docs/Learn/HTML/Multimedia_and_embedding/Responsive_images) 🌠
 - Optimize images with [imagemin](https://www.npmjs.com/package/imagemin) 🗜
-- Convert images to [modern formats such as WebP](https://developer.mozilla.org/ru/docs/Learn/HTML/Multimedia_and_embedding/Responsive_images#Use_modern_image_formats_boldly) 📸
+- Convert images to [modern formats](https://developer.mozilla.org/en-US/docs/Learn/HTML/Multimedia_and_embedding/Responsive_images#use_modern_image_formats_boldly) such as [WebP](https://developers.google.com/speed/webp) and [AVIF](https://jakearchibald.com/2020/avif-has-landed/) 📸
 - You can run it from the [CLI](#cli) ⌨️
 - Works with [Gulp](#gulp), [Webpack](https://github.com/TrigenSoftware/flexis-srcset-loader) and as [JS library](#js-api) 🦄
 
