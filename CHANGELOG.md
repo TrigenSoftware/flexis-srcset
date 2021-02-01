@@ -24,6 +24,13 @@ DO NOT TOUCH. SAVE IT ON TOP.
 
 -->
 
+## [4.0.0] - 2021-02-01
+### Breaking
+- Requires `Node 12+`
+
+### Added
+- AVIF support.
+
 ## [3.0.0] - 2020-06-23
 ### Breaking
 - Naming change: srcset -> srcSet, Srcset -> SrcSet
