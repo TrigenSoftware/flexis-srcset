@@ -259,13 +259,18 @@ export default class SrcSetGenerator {
 			...this.optimization,
 			...config.optimization
 		};
-		const plugins = optimization[getFormat(source)];
+		const maybePlugins = optimization[getFormat(source)];
+		const plugins = (
+			Array.isArray(maybePlugins)
+				? maybePlugins
+				: [maybePlugins]
+		).filter(Boolean);
 
-		target.contents = await Imagemin.buffer(source.contents as Buffer, {
-			plugins: Array.isArray(plugins)
-				? plugins
-				: [plugins]
-		});
+		if (plugins.length) {
+			target.contents = await Imagemin.buffer(source.contents as Buffer, {
+				plugins
+			});
+		}
 
 		return target;
 	}

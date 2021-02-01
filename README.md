@@ -126,12 +126,12 @@ import srcSet from '@flexis/srcset/lib/stream';
 gulp.task('images', () =>
     gulp.src('src/*.{jpg,png}')
         .pipe(srcSet([{
-            match:  '(min-width: 3000px)',
-            width:  [1920, 1280, 1024, 860, 540, 320],
+            match: '(min-width: 3000px)',
+            width: [1920, 1280, 1024, 860, 540, 320],
             format: ['jpg', 'webp']
         }, {
-            match:  '(max-width: 3000px)',
-            width:  [1, .5],
+            match: '(max-width: 3000px)',
+            width: [1, .5],
             format: ['jpg', 'webp']
         }], {
             skipOptimization: true
@@ -185,7 +185,6 @@ import SrcSetGenerator from '@flexis/favicons';
 import Vinyl from 'vinyl';
 
 async function generate() {
-
     const path = 'src/background.jpg';
     const contents = await fs.readFile(path);
     const source = new Vinyl({
@@ -194,7 +193,7 @@ async function generate() {
     });
     const srcSet = new SrcSetGenerator();
     const images = srcSet.generate(source, {
-        width:  [1920, 1280, 1024, 860, 540, 320],
+        width: [1920, 1280, 1024, 860, 540, 320],
         format: ['jpg', 'webp']
     });
 
