@@ -110,11 +110,11 @@ Supported options, extends [common options](#common-options):
 | verbose | boolean | Print additional info about progress. | `false` |
 | dest | string | Destination directory. | required |
 
-[IProcessingConfig]: https://trigensoftware.github.io/flexis-srcset/interfaces/_types_.iprocessingconfig.html
-[IOptimizationConfig]: https://trigensoftware.github.io/flexis-srcset/interfaces/_types_.ioptimizationconfig.html
-[Postfix]: https://trigensoftware.github.io/flexis-srcset/modules/_types_.html#postfix
-[Matcher]: https://trigensoftware.github.io/flexis-srcset/modules/_helpers_.html#matcher
-[SupportedExtension]: https://trigensoftware.github.io/flexis-srcset/modules/_extensions_.html#supportedextension
+[IProcessingConfig]: https://trigensoftware.github.io/flexis-srcset/interfaces/types.iprocessingconfig.html
+[IOptimizationConfig]: https://trigensoftware.github.io/flexis-srcset/interfaces/types.ioptimizationconfig.html
+[Postfix]: https://trigensoftware.github.io/flexis-srcset/modules/types.html#postfix
+[Matcher]: https://trigensoftware.github.io/flexis-srcset/modules/helpers.html#matcher
+[SupportedExtension]: https://trigensoftware.github.io/flexis-srcset/modules/extensions.html#supportedextension
 
 ### Gulp
 
