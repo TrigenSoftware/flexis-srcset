@@ -1499,10 +1499,10 @@
     core-js "^3.8.2"
     size-limit "^4.1.1"
 
-"@trigen/scripts-plugin-typescript@^7.3.1":
-  version "7.3.1"
-  resolved "https://registry.yarnpkg.com/@trigen/scripts-plugin-typescript/-/scripts-plugin-typescript-7.3.1.tgz#30d2e59ffe2110885616165e7ee72bd576218f6a"
-  integrity sha512-9FbdExTkChR6JvOYbRaSJYrLL44IiuGPmZQpTG0eRz3Am/vHJHPZ+5dmv6QtG1PvjD31t3hLQFTVz81QTW5g0Q==
+"@trigen/scripts-plugin-typescript@^7.3.2":
+  version "7.3.2"
+  resolved "https://registry.yarnpkg.com/@trigen/scripts-plugin-typescript/-/scripts-plugin-typescript-7.3.2.tgz#e0f8cd5d318126e30a72178d4c5e9c7198a43cd8"
+  integrity sha512-NNi6n4//klFXGo9exwBdK+QjS8/CjV5peJNKbJkgwGE/GTyy7CIih2sNgstm/jjjec/UliO2mf1aTw8o4lSxXA==
   dependencies:
     "@babel/runtime" "^7.12.5"
     "@trigen/scripts" "^7.3.1"
