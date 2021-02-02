@@ -34,7 +34,7 @@ const isMediaQuery = /\(\s*([^\s:)]+)\s*(?::\s*([^\s)]+))?\s*\)/;
 
 /**
  * Check object is Vinyl-buffer.
- * @param  source - Object to check.
+ * @param source - Object to check.
  * @returns Result.
  */
 export function isVinylBuffer(source: Vinyl) {
@@ -43,8 +43,8 @@ export function isVinylBuffer(source: Vinyl) {
 
 /**
  * Attach image metadata to the vinyl file.
- * @param  source - Image file.
- * @param  force - Force refetch metadata.
+ * @param source - Image file.
+ * @param force - Force refetch metadata.
  * @returns Source image file with attached metadata.
  */
 export async function attachMetadata(source: Vinyl, force = false): Promise<ISrcSetVinyl> {
@@ -74,8 +74,8 @@ export async function attachMetadata(source: Vinyl, force = false): Promise<ISrc
 
 /**
  * Match image file by path and size
- * @param  source - Image file.
- * @param  matcherOrMatchers - Rules to match image file.
+ * @param source - Image file.
+ * @param matcherOrMatchers - Rules to match image file.
  * @returns Image is matched or not.
  */
 export async function matchImage(source: ISrcSetVinyl, matcherOrMatchers: Matcher|Matcher[] = null) {

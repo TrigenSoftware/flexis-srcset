@@ -163,10 +163,10 @@ export default class SrcSetGenerator {
 
 	/**
 	 * Resize and convert image.
-	 * @param  source - Image file.
-	 * @param  outputType - Destination image file format.
-	 * @param  width - Aspect ratio multiplier for destination image.
-	 * @param  config - Image handle config.
+	 * @param source - Image file.
+	 * @param outputType - Destination image file format.
+	 * @param width - Aspect ratio multiplier for destination image.
+	 * @param config - Image handle config.
 	 * @returns Destination image file.
 	 */
 	private async processImage(
@@ -247,8 +247,8 @@ export default class SrcSetGenerator {
 
 	/**
 	 * Optimize image with imagemin.
-	 * @param  source - Image file.
-	 * @param  config - Image handle config.
+	 * @param source - Image file.
+	 * @param config - Image handle config.
 	 * @returns Destination image file.
 	 */
 	private async optimizeImage(source: Vinyl, config: IConfig = {}) {

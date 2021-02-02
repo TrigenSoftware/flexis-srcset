@@ -140,8 +140,6 @@ gulp.task('images', () =>
 );
 ```
 
-> NOTICE: this plugin is also available as [`gulp-srcset`](https://github.com/TrigenSoftware/gulp-srcset) package.
-
 Plugin options:
 
 First argument is [IRule](#rule-options)\[\], second argument extends [common options](#common-options):

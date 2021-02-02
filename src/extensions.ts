@@ -14,7 +14,7 @@ const patterns = Object.values(extensions);
 
 /**
  * Check image type
- * @param  type - Image extension without dot.
+ * @param type - Image extension without dot.
  * @returns Image type is supported or not.
  */
 export function isSupportedType(type: string): boolean {
