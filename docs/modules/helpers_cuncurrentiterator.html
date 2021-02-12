@@ -3,7 +3,7 @@
 <head>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<title>stream | @flexis/srcset</title>
+	<title>helpers/cuncurrentIterator | @flexis/srcset</title>
 	<meta name="description" content="Documentation for @flexis/srcset">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" href="../assets/css/main.css">
@@ -53,10 +53,10 @@
 					<a href="../modules.html">@flexis/srcset</a>
 				</li>
 				<li>
-					<a href="stream.html">stream</a>
+					<a href="helpers_cuncurrentiterator.html">helpers/cuncurrentIterator</a>
 				</li>
 			</ul>
-			<h1>Module stream</h1>
+			<h1>Module helpers/cuncurrentIterator</h1>
 		</div>
 	</div>
 </header>
@@ -70,7 +70,7 @@
 						<section class="tsd-index-section ">
 							<h3>Functions</h3>
 							<ul class="tsd-index-list">
-								<li class="tsd-kind-function tsd-parent-kind-module"><a href="stream.html#default" class="tsd-kind-icon">default</a></li>
+								<li class="tsd-kind-function tsd-parent-kind-module tsd-has-type-parameter"><a href="helpers_cuncurrentiterator.html#cuncurrentiterator" class="tsd-kind-icon">cuncurrent<wbr>Iterator</a></li>
 							</ul>
 						</section>
 					</div>
@@ -78,29 +78,59 @@
 			</section>
 			<section class="tsd-panel-group tsd-member-group ">
 				<h2>Functions</h2>
-				<section class="tsd-panel tsd-member tsd-kind-function tsd-parent-kind-module">
-					<a name="default" class="tsd-anchor"></a>
-					<h3>default</h3>
-					<ul class="tsd-signatures tsd-kind-function tsd-parent-kind-module">
-						<li class="tsd-signature tsd-kind-icon">default<span class="tsd-signature-symbol">(</span>rules<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">IRule</span><span class="tsd-signature-symbol">[]</span>, __namedParameters<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">IPluginConfig</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Transform</span></li>
+				<section class="tsd-panel tsd-member tsd-kind-function tsd-parent-kind-module tsd-has-type-parameter">
+					<a name="cuncurrentiterator" class="tsd-anchor"></a>
+					<h3>cuncurrent<wbr>Iterator</h3>
+					<ul class="tsd-signatures tsd-kind-function tsd-parent-kind-module tsd-has-type-parameter">
+						<li class="tsd-signature tsd-kind-icon">cuncurrent<wbr>Iterator&lt;TItem, TData&gt;<span class="tsd-signature-symbol">(</span>items<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">TItem</span><span class="tsd-signature-symbol">[]</span>, handler<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">IteratorHandler</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">TItem</span><span class="tsd-signature-symbol">, </span><span class="tsd-signature-type">TData</span><span class="tsd-signature-symbol">&gt;</span>, concurrency<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">number</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-symbol">{ </span>[Symbol.asyncIterator]<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">any</span><span class="tsd-signature-symbol"> }</span></li>
 					</ul>
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/TrigenSoftware/flexis-srcset/blob/fc1e77b/src/stream.ts#L54">stream.ts:54</a></li>
+									<li>Defined in <a href="https://github.com/TrigenSoftware/flexis-srcset/blob/fc1e77b/src/helpers/cuncurrentIterator.ts#L9">helpers/cuncurrentIterator.ts:9</a></li>
 								</ul>
 							</aside>
+							<h4 class="tsd-type-parameters-title">Type parameters</h4>
+							<ul class="tsd-type-parameters">
+								<li>
+									<h4>TItem</h4>
+								</li>
+								<li>
+									<h4>TData</h4>
+								</li>
+							</ul>
 							<h4 class="tsd-parameters-title">Parameters</h4>
 							<ul class="tsd-parameters">
 								<li>
-									<h5>rules: <span class="tsd-signature-type">IRule</span><span class="tsd-signature-symbol">[]</span><span class="tsd-signature-symbol"> = ...</span></h5>
+									<h5>items: <span class="tsd-signature-type">TItem</span><span class="tsd-signature-symbol">[]</span></h5>
 								</li>
 								<li>
-									<h5>__namedParameters: <span class="tsd-signature-type">IPluginConfig</span><span class="tsd-signature-symbol"> = ...</span></h5>
+									<h5>handler: <span class="tsd-signature-type">IteratorHandler</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">TItem</span><span class="tsd-signature-symbol">, </span><span class="tsd-signature-type">TData</span><span class="tsd-signature-symbol">&gt;</span></h5>
+								</li>
+								<li>
+									<h5>concurrency: <span class="tsd-signature-type">number</span><span class="tsd-signature-symbol"> = ...</span></h5>
 								</li>
 							</ul>
-							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Transform</span></h4>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-symbol">{ </span>[Symbol.asyncIterator]<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">any</span><span class="tsd-signature-symbol"> }</span></h4>
+							<ul class="tsd-parameters">
+								<li class="tsd-parameter">
+									<h5>[<wbr>Symbol.async<wbr>Iterator]<span class="tsd-signature-symbol">: </span>function</h5>
+									<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-type-literal">
+										<li class="tsd-signature tsd-kind-icon">[<wbr>Symbol.async<wbr>Iterator]<span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">AsyncGenerator</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">TData</span><span class="tsd-signature-symbol">, </span><span class="tsd-signature-type">void</span><span class="tsd-signature-symbol">, </span><span class="tsd-signature-type">undefined</span><span class="tsd-signature-symbol">&gt;</span></li>
+									</ul>
+									<ul class="tsd-descriptions">
+										<li class="tsd-description">
+											<aside class="tsd-sources">
+												<ul>
+													<li>Defined in <a href="https://github.com/TrigenSoftware/flexis-srcset/blob/fc1e77b/src/helpers/cuncurrentIterator.ts#L15">helpers/cuncurrentIterator.ts:15</a></li>
+												</ul>
+											</aside>
+											<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">AsyncGenerator</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">TData</span><span class="tsd-signature-symbol">, </span><span class="tsd-signature-type">void</span><span class="tsd-signature-symbol">, </span><span class="tsd-signature-type">undefined</span><span class="tsd-signature-symbol">&gt;</span></h4>
+										</li>
+									</ul>
+								</li>
+							</ul>
 						</li>
 					</ul>
 				</section>
@@ -121,7 +151,7 @@
 					<li class=" tsd-kind-module">
 						<a href="helpers.html">helpers</a>
 					</li>
-					<li class=" tsd-kind-module">
+					<li class="current tsd-kind-module">
 						<a href="helpers_cuncurrentiterator.html">helpers/cuncurrent<wbr>Iterator</a>
 					</li>
 					<li class=" tsd-kind-module">
@@ -130,7 +160,7 @@
 					<li class=" tsd-kind-module">
 						<a href="index.html">index</a>
 					</li>
-					<li class="current tsd-kind-module">
+					<li class=" tsd-kind-module">
 						<a href="stream.html">stream</a>
 					</li>
 					<li class=" tsd-kind-module">
@@ -140,8 +170,8 @@
 			</nav>
 			<nav class="tsd-navigation secondary menu-sticky">
 				<ul class="before-current">
-					<li class=" tsd-kind-function tsd-parent-kind-module">
-						<a href="stream.html#default" class="tsd-kind-icon">default</a>
+					<li class=" tsd-kind-function tsd-parent-kind-module tsd-has-type-parameter">
+						<a href="helpers_cuncurrentiterator.html#cuncurrentiterator" class="tsd-kind-icon">cuncurrent<wbr>Iterator</a>
 					</li>
 				</ul>
 			</nav>

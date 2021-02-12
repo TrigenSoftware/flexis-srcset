@@ -70,7 +70,7 @@
 				<ul>
 					<li><a href="https://developer.mozilla.org/ru/docs/Learn/HTML/Multimedia_and_embedding/Responsive_images">Responsive images</a> 🌠</li>
 					<li>Optimize images with <a href="https://www.npmjs.com/package/imagemin">imagemin</a> 🗜</li>
-					<li>Convert images to <a href="https://developer.mozilla.org/ru/docs/Learn/HTML/Multimedia_and_embedding/Responsive_images#Use_modern_image_formats_boldly">modern formats such as WebP</a> 📸</li>
+					<li>Convert images to <a href="https://developer.mozilla.org/en-US/docs/Learn/HTML/Multimedia_and_embedding/Responsive_images#use_modern_image_formats_boldly">modern formats</a> such as <a href="https://developers.google.com/speed/webp">WebP</a> and <a href="https://jakearchibald.com/2020/avif-has-landed/">AVIF</a> 📸</li>
 					<li>You can run it from the <a href="#cli">CLI</a> ⌨️</li>
 					<li>Works with <a href="#gulp">Gulp</a>, <a href="https://github.com/TrigenSoftware/flexis-srcset-loader">Webpack</a> and as <a href="#js-api">JS library</a> 🦄</li>
 				</ul>
@@ -168,13 +168,13 @@
 					</thead>
 					<tbody><tr>
 							<td>processing</td>
-							<td>Partial&lt;<a href="https://trigensoftware.github.io/flexis-srcset/interfaces/_types_.iprocessingconfig.html">IProcessingConfig</a>&gt;</td>
+							<td>Partial&lt;<a href="https://trigensoftware.github.io/flexis-srcset/interfaces/types.iprocessingconfig.html">IProcessingConfig</a>&gt;</td>
 							<td>Object with Sharp configs for each supported format.</td>
 							<td>see <a href="src/defaults.ts">defaults.ts</a></td>
 						</tr>
 						<tr>
 							<td>optimization</td>
-							<td>Partial&lt;<a href="https://trigensoftware.github.io/flexis-srcset/interfaces/_types_.ioptimizationconfig.html">IOptimizationConfig</a>&gt;</td>
+							<td>Partial&lt;<a href="https://trigensoftware.github.io/flexis-srcset/interfaces/types.ioptimizationconfig.html">IOptimizationConfig</a>&gt;</td>
 							<td>Object with imagemin plugins for each format.</td>
 							<td>see <a href="src/defaults.ts">defaults.ts</a></td>
 						</tr>
@@ -192,9 +192,29 @@
 						</tr>
 						<tr>
 							<td>postfix</td>
-							<td><a href="https://trigensoftware.github.io/flexis-srcset/modules/_types_.html#postfix">Postfix</a></td>
+							<td><a href="https://trigensoftware.github.io/flexis-srcset/modules/types.html#postfix">Postfix</a></td>
 							<td>Postfix string or function to generate postfix for image.</td>
 							<td>see <a href="src/defaults.ts">defaults.ts</a></td>
+						</tr>
+				</tbody></table>
+				<a href="#constructor-options" id="constructor-options" style="color: inherit; text-decoration: none;">
+					<h4>Constructor options</h4>
+				</a>
+				<p>Extends <a href="#common-options">common options</a>.</p>
+				<table>
+					<thead>
+						<tr>
+							<th>Option</th>
+							<th>Type</th>
+							<th>Description</th>
+							<th>Default</th>
+						</tr>
+					</thead>
+					<tbody><tr>
+							<td>concurrency</td>
+							<td>number</td>
+							<td>Concurrency limit.</td>
+							<td><code>os.cpus().length</code></td>
 						</tr>
 				</tbody></table>
 				<a href="#rule-options" id="rule-options" style="color: inherit; text-decoration: none;">
@@ -212,19 +232,19 @@
 					</thead>
 					<tbody><tr>
 							<td>match</td>
-							<td><a href="https://trigensoftware.github.io/flexis-srcset/modules/_helpers_.html#matcher">Matcher</a></td>
+							<td><a href="https://trigensoftware.github.io/flexis-srcset/modules/helpers.html#matcher">Matcher</a></td>
 							<td>There is support of 3 types of matchers:<br>1. Glob pattern of file path;<br>2. Media query to match image by size;<br>3. <code>(path: string, size: ISize, source: Vinyl) =&gt; boolean</code> function.</td>
 							<td>all images</td>
 						</tr>
 						<tr>
 							<td>format</td>
-							<td><a href="https://trigensoftware.github.io/flexis-srcset/modules/_extensions_.html#supportedextension">SupportedExtension</a>|<a href="https://trigensoftware.github.io/flexis-srcset/modules/_extensions_.html#supportedextension">SupportedExtension</a>[]</td>
+							<td><a href="https://trigensoftware.github.io/flexis-srcset/modules/extensions.html#supportedextension">SupportedExtension</a> | <a href="https://trigensoftware.github.io/flexis-srcset/modules/extensions.html#supportedextension">SupportedExtension</a>[]</td>
 							<td>Output image(s) formats to convert.</td>
 							<td>no convert</td>
 						</tr>
 						<tr>
 							<td>width</td>
-							<td>number|number[]</td>
+							<td>number | number[]</td>
 							<td>Output image(s) widths to resize, value less than or equal to 1 will be detected as multiplier.</td>
 							<td><code>[1]</code></td>
 						</tr>
@@ -245,7 +265,7 @@
 					</thead>
 					<tbody><tr>
 							<td>src</td>
-							<td>string|string[]</td>
+							<td>string | string[]</td>
 							<td>Source image(s) glob patterns.</td>
 							<td>required</td>
 						</tr>
@@ -290,9 +310,6 @@
 <span style="color: #000000">        .</span><span style="color: #795E26">pipe</span><span style="color: #000000">(</span><span style="color: #001080">gulp</span><span style="color: #000000">.</span><span style="color: #795E26">dest</span><span style="color: #000000">(</span><span style="color: #A31515">&#039;static&#039;</span><span style="color: #000000">))</span>
 <span style="color: #000000">);</span>
 </code></pre>
-				<blockquote>
-					<p>NOTICE: this plugin is also available as <a href="https://github.com/TrigenSoftware/gulp-srcset"><code>gulp-srcset</code></a> package.</p>
-				</blockquote>
 				<p>Plugin options:</p>
 				<p>First argument is <a href="#rule-options">IRule</a>[], second argument extends <a href="#common-options">common options</a>:</p>
 				<table>
@@ -383,6 +400,12 @@
 						<a href="modules/helpers.html">helpers</a>
 					</li>
 					<li class=" tsd-kind-module">
+						<a href="modules/helpers_cuncurrentiterator.html">helpers/cuncurrent<wbr>Iterator</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="modules/helpers_images.html">helpers/images</a>
+					</li>
+					<li class=" tsd-kind-module">
 						<a href="modules/index.html">index</a>
 					</li>
 					<li class=" tsd-kind-module">
@@ -407,6 +430,7 @@
 			<ul class="tsd-legend">
 				<li class="tsd-kind-variable"><span class="tsd-kind-icon">Variable</span></li>
 				<li class="tsd-kind-function"><span class="tsd-kind-icon">Function</span></li>
+				<li class="tsd-kind-function tsd-has-type-parameter"><span class="tsd-kind-icon">Function with type parameter</span></li>
 				<li class="tsd-kind-type-alias"><span class="tsd-kind-icon">Type alias</span></li>
 			</ul>
 			<ul class="tsd-legend">
