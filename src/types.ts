@@ -94,9 +94,13 @@ export interface IConfig {
 	 * Postfix string or function to generate postfix for image.
 	 */
 	postfix?: Postfix;
+	/**
+	 * Concurrency limit.
+	 */
+	concurrency?: number;
 }
 
-export interface IGenerateConfig extends IConfig {
+export interface IGenerateConfig extends Omit<IConfig, 'concurrency'> {
 	/**
 	 * Output image(s) formats to convert.
 	 */

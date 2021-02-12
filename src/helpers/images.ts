@@ -2,18 +2,17 @@
 /* eslint-disable @typescript-eslint/restrict-template-expressions */
 /* eslint-disable @typescript-eslint/no-unsafe-member-access */
 /* eslint-disable @typescript-eslint/no-unsafe-assignment */
-/* eslint-disable require-atomic-updates */
 import Vinyl from 'vinyl';
 import minimatch from 'minimatch';
 import mediaQuery from 'css-mediaquery';
 import Sharp from 'sharp';
 import {
 	ISrcSetVinyl
-} from './types';
+} from '../types';
 import {
 	SupportedExtension,
 	isSupportedType
-} from './extensions';
+} from '../extensions';
 
 export interface ISize {
 	width: number;
@@ -42,6 +41,25 @@ export function isVinylBuffer(source: Vinyl) {
 }
 
 /**
+ * Clone Vinyl object with metadata.
+ * @param source - Vinyl object to clone.
+ * @returns Vinyl object clone.
+ */
+export function cloneSrcSetVinyl(source: ISrcSetVinyl) {
+	const vinylClone = source.clone({
+		contents: false
+	});
+
+	if (source.metadata) {
+		vinylClone.metadata = {
+			...source.metadata
+		};
+	}
+
+	return vinylClone;
+}
+
+/**
  * Attach image metadata to the vinyl file.
  * @param source - Image file.
  * @param force - Force refetch metadata.
@@ -53,9 +71,10 @@ export async function attachMetadata(source: Vinyl, force = false): Promise<ISrc
 	}
 
 	try {
+		const metadata = await Sharp(source.contents as Buffer).metadata();
 		const originMultiplier = source?.metadata?.originMultiplier;
 
-		source.metadata = await Sharp(source.contents as Buffer).metadata();
+		source.metadata = metadata;
 		source.metadata.originMultiplier = originMultiplier;
 	} catch (err) {
 		return source;

@@ -1,5 +1,6 @@
 import Vinyl from 'vinyl';
 import {
+	cuncurrentIterator,
 	attachMetadata,
 	matchImage
 } from '../src/helpers';
@@ -106,6 +107,38 @@ describe('Helpers', () => {
 
 		it('should dismatch by few matchers', async () => {
 			expect(await matchImage(image, ['**/*.png', `(width: ${imageSize.width}px)`])).toBe(false);
+		});
+	});
+
+	describe('cuncurrentIterator', () => {
+		it('should create async iterator', async () => {
+			const iterator = cuncurrentIterator([1, 2, 3, 4], async function *i(num) {
+				await Promise.resolve();
+
+				yield num * num;
+			});
+			const items = [];
+
+			for await (const sqrt of iterator) {
+				items.push(sqrt);
+			}
+
+			expect(items).toEqual([1, 4, 9, 16]);
+		});
+
+		it('should save order', async () => {
+			const iterator = cuncurrentIterator([1, 2, 3, 4], async function *i(num, i) {
+				await new Promise(resolve => setTimeout(resolve, (4 - i) * 100));
+
+				yield num * num;
+			});
+			const items = [];
+
+			for await (const sqrt of iterator) {
+				items.push(sqrt);
+			}
+
+			expect(items).toEqual([1, 4, 9, 16]);
 		});
 	});
 });

@@ -87,6 +87,14 @@ srcset "src/images/*.jpg" --match "(min-width: 1920px)" --width 1920,1280,1024,8
 | scalingUp | boolean | Generate images with higher resolution than they's sources are. | `true` |
 | postfix | [Postfix] | Postfix string or function to generate postfix for image. | see [defaults.ts](src/defaults.ts) |
 
+#### Constructor options
+
+Extends [common options](#common-options).
+
+| Option | Type | Description | Default |
+|--------|------|-------------|---------|
+| concurrency | number | Concurrency limit. | `os.cpus().length` |
+
 #### Rule options
 
 Extends [common options](#common-options).
