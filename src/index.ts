@@ -1,6 +1,12 @@
+import {
+	cpus
+} from 'os';
 import Vinyl from 'vinyl';
 import Sharp from 'sharp';
 import Imagemin from 'imagemin';
+import pLimit, {
+	Limit
+} from 'p-limit';
 import {
 	processing as defaultProcessing,
 	optimization as defaultOptimization,
@@ -13,6 +19,7 @@ import {
 } from './extensions';
 import {
 	cuncurrentIterator,
+	combineVariants,
 	isVinylBuffer,
 	cloneSrcSetVinyl,
 	attachMetadata,
@@ -37,7 +44,7 @@ export default class SrcSetGenerator {
 	private readonly skipOptimization: boolean = false;
 	private readonly scalingUp: boolean = true;
 	private readonly postfix: Postfix = defaultPostfix;
-	private readonly concurrency: number = undefined;
+	private readonly limit: Limit = null;
 
 	constructor(config: IConfig = {}) {
 		if (typeof config === 'object') {
@@ -47,7 +54,8 @@ export default class SrcSetGenerator {
 				postfix,
 				skipOptimization,
 				scalingUp,
-				concurrency
+				concurrency,
+				limit
 			} = config;
 
 			Object.assign(this.processing, processing);
@@ -65,9 +73,9 @@ export default class SrcSetGenerator {
 				this.scalingUp = scalingUp;
 			}
 
-			if (typeof concurrency === 'number') {
-				this.concurrency = concurrency;
-			}
+			this.limit = typeof limit === 'function'
+				? limit
+				: pLimit(concurrency || cpus().length);
 		}
 	}
 
@@ -85,7 +93,7 @@ export default class SrcSetGenerator {
 		await attachMetadata(source);
 
 		const {
-			concurrency
+			limit
 		} = this;
 		const self = this;
 		const config: IGenerateConfig = {
@@ -127,8 +135,15 @@ export default class SrcSetGenerator {
 		} = config;
 		const onlyOptimize = extensions.svg.test(sourceType)
 			|| extensions.gif.test(sourceType);
+		const variants = combineVariants({
+			type: outputTypes,
+			width: widths
+		});
 
-		yield *cuncurrentIterator(outputTypes, async function *g(type) {
+		yield *cuncurrentIterator(variants, async function *g({
+			type,
+			width
+		}) {
 			if (!isSupportedType(type)) {
 				throw new Error(`"${type}" is not supported.`);
 			}
@@ -151,26 +166,24 @@ export default class SrcSetGenerator {
 				return;
 			}
 
-			yield *cuncurrentIterator(widths, async function *g(width) {
-				if (typeof width !== 'number') {
-					throw new Error('Invalid width parameter.');
-				}
+			if (typeof width !== 'number') {
+				throw new Error('Invalid width parameter.');
+			}
 
-				if (!scalingUp && source.metadata.width < width) {
-					return;
-				}
+			if (!scalingUp && source.metadata.width < width) {
+				return;
+			}
 
-				let image = await self.processImage(source, type, width, config);
+			let image = await self.processImage(source, type, width, config);
 
-				if (!skipOptimization) {
-					image = await self.optimizeImage(image, config);
-				}
+			if (!skipOptimization) {
+				image = await self.optimizeImage(image, config);
+			}
 
-				await attachMetadata(image, true);
+			await attachMetadata(image, true);
 
-				yield image;
-			}, concurrency);
-		}, concurrency);
+			yield image;
+		}, limit);
 	}
 
 	/**

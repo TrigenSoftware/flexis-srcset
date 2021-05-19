@@ -109,6 +109,18 @@ describe('SrcSetGenerator', () => {
 		expect(avifImage.extname).toBe('.avif');
 	});
 
+	it('should work in single thread', async () => {
+		const srcSet = new SrcSetGenerator({
+			skipOptimization: true,
+			concurrency: 1
+		});
+		const images = await vinylsFromAsyncIterator(srcSet.generate(image, {
+			width: [60, 120, 320]
+		}));
+
+		expect(images.length).toBe(3);
+	});
+
 	describe('#generate', () => {
 		const srcSet = new SrcSetGenerator({
 			skipOptimization: true

@@ -94,6 +94,7 @@ Extends [common options](#common-options).
 | Option | Type | Description | Default |
 |--------|------|-------------|---------|
 | concurrency | number | Concurrency limit. | `os.cpus().length` |
+| limit | [Limit](https://www.npmjs.com/package/p-limit) | p-limit's limit. | `pLimit(concurrency)` |
 
 #### Rule options
 

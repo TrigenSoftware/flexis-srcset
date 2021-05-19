@@ -9,11 +9,10 @@ type IteratorHandler<TItem, TData = unknown> = (item: TItem, index: number) => (
 export function cuncurrentIterator<TItem, TData>(
 	items: TItem[],
 	handler: IteratorHandler<TItem, TData>,
-	concurrency = cpus().length
+	limit = pLimit(cpus().length)
 ) {
 	return {
 		async *[Symbol.asyncIterator]() {
-			const limit = pLimit(concurrency);
 			const tasks = items.map((item, i) => limit(async () => {
 				const handlerResult = await handler(item, i);
 				const results: TData[] = [];

@@ -6,6 +6,9 @@ import {
 	Plugin
 } from 'imagemin';
 import {
+	Limit
+} from 'p-limit';
+import {
 	SupportedExtension
 } from './extensions';
 
@@ -98,9 +101,13 @@ export interface IConfig {
 	 * Concurrency limit.
 	 */
 	concurrency?: number;
+	/**
+	 * p-limit's limit.
+	 */
+	limit?: Limit;
 }
 
-export interface IGenerateConfig extends Omit<IConfig, 'concurrency'> {
+export interface IGenerateConfig extends Omit<IConfig, 'concurrency' | 'limit'> {
 	/**
 	 * Output image(s) formats to convert.
 	 */
