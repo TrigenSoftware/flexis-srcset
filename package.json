@@ -54,7 +54,7 @@
     "imagemin-giflossy": "^5.1.10",
     "imagemin-mozjpeg": "^9.0.0",
     "imagemin-pngquant": "^9.0.0",
-    "imagemin-svgo": "^8.0.0",
+    "imagemin-svgo": "^9.0.0",
     "imagemin-webp": "^6.0.0",
     "minimatch": "^3.0.4",
     "omit-empty": "^1.0.0",
