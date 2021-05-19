@@ -6,6 +6,7 @@ import SrcSetGenerator, {
 import image, {
 	expectedSize
 } from './image';
+import icon from './icon';
 
 const optimization = {
 	jpg: mozJpegPlugin({
@@ -226,6 +227,36 @@ describe('SrcSetGenerator', () => {
 			expect(images[0].extname).toBe('.jpg');
 			expect(images[1].extname).toBe('.webp');
 			expect(images[2].extname).toBe('.png');
+		});
+
+		it('should generate desired formats with sizes', async () => {
+			const images = await vinylsFromAsyncIterator(srcSet.generate(image, {
+				format: ['jpg', 'webp', 'png'],
+				width: [0.33, 0.66, 1],
+				skipOptimization: true
+			}));
+
+			expect(images.length).toBe(9);
+		});
+
+		it('should no emit images', async () => {
+			const images = await vinylsFromAsyncIterator(srcSet.generate(icon, {
+				format: ['jpg', 'webp', 'png'],
+				width: [0.33, 0.66, 1],
+				skipOptimization: true
+			}));
+
+			expect(images.length).toBe(0);
+		});
+
+		it('should skip sizes', async () => {
+			const images = await vinylsFromAsyncIterator(srcSet.generate(icon, {
+				format: ['svg'],
+				width: [0.33, 0.66, 1],
+				skipOptimization: true
+			}));
+
+			expect(images.length).toBe(1);
 		});
 
 		it('should throw error if desired format is not supported', async () => {

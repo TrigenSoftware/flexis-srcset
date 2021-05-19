@@ -188,7 +188,7 @@ export {
 import {
     promises as fs
 } from 'fs';
-import SrcSetGenerator from '@flexis/favicons';
+import SrcSetGenerator from '@flexis/srcset';
 import Vinyl from 'vinyl';
 
 async function generate() {

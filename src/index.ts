@@ -135,7 +135,10 @@ export default class SrcSetGenerator {
 		} = config;
 		const onlyOptimize = extensions.svg.test(sourceType)
 			|| extensions.gif.test(sourceType);
-		const variants = combineVariants({
+		const variants = onlyOptimize ? combineVariants({
+			type: outputTypes,
+			width: [1]
+		}) : combineVariants({
 			type: outputTypes,
 			width: widths
 		});
