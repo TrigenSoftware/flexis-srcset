@@ -50,7 +50,7 @@
     "core-js": "^3.8.3",
     "css-mediaquery": "^0.1.2",
     "easy-table": "^1.1.1",
-    "imagemin": "^7.0.0",
+    "imagemin": "^8.0.0",
     "imagemin-giflossy": "^5.1.10",
     "imagemin-mozjpeg": "^9.0.0",
     "imagemin-pngquant": "^9.0.0",
