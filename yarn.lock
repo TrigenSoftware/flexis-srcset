@@ -1768,9 +1768,9 @@
   integrity sha512-1HcDas8SEj4z1Wc696tH56G8OlRaH/sqZOynNNB+HF0WOeXPaxTtbYzJY2oEfiUxjSKjhCKr+MvR7dCHcEelug==
 
 "@types/sharp@^0.28.1":
-  version "0.28.1"
-  resolved "https://registry.yarnpkg.com/@types/sharp/-/sharp-0.28.1.tgz#dbd702bd6a8d42576b8faffe1c2ec06fdffaaaff"
-  integrity sha512-Jn9NHCjT3KXjxTpbtaxBI4iL+st5o9pWhMGVpHF+Cs+t/31lohLNXSW9PT9RSl7Ct7yBT2XFu7R/xfo0Y8HH2Q==
+  version "0.28.6"
+  resolved "https://registry.yarnpkg.com/@types/sharp/-/sharp-0.28.6.tgz#41e4f904b39e5269328080e0bd1d008ae5bc8b21"
+  integrity sha512-AjKjo5vk5mkcTrWL0U1zFUdCp/uqLebvbe7ezAJx0tgp6ST9JmfsYK1q1lpjfPM5S1YQ1wr5uboPSu2S8UO9yw==
   dependencies:
     "@types/node" "*"
 
